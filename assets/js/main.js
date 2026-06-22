@@ -4,7 +4,8 @@
 
 /* ---------- Theme Toggle ---------- */
 function initTheme() {
-  const saved = localStorage.getItem('theme') || 'light';
+  let saved = 'light';
+  try { saved = localStorage.getItem('theme') || 'light'; } catch (e) {}
   document.documentElement.setAttribute('data-theme', saved);
   document.body.setAttribute('data-theme', saved);
   updateThemeIcon(saved);
@@ -15,7 +16,7 @@ function toggleTheme() {
   const next = current === 'dark' ? 'light' : 'dark';
   document.body.setAttribute('data-theme', next);
   document.documentElement.setAttribute('data-theme', next);
-  localStorage.setItem('theme', next);
+  try { localStorage.setItem('theme', next); } catch (e) {}
   updateThemeIcon(next);
 }
 
@@ -242,6 +243,7 @@ function initTypewriter() {
 /* ---------- Init all ---------- */
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  document.getElementById('theme-toggle')?.addEventListener('click', toggleTheme);
   initProgressBar();
   initBackToTop();
   initScrollspy();
