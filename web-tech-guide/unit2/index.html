@@ -1,0 +1,2000 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 2: CSS &amp; Bootstrap — WebTech ETE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-unit="2">
+
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top main-navbar">
+  <div class="container-fluid px-lg-4">
+    <a class="navbar-brand" href="../index.html"><i class="bi bi-book-half me-2"></i>WebTech ETE</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link u1" href="../unit1/index.html">Unit 1</a></li>
+        <li class="nav-item"><a class="nav-link u2 active" href="../unit2/index.html">Unit 2</a></li>
+        <li class="nav-item"><a class="nav-link u3" href="../unit3/index.html">Unit 3</a></li>
+        <li class="nav-item"><a class="nav-link u4" href="../unit4/index.html">Unit 4</a></li>
+        <li class="nav-item"><a class="nav-link u5" href="../unit5/index.html">Unit 5</a></li>
+      </ul>
+    </div>
+    <button id="theme-toggle" class="ms-3" onclick="toggleTheme()"><i class="bi bi-moon-fill"></i></button>
+  </div>
+</nav>
+
+<!-- Unit Hero -->
+<section class="unit-hero">
+  <div class="container-fluid px-lg-4">
+    <span class="unit-badge text-white" style="background:var(--unit2)"><i class="bi bi-2-circle-fill me-1"></i> UNIT 2</span>
+    <h1 class="mt-2">Cascading Style Sheets &amp; Bootstrap Framework</h1>
+    <p class="mb-0" style="color:var(--text-secondary)">CSS Specificity · Box Model · 3D Transforms · Animations · Styling Techniques · CSS Selectors · Bootstrap Grid · Responsive Design · Forms · Tables · Admin Dashboard</p>
+  </div>
+</section>
+
+<div class="container-fluid px-lg-4">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <nav class="col-lg-3 col-xl-3 sidebar" id="sidebar">
+      <div class="sidebar-heading">Unit 2 — Questions</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#u2-q1">Q1. HTML5 Form Elements</a>
+        <a class="nav-link" href="#u2-q2">Q2. CSS Specificity</a>
+        <a class="nav-link" href="#u2-q3">Q3. CSS Styling Techniques</a>
+        <a class="nav-link" href="#u2-q4">Q4. CSS 3D Effects &amp; Animations</a>
+        <a class="nav-link" href="#u2-q5">Q5. Importance of Bootstrap</a>
+        <a class="nav-link" href="#u2-q6">Q6. CSS Box Model</a>
+        <a class="nav-link" href="#u2-q7">Q7. Bootstrap Mobile-First Approach</a>
+        <a class="nav-link" href="#u2-q8">Q8. Bootstrap Grid System</a>
+        <a class="nav-link" href="#u2-q9">Q9. Bootstrap Image Classes</a>
+        <a class="nav-link" href="#u2-q10">Q10. Bootstrap Tables</a>
+        <a class="nav-link" href="#u2-q11">Q11. DIV Tag &amp; CSS Box Properties</a>
+        <a class="nav-link" href="#u2-q12">Q12. Bootstrap Admin Dashboard</a>
+        <a class="nav-link" href="#u2-q13">Q13. Three Types of CSS</a>
+        <a class="nav-link" href="#u2-q14">Q14. CSS Selectors</a>
+        <a class="nav-link" href="#u2-q15">Q15. CSS 3D Transformation Techniques</a>
+      </nav>
+    </nav>
+
+    <!-- Content -->
+    <main class="col-lg-9 col-xl-9 content-area">
+
+      <!-- ================= Q1 ================= -->
+      <section class="question-section" id="u2-q1">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q1">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q1</span>
+                List and Explain the form elements in HTML5.
+              </button>
+            </h2>
+            <div id="c-u2-q1" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>HTML5 introduced several <strong>form elements</strong> and <strong>input types</strong> that make web forms more powerful, semantic, and user-friendly. These elements handle validation, input selection, and state display natively in the browser.</p>
+                  <p><strong>Core form elements:</strong></p>
+                  <ul>
+                    <li><strong>&lt;input&gt;</strong> — the most versatile element. Types include: <code>text</code>, <code>password</code>, <code>email</code>, <code>number</code>, <code>date</code>, <code>color</code>, <code>range</code>, <code>file</code>, <code>url</code>, <code>tel</code>, <code>search</code>, <code>submit</code>, <code>reset</code>, <code>radio</code>, <code>checkbox</code>.</li>
+                    <li><strong>&lt;textarea&gt;</strong> — multi-line text input with <code>rows</code> and <code>cols</code> attributes.</li>
+                    <li><strong>&lt;select&gt; + &lt;option&gt;</strong> — dropdown list. Supports <code>&lt;optgroup&gt;</code> for grouping options.</li>
+                    <li><strong>&lt;button&gt;</strong> — clickable button with <code>type="submit/reset/button"</code>.</li>
+                    <li><strong>&lt;label&gt;</strong> — associates a text label with a form control via <code>for="id"</code>, improving accessibility.</li>
+                    <li><strong>&lt;fieldset&gt; + &lt;legend&gt;</strong> — groups related form controls visually and semantically.</li>
+                    <li><strong>&lt;datalist&gt;</strong> — provides an autocomplete suggestion list for an <code>&lt;input&gt;</code>.</li>
+                    <li><strong>&lt;output&gt;</strong> — displays the result of a calculation or user action.</li>
+                    <li><strong>&lt;progress&gt;</strong> — shows the completion progress of a task (value / max).</li>
+                    <li><strong>&lt;meter&gt;</strong> — represents a scalar measurement within a known range (e.g. disk usage).</li>
+                  </ul>
+                  <p>HTML5 also introduced <strong>attributes</strong> like <code>required</code>, <code>placeholder</code>, <code>autofocus</code>, <code>pattern</code> (regex validation), <code>min</code>/<code>max</code>, and <code>step</code>. These enable <strong>client-side validation</strong> without JavaScript, making forms more robust and accessible.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Form Elements Categorization</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:140px">Text Inputs<br><small>text, email, url, tel, textarea</small></div>
+                  <div class="flow-box process" style="min-width:140px">Selection<br><small>select, radio, checkbox, datalist</small></div>
+                  <div class="flow-box green" style="min-width:140px">Buttons<br><small>button, submit, reset</small></div>
+                  <div class="flow-box app" style="min-width:140px">Interactive<br><small>range, date, color, file</small></div>
+                  <div class="flow-box db" style="min-width:140px">Display<br><small>output, progress, meter</small></div>
+                </div>
+                <p class="flow-label">HTML5 form elements grouped by purpose: input, selection, button, interactive, and display</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>html5-form.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;form oninput="o.value=parseInt(a.value)+parseInt(b.value)"&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Registration Form&lt;/legend&gt;
+
+    &lt;label for="name"&gt;Name:&lt;/label&gt;
+    &lt;input id="name" required placeholder="Full name"&gt;
+
+    &lt;label for="email"&gt;Email:&lt;/label&gt;
+    &lt;input id="email" type="email" required&gt;
+
+    &lt;label for="city"&gt;City:&lt;/label&gt;
+    &lt;input id="city" list="cities"&gt;
+    &lt;datalist id="cities"&gt;
+      &lt;option value="Mumbai"&gt;
+      &lt;option value="Delhi"&gt;
+      &lt;option value="Bangalore"&gt;
+    &lt;/datalist&gt;
+
+    &lt;label&gt;Age: &lt;input id="a" type="number" value="20"&gt;&lt;/label&gt;
+    &lt;label&gt; + &lt;input id="b" type="number" value="5"&gt;&lt;/label&gt;
+    &lt;label&gt; = &lt;output name="o"&gt;25&lt;/output&gt;&lt;/label&gt;
+
+    &lt;progress value="70" max="100"&gt;70%&lt;/progress&gt;
+    &lt;meter value="0.6" min="0" max="1"&gt;60%&lt;/meter&gt;
+
+    &lt;button type="submit"&gt;Submit&lt;/button&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-ui-checks me-1"></i>HTML5 Form Elements Demo</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:360px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <form oninput='o.value=parseInt(a.value)+parseInt(b.value)'>
+                        <fieldset style='border:2px solid #7209b7;border-radius:8px;padding:14px'>
+                          <legend style='color:#7209b7;font-weight:bold'>Registration Form</legend>
+                          <label>Name: <input required placeholder='Full name' style='padding:5px;margin:4px 0;display:block'></label>
+                          <label>Email: <input type='email' required style='padding:5px;margin:4px 0;display:block'></label>
+                          <label>City: <input list='cities' style='padding:5px;margin:4px 0;display:block'></label>
+                          <datalist id='cities'><option value='Mumbai'><option value='Delhi'><option value='Bangalore'></datalist>
+                          <label>Age: <input id='a' type='number' value='20' style='width:70px;padding:5px'></label> + 
+                          <label><input id='b' type='number' value='5' style='width:70px;padding:5px'></label> = 
+                          <output name='o' style='font-weight:bold;color:#f72585'>25</output>
+                          <hr>
+                          <progress value='70' max='100' style='width:100%;height:16px'></progress>
+                          <meter value='0.6' min='0' max='1' style='width:100%;height:16px'></meter>
+                          <hr>
+                          <button style='padding:8px 16px;background:#7209b7;color:#fff;border:none;border-radius:6px;cursor:pointer'>Submit</button>
+                        </fieldset>
+                      </form>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List <strong>at least 8 input types</strong> (text, email, number, date, color, range, file, url) for full marks.</li>
+                    <li>Explain <strong>&lt;datalist&gt;</strong> vs <strong>&lt;select&gt;</strong>: datalist is a suggestion (user can type custom value), select forces a choice.</li>
+                    <li>Mistake: forgetting <code>&lt;form&gt;</code> wrapper — form elements must be inside a <code>&lt;form&gt;</code> tag to work.</li>
+                  </ul>
+                  <div class="mnemonic">💡 New input types: <strong>"C.E.D.N.R.F.U.S"</strong> = Color, Email, Date, Number, Range, File, Url, Search.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q2 ================= -->
+      <section class="question-section" id="u2-q2">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q2">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q2</span>
+                Explain the concept of CSS specificity with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u2-q2" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>CSS Specificity</strong> is the algorithm browsers use to decide which CSS rule <strong>wins</strong> when multiple rules target the same element. Each selector has a <strong>specificity weight</strong> — the higher weight wins. If two rules have equal specificity, the <strong>last one declared</strong> wins (cascade order).</p>
+                  <p><strong>Specificity Hierarchy (lowest to highest):</strong></p>
+                  <ul>
+                    <li><strong>Type selectors</strong> (element, pseudo-element): <code>div</code>, <code>h1</code>, <code>::before</code> → weight: 0-0-0-1</li>
+                    <li><strong>Class selectors</strong> (class, attribute, pseudo-class): <code>.btn</code>, <code>[type="text"]</code>, <code>:hover</code> → weight: 0-0-1-0</li>
+                    <li><strong>ID selectors</strong>: <code>#header</code> → weight: 0-1-0-0</li>
+                    <li><strong>Inline styles</strong>: <code>style="color:red"</code> → weight: 1-0-0-0</li>
+                    <li><strong>!important</strong> — overrides everything (use sparingly).</li>
+                  </ul>
+                  <p>The specificity is calculated as a <strong>4-column score</strong>: (inline, IDs, classes, elements). For example, <code>div#content .card h2</code> = 0 IDs × 1 class × 2 elements = (0, 1, 1, 2). The browser compares left to right — the highest non-zero column wins. This ensures predictable styling and helps debug when styles don't apply as expected.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Specificity Pyramid</div>
+                <div class="layer-stack" style="max-width:400px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(247,37,133,0.15);border-color:#f72585;color:#f72585;font-size:1rem">!important</div>
+                  <div class="arch-layer" style="background:rgba(114,9,183,0.15);border-color:#7209b7;color:#7209b7">Inline styles (style="...")</div>
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.15);border-color:#4361ee;color:#4361ee">ID selectors (#id)</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.15);border-color:#06d6a0;color:#06d6a0">Class / Attribute / Pseudo-class (.class, [attr], :hover)</div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.15);border-color:#fb8500;color:#fb8500">Element selectors (div, h1, ::before)</div>
+                </div>
+                <p class="flow-label">Specificity increases from bottom to top; !important breaks the normal cascade</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>specificity.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;style&gt;
+  /* Specificity: 0-0-0-1 (element) */
+  p { color: blue; }
+
+  /* Specificity: 0-0-1-1 (class + element) */
+  .special p { color: green; }
+
+  /* Specificity: 0-1-0-0 (ID) */
+  #unique { color: red; }
+
+  /* Specificity: 1-0-0-0 (inline) */
+  /* &lt;p style="color:orange"&gt; wins over all above */
+&lt;/style&gt;
+
+&lt;p&gt;Blue (element selector)&lt;/p&gt;
+&lt;div class="special"&gt;
+  &lt;p&gt;Green (.special p overrides p)&lt;/p&gt;
+&lt;/div&gt;
+&lt;p id="unique"&gt;Red (ID wins)&lt;/p&gt;
+&lt;p id="unique" style="color:orange"&gt;Orange (inline wins!)&lt;/p&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-stack me-1"></i>Specificity in action</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <style>
+                      p { color: blue; font-weight:bold; }
+                      .special p { color: green; }
+                      #u { color: red; }
+                    </style>
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <p>🔵 Blue — element selector (p)</p>
+                      <div class='special'><p>🟢 Green — class + element (.special p)</p></div>
+                      <p id='u'>🔴 Red — ID selector (#unique)</p>
+                      <p style='color:orange'>🟠 Orange — inline style wins all!</p>
+                      <hr>
+                      <p style='font-size:14px;color:#666'>Specificity: element &lt; class &lt; ID &lt; inline &lt; !important</p>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Show the <strong>4-column specificity notation</strong>: inline, IDs, classes, elements.</li>
+                    <li>Give an example like <code>div#x .y p</code> = (0,1,1,2) — examiners love this calculation.</li>
+                    <li>Mistake: thinking class selectors beat ID selectors — IDs always win over classes.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Specificity order: <strong>"I.C.E"</strong> = Inline > Class? No — ID > Class > Element (but inline > ID).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q3 ================= -->
+      <section class="question-section" id="u2-q3">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q3">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q3</span>
+                Explain the different CSS styling techniques used in web page design.
+              </button>
+            </h2>
+            <div id="c-u2-q3" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>CSS can be applied to a web page using three distinct <strong>styling techniques</strong>: <strong>Inline CSS</strong>, <strong>Internal (Embedded) CSS</strong>, and <strong>External CSS</strong>. Each has its own use cases, advantages, and limitations.</p>
+                  <p><strong>1. Inline CSS:</strong> Styles are applied directly to an HTML element using the <code>style</code> attribute. Example: <code>&lt;h1 style="color:red"&gt;</code>. It has the <strong>highest specificity</strong> (except !important) but mixes content with presentation, violating separation of concerns. Best for quick testing or one-off overrides.</p>
+                  <p><strong>2. Internal CSS:</strong> Styles are defined inside a <code>&lt;style&gt;</code> tag within the <code>&lt;head&gt;</code> section of the same HTML page. It keeps styles in one place on the same page — useful for single-page sites or when external files are not feasible. However, it is not reusable across multiple pages.</p>
+                  <p><strong>3. External CSS:</strong> Styles are written in a separate <code>.css</code> file and linked via <code>&lt;link rel="stylesheet" href="style.css"&gt;</code>. This is the <strong>best practice</strong> because it completely separates content from presentation, promotes reusability (one file for many pages), improves maintainability, and enables browser caching. Major websites always use external CSS for scalability.</p>
+                  <p>Modern development often combines all three: external for global styles, internal for page-specific overrides, and inline sparingly for dynamic JavaScript-driven changes.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Three CSS Techniques Comparison</div>
+                <div class="flow-diagram">
+                  <div class="flow-box red" style="min-width:150px">Inline CSS<br><small>style attribute<br>Highest specificity<br>Not reusable</small></div>
+                  <div class="flow-box orange" style="min-width:150px">Internal CSS<br><small>&lt;style&gt; in head<br>Page-level only<br>No reuse</small></div>
+                  <div class="flow-box green" style="min-width:150px">External CSS<br><small>.css file linked<br>Best practice<br>Fully reusable</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>css-techniques.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;!-- EXTERNAL CSS (linked file) --&gt;
+  &lt;link rel="stylesheet" href="styles.css"&gt;
+
+  &lt;!-- INTERNAL CSS (embedded in head) --&gt;
+  &lt;style&gt;
+    h2 { color: #7209b7; font-size: 1.5rem; }
+    .card { border: 1px solid #ddd; padding: 1rem; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1 style="color:red; text-align:center"&gt;
+    INLINE CSS — Red heading
+  &lt;/h1&gt;
+  &lt;h2&gt;Internal CSS — Purple heading&lt;/h2&gt;
+  &lt;p&gt;Styled by external CSS if linked.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-palette me-1"></i>All three techniques shown</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <style>
+                      h2 { color: #7209b7; font-size: 1.3rem; text-decoration:underline; }
+                      .card { border: 2px solid #7209b7; padding: 1rem; border-radius: 8px; margin-top:8px; }
+                    </style>
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h1 style='color:red; text-align:center'>🔴 INLINE CSS — Red heading (style attr)</h1>
+                      <h2>🟣 Internal CSS — Purple heading (&lt;style&gt; tag)</h2>
+                      <div class='card'>📦 This card is styled by internal CSS (.card class)</div>
+                      <p style='font-size:14px;color:#666;margin-top:14px'>✅ External CSS would be linked via &lt;link rel=&quot;stylesheet&quot;&gt; from a .css file</p>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>State clearly: <strong>External is best practice</strong> (separation of concerns, reusability, caching).</li>
+                    <li>List the <strong>advantages of external CSS</strong>: one file for whole site, cacheable, easy maintenance.</li>
+                    <li>Mistake: saying inline CSS is "bad" — it has legitimate uses (JS-driven changes, email templates).</li>
+                  </ul>
+                  <div class="mnemonic">💡 CSS methods: <strong>"I.I.E"</strong> = Inline, Internal, External (in order of reusability).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q4 ================= -->
+      <section class="question-section" id="u2-q4">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q4">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q4</span>
+                Explain how CSS creates 3D effects and animations (flipping cards, moving objects) without JavaScript.
+              </button>
+            </h2>
+            <div id="c-u2-q4" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>CSS can create <strong>3D effects and animations</strong> using only CSS — no JavaScript needed. The key CSS modules involved are <strong>transforms</strong>, <strong>transitions</strong>, and <strong>keyframe animations</strong>.</p>
+                  <p><strong>1. CSS Transforms:</strong> The <code>transform</code> property lets you <strong>rotate, scale, skew, or translate</strong> an element.</p>
+                  <ul>
+                    <li><strong>2D transforms:</strong> <code>translate(x, y)</code>, <code>rotate(deg)</code>, <code>scale(factor)</code>, <code>skew(deg)</code>.</li>
+                    <li><strong>3D transforms:</strong> <code>rotateX(deg)</code>, <code>rotateY(deg)</code>, <code>rotateZ(deg)</code>, <code>translateZ(px)</code>, <code>perspective(px)</code>.</li>
+                    <li><code>perspective</code> on the parent gives depth; <code>transform-style: preserve-3d</code> allows children to occupy 3D space.</li>
+                  </ul>
+                  <p><strong>2. CSS Transitions:</strong> <code>transition: property duration easing delay</code> smoothly interpolates between states on hover or class change. E.g., <code>transition: transform 0.6s</code>.</p>
+                  <p><strong>3. CSS Animations (@keyframes):</strong> Define multi-step animations with <code>@keyframes name { 0% {…} 100% {…} }</code> and apply via <code>animation: name 2s infinite</code>.</p>
+                  <p>A classic <strong>flipping card</strong> effect uses <code>rotateY(180deg)</code> on hover + <code>backface-visibility: hidden</code> to hide the reverse side. Moving objects use <code>translateX/Y</code> with transitions. All of this is pure CSS — the browser's rendering engine handles the smooth motion using the GPU.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> CSS Animation Building Blocks</div>
+                <div class="flow-diagram">
+                  <div class="flow-box process" style="min-width:130px">Transforms<br><small>translate / rotate / scale</small></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-box green" style="min-width:130px">Transitions<br><small>smooth state changes</small></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-box app" style="min-width:130px">@keyframes<br><small>multi-step animations</small></div>
+                  <div class="flow-arrow">=</div>
+                  <div class="flow-box red" style="min-width:130px">3D Effects<br><small>flip, bounce, slide</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>flipping-card.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;style&gt;
+  .scene { perspective: 600px; width: 200px; height: 260px; }
+
+  .card {
+    width: 100%; height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+  }
+  .card:hover { transform: rotateY(180deg); }
+
+  .front, .back {
+    position: absolute; inset: 0;
+    backface-visibility: hidden;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold;
+  }
+  .front { background: #7209b7; color: #fff; }
+  .back  { background: #f72585; color: #fff; transform: rotateY(180deg); }
+
+  @keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50%     { transform: translateY(-20px); }
+  }
+  .bouncing { animation: bounce 1s infinite; }
+&lt;/style&gt;
+
+&lt;div class="scene"&gt;
+  &lt;div class="card"&gt;
+    &lt;div class="front"&gt;Hover to Flip!&lt;/div&gt;
+    &lt;div class="back"&gt;✨ Surprise!&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="bouncing"&gt;Bouncing Box&lt;/div&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-camera-reels me-1"></i>Hover over the card to flip &amp; see bouncing box</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:380px" srcdoc="
+                    <style>
+                      .scene{perspective:600px;width:180px;height:230px;margin:auto}
+                      .card{width:100%;height:100%;transition:transform 0.6s;transform-style:preserve-3d;cursor:pointer}
+                      .card:hover{transform:rotateY(180deg)}
+                      .front,.back{position:absolute;inset:0;backface-visibility:hidden;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:bold;text-align:center;padding:10px}
+                      .front{background:#7209b7;color:#fff}
+                      .back{background:#f72585;color:#fff;transform:rotateY(180deg)}
+                      @keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-20px)}}
+                      .bouncing{width:120px;margin:20px auto;padding:12px;background:#06d6a0;color:#fff;text-align:center;border-radius:8px;animation:bounce 1s infinite;font-weight:bold}
+                    </style>
+                    <body style='font-family:sans-serif;padding:16px;text-align:center'>
+                      <div class='scene'><div class='card'><div class='front'>Hover to Flip!</div><div class='back'> Surprise! 🎉</div></div></div>
+                      <div class='bouncing'>Bouncing Box</div>
+                      <p style='font-size:13px;color:#666;margin-top:8px'>Pure CSS — no JavaScript used!</p>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Explain <strong>perspective</strong> (creates depth) and <strong>transform-style: preserve-3d</strong> (keeps children in 3D space).</li>
+                    <li><strong>backface-visibility: hidden</strong> is critical for flip cards — without it both sides show through.</li>
+                    <li>Mistake: writing <code>@keyframes</code> but forgetting to <code>apply</code> it with the <code>animation</code> property.</li>
+                  </ul>
+                  <div class="mnemonic">💡 CSS animation keywords: <strong>"K.A.T"</strong> = @Keyframes · Animation property · Transition.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q5 ================= -->
+      <section class="question-section" id="u2-q5">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q5">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q5</span>
+                Explain the importance of Bootstrap in designing modern and responsive websites.
+              </button>
+            </h2>
+            <div id="c-u2-q5" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Bootstrap</strong> is the world's most popular <strong>front-end component library</strong> for building responsive, mobile-first websites. Developed by Twitter (now open source), it provides pre-built HTML, CSS, and JavaScript components that speed up development dramatically.</p>
+                  <p><strong>Why Bootstrap is important for modern web design:</strong></p>
+                  <ul>
+                    <li><strong>Responsive Grid System:</strong> A flexible 12-column layout using <code>.container</code> &gt; <code>.row</code> &gt; <code>.col-*</code>. Breakpoints at sm, md, lg, xl, xxl let you build layouts that work on every screen size.</li>
+                    <li><strong>Pre-styled Components:</strong> Navbars, buttons, cards, forms, tables, alerts, modals, carousels, badges, and many more — all accessible and responsive out of the box.</li>
+                    <li><strong>Cross-browser Consistency:</strong> Bootstrap normalises styles across Chrome, Firefox, Safari, Edge — no more fighting browser differences.</li>
+                    <li><strong>Utility Classes:</strong> Hundreds of single-purpose classes for spacing (<code>m-2, p-3</code>), typography (<code>text-center, fw-bold</code>), colors (<code>text-primary, bg-danger</code>), display, flexbox, and more.</li>
+                    <li><strong>Customizable via Variables (Sass):</strong> Modify Bootstrap's design tokens (colors, fonts, spacing) to match any brand without editing the core library.</li>
+                    <li><strong>JavaScript Plugins:</strong> Ready-made JavaScript for modals, tooltips, popovers, dropdowns, scrollspy, and collapse — without writing a single line of JS.</li>
+                  </ul>
+                  <p>By using Bootstrap, developers can prototype quickly, launch faster, and maintain consistency across large projects. It eliminates repetitive CSS work and is compatible with all modern frameworks (React, Angular, Vue).</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Bootstrap Core Features</div>
+                <div class="flow-diagram">
+                  <div class="flow-box green" style="min-width:120px">Grid System<br><small>12 columns</small></div>
+                  <div class="flow-box client" style="min-width:120px">Components<br><small>Nav, Cards, Buttons</small></div>
+                  <div class="flow-box process" style="min-width:120px">Utilities<br><small>Spacing, Colors, Text</small></div>
+                  <div class="flow-box db" style="min-width:120px">JS Plugins<br><small>Modal, Tooltip, Carousel</small></div>
+                  <div class="flow-box app" style="min-width:120px">Customizable<br><small>Sass variables</small></div>
+                </div>
+                <p class="flow-label">Bootstrap combines these features to eliminate repetitive CSS/JS work</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>bootstrap-intro.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+  &lt;title&gt;Bootstrap Demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+    &lt;div class="container"&gt;
+      &lt;a class="navbar-brand" href="#"&gt;MySite&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;div class="container mt-4"&gt;
+    &lt;div class="row"&gt;
+      &lt;div class="col-md-4"&gt;
+        &lt;div class="card"&gt;
+          &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Card 1&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Bootstrap makes styling easy.&lt;/p&gt;
+            &lt;a href="#" class="btn btn-primary"&gt;Learn More&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-4"&gt;
+        &lt;div class="card"&gt;
+          &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Card 2&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Responsive grid works automatically.&lt;/p&gt;
+            &lt;a href="#" class="btn btn-success"&gt;Details&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-md-4"&gt;
+        &lt;div class="card"&gt;
+          &lt;div class="card-body"&gt;
+            &lt;h5 class="card-title"&gt;Card 3&lt;/h5&gt;
+            &lt;p class="card-text"&gt;Pre-styled components save time.&lt;/p&gt;
+            &lt;a href="#" class="btn btn-warning"&gt;Explore&lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-bootstrap me-1"></i>Bootstrap cards &amp; grid live</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:320px" srcdoc="
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <body>
+                      <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+                        <div class='container'><a class='navbar-brand' href='#'>MySite</a></div>
+                      </nav>
+                      <div class='container mt-3'>
+                        <div class='row'>
+                          <div class='col-md-4 mb-2'><div class='card'><div class='card-body'><h5 class='card-title'>Card 1</h5><p class='card-text'>Bootstrap makes styling easy.</p><a href='#' class='btn btn-primary'>Learn More</a></div></div></div>
+                          <div class='col-md-4 mb-2'><div class='card'><div class='card-body'><h5 class='card-title'>Card 2</h5><p class='card-text'>Responsive grid works automatically.</p><a href='#' class='btn btn-success'>Details</a></div></div></div>
+                          <div class='col-md-4 mb-2'><div class='card'><div class='card-body'><h5 class='card-title'>Card 3</h5><p class='card-text'>Pre-styled components save time.</p><a href='#' class='btn btn-warning'>Explore</a></div></div></div>
+                        </div>
+                      </div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Mention the <strong>12-column grid</strong>, <strong>responsive breakpoints</strong>, and <strong>pre-built components</strong> — these are the core exam points.</li>
+                    <li>State that Bootstrap <strong>saves development time</strong> and ensures <strong>cross-browser compatibility</strong>.</li>
+                    <li>Mistake: calling Bootstrap a "language" — it is a <strong>CSS/JS framework/library</strong>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Bootstrap benefits: <strong>"G.R.I.D"</strong> = Grid, Responsive, Intuitive, Design-savvy.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q6 ================= -->
+      <section class="question-section" id="u2-q6">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q6">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q6</span>
+                Explain the CSS Box Model with a suitable example and diagram.
+              </button>
+            </h2>
+            <div id="c-u2-q6" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The <strong>CSS Box Model</strong> is the fundamental concept that governs how every HTML element is rendered as a <strong>rectangular box</strong>. Every box consists of four concentric layers: <strong>content → padding → border → margin</strong>.</p>
+                  <p><strong>The four layers (inside → out):</strong></p>
+                  <ul>
+                    <li><strong>Content:</strong> The actual content (text, image, child elements). Sized by <code>width</code> and <code>height</code>.</li>
+                    <li><strong>Padding:</strong> Space between content and its border. <code>padding: 10px</code>. Transparent, shows background color. Adds to the element's visible size.</li>
+                    <li><strong>Border:</strong> A perimeter line around the padding. <code>border: 2px solid black</code>. Can be styled with width, style, and color.</li>
+                    <li><strong>Margin:</strong> Space outside the border, separating this element from others. <code>margin: 15px</code>. Transparent and collapses with adjacent margins.</li>
+                  </ul>
+                  <p><strong>Total width = width + left padding + right padding + left border + right border + left margin + right margin.</strong></p>
+                  <p>The <strong>box-sizing</strong> property changes how the total size is computed. <code>box-sizing: border-box</code> makes <code>width</code> include padding and border — much easier to work with. <code>box-sizing: content-box</code> (default) only includes the content area. Most modern CSS resets apply <code>border-box</code> globally to avoid confusing math.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> CSS Box Model Diagram</div>
+                <div class="flow-diagram vertical" style="padding:2rem">
+                  <div class="flow-box client" style="min-width:320px;padding:1.8rem;background:rgba(251,133,0,0.05);border-color:#fb8500;color:#fb8500">MARGIN (transparent)
+                    <div class="flow-box red" style="min-width:280px;padding:1.2rem;margin:8px auto;background:rgba(220,53,69,0.05);border-color:#dc3545;color:#dc3545">BORDER
+                      <div class="flow-box neutral" style="min-width:240px;padding:1rem;margin:8px auto;background:rgba(67,97,238,0.05)">PADDING (bg area)
+                        <div class="flow-box green" style="min-width:160px;margin:8px auto;text-align:center">
+                          CONTENT
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <p class="flow-label">CSS Box Model: Content → Padding → Border → Margin (inside to outside)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>box-model.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;style&gt;
+  .box {
+    width: 200px;
+    height: 100px;
+    padding: 15px;
+    border: 4px solid #7209b7;
+    margin: 30px auto;
+    background: #f3e8ff;
+    /* Default: box-sizing: content-box */
+  }
+  /* Total width = 200 + 15*2 + 4*2 = 238px */
+
+  .box-alt {
+    box-sizing: border-box;
+    width: 200px;    /* now includes padding + border */
+    padding: 15px;
+    border: 4px solid #f72585;
+    margin: 20px auto;
+    background: #ffe0ee;
+  }
+  /* Total width = 200px (padding+border inside) */
+&lt;/style&gt;
+
+&lt;div class="box"&gt;content-box (default)&lt;/div&gt;
+&lt;div class="box-alt"&gt;border-box (easier)&lt;/div&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-box-seam me-1"></i>Box Model comparison</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <style>
+                      body{font-family:sans-serif;padding:16px}
+                      .box{width:200px;height:100px;padding:15px;border:4px solid #7209b7;margin:30px auto;background:#f3e8ff;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:14px;color:#7209b7}
+                      .box-alt{box-sizing:border-box;width:200px;height:100px;padding:15px;border:4px solid #f72585;margin:20px auto;background:#ffe0ee;display:flex;align-items:center;justify-content:center;text-align:center;font-weight:bold;font-size:14px;color:#f72585}
+                      .label{font-size:13px;color:#666;text-align:center;margin:2px 0 10px}
+                    </style>
+                    <p style='text-align:center;font-size:15px;font-weight:bold'>CSS Box Model Demo</p>
+                    <div class='box'>content-box<br><small>total: 238px wide</small></div>
+                    <div class='label'>padding + border ADD to width (default)</div>
+                    <div class='box-alt'>border-box<br><small>total: 200px wide</small></div>
+                    <div class='label'>padding + border INSIDE width</div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li><strong>Draw the diagram</strong> showing content → padding → border → margin — marks guaranteed for this!</li>
+                    <li>Explain <strong>box-sizing: border-box</strong> — it is a modern standard that simplifies layout maths.</li>
+                    <li>Mistake: forgetting that <strong>margin is outside</strong> the border and does NOT affect the element's background area.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Box Model order (inside → out): <strong>"C.P.B.M"</strong> = Content · Padding · Border · Margin.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q7 ================= -->
+      <section class="question-section" id="u2-q7">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q7">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q7</span>
+                Explain the Bootstrap mobile-first approach with a suitable example.
+              </button>
+            </h2>
+            <div id="c-u2-q7" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Mobile-first</strong> is a design philosophy where you start building the <strong>smallest screen layout first</strong> (mobile), then progressively enhance it for larger screens (tablet, desktop, wide). Bootstrap fully embraces this approach with its <strong>responsive breakpoints</strong>.</p>
+                  <p><strong>Bootstrap's mobile-first system:</strong></p>
+                  <ul>
+                    <li>The base styles target <strong>xs (extra small)</strong> — phones under 576px — without any media query.</li>
+                    <li><strong>Breakpoints</strong> use <code>min-width</code> queries to add styles for larger screens: <code>sm</code> (≥576px), <code>md</code> (≥768px), <code>lg</code> (≥992px), <code>xl</code> (≥1200px), <code>xxl</code> (≥1400px).</li>
+                    <li><strong>Grid classes:</strong> <code>col-12 col-sm-6 col-md-4 col-lg-3</code> means: on mobile, full width; on sm, 2 columns; on md, 3 columns; on lg, 4 columns.</li>
+                    <li><strong>Utility classes:</strong> <code>d-none d-md-block</code> hides on mobile, shows on md and up. <code>order-first order-lg-2</code> reorders content per breakpoint.</li>
+                  </ul>
+                  <p><strong>Why mobile-first?</strong> Over 60% of web traffic is mobile. Designing for small screens forces you to prioritize content, load faster (less data), and ensure touch-friendly interactions. Adding complexity for larger screens is easier than trying to squeeze a desktop design into a phone. Bootstrap's mobile-first approach makes this natural: you write the mobile layout by default and add <code>min-width</code> overrides for larger screens.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Mobile-First Breakpoints</div>
+                <div class="layer-stack" style="max-width:500px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">Base (xs) &lt; 576px — no media query (default)</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:#06d6a0;color:#06d6a0">sm ≥ 576px — <code>@media (min-width: 576px)</code></div>
+                  <div class="arch-layer" style="background:rgba(247,37,133,0.12);border-color:#f72585;color:#f72585">md ≥ 768px — <code>@media (min-width: 768px)</code></div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.12);border-color:#fb8500;color:#fb8500">lg ≥ 992px — <code>@media (min-width: 992px)</code></div>
+                  <div class="arch-layer" style="background:rgba(114,9,183,0.12);border-color:#7209b7;color:#7209b7">xl ≥ 1200px / xxl ≥ 1400px</div>
+                </div>
+                <p class="flow-label">Each breakpoint adds enhancements on top of the mobile base — never removes</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>mobile-first.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link href="bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="row"&gt;
+      &lt;!-- Mobile: full width (col-12)
+           sm: 2 columns (col-sm-6)
+           md: 3 columns (col-md-4)
+           lg: 4 columns (col-lg-3) --&gt;
+      &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"&gt;
+        &lt;div class="card p-3 text-center bg-light"&gt;Item 1&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"&gt;
+        &lt;div class="card p-3 text-center bg-light"&gt;Item 2&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"&gt;
+        &lt;div class="card p-3 text-center bg-light"&gt;Item 3&lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-3"&gt;
+        &lt;div class="card p-3 text-center bg-light"&gt;Item 4&lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-phone me-1"></i>Resize to see columns change from 1→2→3→4</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <body>
+                      <div class='container mt-3'>
+                        <p class='text-center fw-bold'>Mobile-first: 1→2→3→4 columns</p>
+                        <div class='row'>
+                          <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-2'><div class='card p-3 text-center bg-light border-primary'>Item 1</div></div>
+                          <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-2'><div class='card p-3 text-center bg-light border-success'>Item 2</div></div>
+                          <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-2'><div class='card p-3 text-center bg-light border-warning'>Item 3</div></div>
+                          <div class='col-12 col-sm-6 col-md-4 col-lg-3 mb-2'><div class='card p-3 text-center bg-light border-danger'>Item 4</div></div>
+                        </div>
+                        <p class='text-muted small text-center mt-2'>Resize frame width: xs=1col, sm=2col, md=3col, lg=4col</p>
+                      </div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Define <strong>mobile-first</strong> as "design for smallest screen first, then add <code>min-width</code> enhancements."</li>
+                    <li>List all <strong>5 breakpoints</strong> with their pixel values (sm=576, md=768, lg=992, xl=1200, xxl=1400).</li>
+                    <li>Mistake: using <code>max-width</code> breakpoints instead of <code>min-width</code> — Bootstrap uses <strong>min-width</strong> for mobile-first.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mobile-first means: <strong>"Base on mobile, enhance on desktop."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ================= Q8 ================= -->
+      <section class="question-section" id="u2-q8">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q8">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q8</span>
+                Explain the Bootstrap Grid System and its role in responsive layouts.
+              </button>
+            </h2>
+            <div id="c-u2-q8" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The <strong>Bootstrap Grid System</strong> is a <strong>12-column responsive layout system</strong> built with <strong>CSS Flexbox</strong>. It is Bootstrap's most powerful feature for creating layouts that automatically adapt to different screen sizes.</p>
+                  <p><strong>Core structure:</strong></p>
+                  <ul>
+                    <li><strong>.container</strong> — wraps the grid with responsive max-width and horizontal padding. <code>.container-fluid</code> spans full width.</li>
+                    <li><strong>.row</strong> — a horizontal group of columns. Rows have negative margins to counter container padding. Rows also create horizontal flex containers.</li>
+                    <li><strong>.col-*</strong> — columns are direct children of rows. Column classes define width fractions based on the 12-column grid (e.g., <code>col-6</code> = 50% width).</li>
+                    <li><strong>Responsive column classes:</strong> <code>col-sm-4</code>, <code>col-md-6</code>, <code>col-lg-3</code> — each sets width at a specific breakpoint and above.</li>
+                    <li><strong>Auto-layout:</strong> <code>col</code> (no number) makes each column equal width automatically. <code>col-auto</code> fits content.</li>
+                    <li><strong>Offset &amp; Order:</strong> <code>offset-md-2</code> pushes a column right. <code>order-first / order-last</code> reorders visually.</li>
+                  </ul>
+                  <p>Row + col values should sum to ≤ 12. If columns exceed 12, the extra ones wrap to a new line. This structure makes it trivial to create complex, responsive layouts without writing any custom CSS media queries.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> 12-Column Grid Visualisation</div>
+                <div class="flow-diagram vertical" style="padding:1.5rem">
+                  <div class="flow-box neutral" style="min-width:80%;padding:0.5rem">.container</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box neutral" style="min-width:80%;padding:0.5rem">.row (display: flex; flex-wrap: wrap)</div>
+                  <div style="display:flex;gap:4px;width:80%;justify-content:center">
+                    <div class="flow-box client" style="min-width:50px;padding:0.3rem;font-size:0.65rem">col-4</div>
+                    <div class="flow-box green" style="min-width:50px;padding:0.3rem;font-size:0.65rem">col-4</div>
+                    <div class="flow-box db" style="min-width:50px;padding:0.3rem;font-size:0.65rem">col-4</div>
+                  </div>
+                  <p class="flow-label" style="margin-top:8px">12 available units per row; col-4 = 4/12 = 33.33% width each</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>bootstrap-grid.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;div class="container"&gt;
+  &lt;!-- Equal-width columns (auto-layout) --&gt;
+  &lt;div class="row mb-3"&gt;
+    &lt;div class="col bg-primary text-white p-3"&gt;Equal 1&lt;/div&gt;
+    &lt;div class="col bg-success text-white p-3"&gt;Equal 2&lt;/div&gt;
+    &lt;div class="col bg-warning text-white p-3"&gt;Equal 3&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Responsive: 2 cols on sm, 3 on md, 4 on lg --&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2"&gt;Item&lt;/div&gt;
+    &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2"&gt;Item&lt;/div&gt;
+    &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2"&gt;Item&lt;/div&gt;
+    &lt;div class="col-12 col-sm-6 col-md-4 col-lg-3 p-2"&gt;Item&lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Mixed sizes + offset --&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-8 bg-info text-white p-2"&gt;Main (8/12)&lt;/div&gt;
+    &lt;div class="col-4 offset-md-2 bg-dark text-white p-2"&gt;Side (offset 2)&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-grid-3x3-gap me-1"></i>Bootstrap Grid in action</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:360px" srcdoc="
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <body>
+                      <div class='container mt-3'>
+                        <p class='fw-bold'>Equal-width columns (auto)</p>
+                        <div class='row mb-3'>
+                          <div class='col bg-primary text-white p-3 border'>Equal 1</div>
+                          <div class='col bg-success text-white p-3 border'>Equal 2</div>
+                          <div class='col bg-warning text-white p-3 border'>Equal 3</div>
+                        </div>
+                        <p class='fw-bold'>Responsive: col-12 col-sm-6 col-md-4</p>
+                        <div class='row'>
+                          <div class='col-12 col-sm-6 col-md-4 p-2 border bg-light'>Item 1</div>
+                          <div class='col-12 col-sm-6 col-md-4 p-2 border bg-light'>Item 2</div>
+                          <div class='col-12 col-sm-6 col-md-4 p-2 border bg-light'>Item 3</div>
+                        </div>
+                        <p class='fw-bold mt-2'>Mixed + offset</p>
+                        <div class='row'>
+                          <div class='col-8 bg-info text-white p-2 border'>Main (8/12)</div>
+                          <div class='col-4 bg-dark text-white p-2 border'>Side (4/12)</div>
+                        </div>
+                      </div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>State the golden rule: <strong>".row &gt; .col-*"</strong> — columns must be direct children of rows, and rows must be inside a container.</li>
+                    <li>Explain that <strong>column numbers add up to 12</strong> per row; if they exceed 12, the last columns wrap.</li>
+                    <li>Mistake: putting columns directly inside <code>.container</code> without <code>.row</code> — the row's negative margins are critical for alignment.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Grid structure: <strong>"Container → Row → Col"</strong> — never skip a level.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q9 ================= -->
+      <section class="question-section" id="u2-q9">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q9">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q9</span>
+                Explain how Bootstrap image classes make images responsive and visually appealing.
+              </button>
+            </h2>
+            <div id="c-u2-q9" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Bootstrap provides several <strong>image utility classes</strong> that make images <strong>responsive</strong> (they scale with the parent container) and <strong>visually styled</strong> (rounded corners, borders, alignment) without writing custom CSS.</p>
+                  <p><strong>Key Bootstrap image classes:</strong></p>
+                  <ul>
+                    <li><strong>.img-fluid</strong> — applies <code>max-width: 100%</code> and <code>height: auto</code> so the image scales down on small screens without overflowing its container. This is the most important class for responsive design.</li>
+                    <li><strong>.rounded</strong> — adds <code>border-radius: 0.375rem</code> (soft corners).</li>
+                    <li><strong>.rounded-circle</strong> — makes the image perfectly circular (useful for avatars/profile pics).</li>
+                    <li><strong>.img-thumbnail</strong> — gives the image a 1px border with rounded corners, like a photo thumbnail.</li>
+                    <li><strong>.float-start / .float-end</strong> — floats the image left or right within its container.</li>
+                    <li><strong>.d-block / .mx-auto</strong> — makes the image a block element and centers it horizontally.</li>
+                    <li><strong>.figure / .figure-img / .figure-caption</strong> — a styled figure container with caption, similar to HTML5's <code>&lt;figure&gt;</code>.</li>
+                  </ul>
+                  <p>Using these classes, developers can create polished image layouts with zero custom CSS. They work with <code>&lt;img&gt;</code> tags and also with <code>&lt;picture&gt;</code> and <code>&lt;svg&gt;</code> elements. The combination of <code>.img-fluid</code> with responsive grid columns ensures images look perfect on any device.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Bootstrap Image Classes</div>
+                <div class="flow-diagram">
+                  <div class="flow-box green" style="min-width:130px">.img-fluid<br><small>responsive scaling</small></div>
+                  <div class="flow-box client" style="min-width:130px">.rounded-circle<br><small>circular avatars</small></div>
+                  <div class="flow-box process" style="min-width:130px">.img-thumbnail<br><small>bordered thumb</small></div>
+                  <div class="flow-box db" style="min-width:130px">.float-start/end<br><small>text wrapping</small></div>
+                  <div class="flow-box app" style="min-width:130px">.figure<br><small>styled caption</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>bootstrap-images.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;div class="container"&gt;
+  &lt;div class="row"&gt;
+    &lt;div class="col-md-4 text-center"&gt;
+      &lt;!-- Responsive fluid image --&gt;
+      &lt;img src="photo.jpg" class="img-fluid rounded" alt="Fluid"&gt;
+      &lt;p&gt;.img-fluid + .rounded&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4 text-center"&gt;
+      &lt;!-- Circular avatar --&gt;
+      &lt;img src="avatar.jpg" class="rounded-circle" width="120" alt="Avatar"&gt;
+      &lt;p&gt;.rounded-circle (avatar)&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class="col-md-4 text-center"&gt;
+      &lt;!-- Thumbnail with border --&gt;
+      &lt;img src="thumb.jpg" class="img-thumbnail" width="160" alt="Thumb"&gt;
+      &lt;p&gt;.img-thumbnail&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;!-- Figure with caption --&gt;
+  &lt;figure class="figure"&gt;
+    &lt;img src="photo.jpg" class="figure-img img-fluid rounded"&gt;
+    &lt;figcaption class="figure-caption"&gt;A beautiful landscape.&lt;/figcaption&gt;
+  &lt;/figure&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-images me-1"></i>Bootstrap image classes demo</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <body>
+                      <div class='container mt-3'>
+                        <div class='row text-center'>
+                          <div class='col-md-4 mb-2'>
+                            <div style='width:100%;height:80px;background:linear-gradient(45deg,#7209b7,#4361ee);border-radius:6px'></div>
+                            <p class='small'>.img-fluid + .rounded</p>
+                          </div>
+                          <div class='col-md-4 mb-2'>
+                            <div style='width:80px;height:80px;border-radius:50%;background:linear-gradient(45deg,#f72585,#fb8500);margin:auto'></div>
+                            <p class='small'>.rounded-circle (avatar)</p>
+                          </div>
+                          <div class='col-md-4 mb-2'>
+                            <div style='width:120px;height:80px;border:2px solid #ddd;border-radius:6px;background:linear-gradient(45deg,#06d6a0,#0dcaf0);margin:auto'></div>
+                            <p class='small'>.img-thumbnail</p>
+                          </div>
+                        </div>
+                        <figure class='figure text-center mt-2'>
+                          <div style='width:100%;height:90px;background:linear-gradient(45deg,#7209b7,#f72585);border-radius:6px'></div>
+                          <figcaption class='figure-caption'>Figure with caption</figcaption>
+                        </figure>
+                      </div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li><strong>.img-fluid</strong> is the <strong>most important</strong> class — it applies <code>max-width:100%</code> for responsiveness.</li>
+                    <li>Mention <strong>.rounded-circle</strong> for profile pictures and <strong>.img-thumbnail</strong> for bordered gallery images.</li>
+                    <li>Mistake: applying <code>.img-fluid</code> to a <code>&lt;div&gt;</code> — it is only for <code>&lt;img&gt;</code> elements.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Image classes: <strong>"F.R.T.C"</strong> = Fluid, Rounded, Thumbnail, Circle.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q10 ================= -->
+      <section class="question-section" id="u2-q10">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q10">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q10</span>
+                Explain the use of Bootstrap tables and their features.
+              </button>
+            </h2>
+            <div id="c-u2-q10" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Bootstrap provides a set of <strong>table classes</strong> that enhance plain HTML tables with <strong>striped rows, borders, hover effects, dark mode, and responsiveness</strong> — all through simple CSS class additions.</p>
+                  <p><strong>Key Bootstrap table classes:</strong></p>
+                  <ul>
+                    <li><strong>.table</strong> — the base class that adds light padding, horizontal dividers, and proper alignment. Always start with this.</li>
+                    <li><strong>.table-striped</strong> — adds alternating row colors (zebra stripes) for better readability.</li>
+                    <li><strong>.table-bordered</strong> — adds borders on all sides of every cell.</li>
+                    <li><strong>.table-hover</strong> — highlights rows when the user hovers over them.</li>
+                    <li><strong>.table-dark</strong> — inverts the table colors for a dark theme.</li>
+                    <li><strong>.table-sm</strong> — compacts the table with half the padding (denser layout).</li>
+                    <li><strong>Contextual classes:</strong> <code>.table-primary</code>, <code>.table-success</code>, <code>.table-danger</code>, <code>.table-warning</code>, <code>.table-info</code> — color individual rows or cells.</li>
+                    <li><strong>.table-responsive</strong> — wraps the table in a horizontally scrollable container on small screens (prevents layout breakage).</li>
+                  </ul>
+                  <p>Using these classes, you can build professional-looking data tables instantly. The <code>.table-responsive</code> wrapper is especially important for mobile layouts — it adds a horizontal scrollbar when the table is too wide for the viewport, keeping the page layout intact.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Table Features Overview</div>
+                <div class="flow-diagram">
+                  <div class="flow-box green" style="min-width:110px">.table-striped<br><small>zebra rows</small></div>
+                  <div class="flow-box client" style="min-width:110px">.table-bordered<br><small>full borders</small></div>
+                  <div class="flow-box process" style="min-width:110px">.table-hover<br><small>hover effect</small></div>
+                  <div class="flow-box app" style="min-width:110px">.table-dark<br><small>dark theme</small></div>
+                  <div class="flow-box db" style="min-width:110px">.table-responsive<br><small>scroll on mobile</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>bootstrap-tables.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;div class="table-responsive"&gt;
+  &lt;table class="table table-striped table-bordered table-hover"&gt;
+    &lt;thead class="table-dark"&gt;
+      &lt;tr&gt;
+        &lt;th&gt;#&lt;/th&gt;
+        &lt;th&gt;Name&lt;/th&gt;
+        &lt;th&gt;Email&lt;/th&gt;
+        &lt;th&gt;Marks&lt;/th&gt;
+        &lt;th&gt;Status&lt;/th&gt;
+      &lt;/tr&gt;
+    &lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;Riya Sharma&lt;/td&gt;
+        &lt;td&gt;riya@example.com&lt;/td&gt;
+        &lt;td&gt;85&lt;/td&gt;
+        &lt;td class="table-success"&gt;Pass&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;2&lt;/td&gt;
+        &lt;td&gt;Amit Verma&lt;/td&gt;
+        &lt;td&gt;amit@example.com&lt;/td&gt;
+        &lt;td&gt;42&lt;/td&gt;
+        &lt;td class="table-danger"&gt;Fail&lt;/td&gt;
+      &lt;/tr&gt;
+      &lt;tr&gt;
+        &lt;td&gt;3&lt;/td&gt;
+        &lt;td&gt;Sana Khan&lt;/td&gt;
+        &lt;td&gt;sana@example.com&lt;/td&gt;
+        &lt;td&gt;78&lt;/td&gt;
+        &lt;td class="table-success"&gt;Pass&lt;/td&gt;
+      &lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-table me-1"></i>Bootstrap styled table</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:320px" srcdoc="
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <body>
+                      <div class='container mt-3'>
+                        <div class='table-responsive'>
+                          <table class='table table-striped table-bordered table-hover'>
+                            <thead class='table-dark'>
+                              <tr><th>#</th><th>Name</th><th>Email</th><th>Marks</th><th>Status</th></tr>
+                            </thead>
+                            <tbody>
+                              <tr><td>1</td><td>Riya Sharma</td><td>riya@ex.com</td><td>85</td><td class='table-success'>Pass</td></tr>
+                              <tr><td>2</td><td>Amit Verma</td><td>amit@ex.com</td><td>42</td><td class='table-danger'>Fail</td></tr>
+                              <tr><td>3</td><td>Sana Khan</td><td>sana@ex.com</td><td>78</td><td class='table-success'>Pass</td></tr>
+                              <tr><td>4</td><td>Dev Patel</td><td>dev@ex.com</td><td>91</td><td class='table-success'>Pass</td></tr>
+                            </tbody>
+                          </table>
+                        </div>
+                        <p class='text-muted small'>Striped + Bordered + Hover + Dark header + Contextual status colors</p>
+                      </div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Always start with <strong>.table</strong> (base) then add <strong>.table-striped</strong>, <strong>.table-hover</strong>, etc.</li>
+                    <li>Mention <strong>.table-responsive</strong> for mobile-friendliness — this is a common exam point.</li>
+                    <li>Mistake: forgetting <code>&lt;thead&gt;</code> — Bootstrap tables look best with a proper header section.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Table classes: <strong>"B.S.H.R"</strong> = Base, Striped, Hover, Responsive.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q11 ================= -->
+      <section class="question-section" id="u2-q11">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q11">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q11</span>
+                Create a web page using DIV tag, CSS classes and CSS box properties.
+              </button>
+            </h2>
+            <div id="c-u2-q11" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Using <strong>&lt;div&gt; tags</strong>, <strong>CSS classes</strong>, and <strong>box properties</strong> (margin, padding, border, width, height) is the foundation of <strong>CSS-based page layout</strong>. Before flexbox and grid, developers built entire website layouts using <code>&lt;div&gt;</code> elements styled with float, display, and box model properties.</p>
+                  <p><strong>Key concepts demonstrated in this example:</strong></p>
+                  <ul>
+                    <li><strong>&lt;div&gt;</strong> — a block-level container with no semantic meaning, used purely for layout and styling.</li>
+                    <li><strong>CSS classes</strong> — reusable style definitions applied via the <code>class</code> attribute.</li>
+                    <li><strong>CSS Box Properties</strong> — <code>width</code>, <code>height</code>, <code>margin</code> (external spacing), <code>padding</code> (internal spacing), <code>border</code> (outline), <code>box-sizing</code>, <code>overflow</code>, <code>background</code>.</li>
+                    <li><strong>Layout techniques:</strong> <code>float</code> (left/right), <code>display: inline-block</code>, <code>overflow: hidden</code> (clearfix), and <code>text-align</code>.</li>
+                  </ul>
+                  <p>The page below creates a simple 3-column layout using <code>&lt;div&gt;</code> tags with CSS classes controlling the box properties. Each column is a <code>.box</code> with defined width, padding, margin, border, and background color. This pattern is the bedrock of CSS layout and is still widely used in email templates and legacy projects.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Div-based Layout Structure</div>
+                <div class="flow-diagram vertical" style="padding:1.5rem">
+                  <div class="flow-box app" style="min-width:60%">&lt;div class="header"&gt; Header &lt;/div&gt;</div>
+                  <div style="display:flex;gap:8px;width:80%;justify-content:center">
+                    <div class="flow-box client" style="min-width:30%">&lt;div class="box"&gt; Col 1 &lt;/div&gt;</div>
+                    <div class="flow-box green" style="min-width:30%">&lt;div class="box"&gt; Col 2 &lt;/div&gt;</div>
+                    <div class="flow-box db" style="min-width:30%">&lt;div class="box"&gt; Col 3 &lt;/div&gt;</div>
+                  </div>
+                  <div class="flow-box neutral" style="min-width:60%">&lt;div class="footer"&gt; Footer &lt;/div&gt;</div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>div-layout.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+&lt;style&gt;
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: Arial, sans-serif; background: #f4f4f4; padding: 20px; }
+
+  .container {
+    width: 80%; margin: 0 auto; background: #fff;
+    padding: 20px; border: 2px solid #7209b7; border-radius: 10px;
+  }
+  .header {
+    background: #7209b7; color: #fff; padding: 15px;
+    text-align: center; margin-bottom: 20px; border-radius: 6px;
+  }
+  .col {
+    width: 30%; float: left; margin: 0 1.66%;
+    padding: 15px; border: 1px solid #ddd;
+    border-radius: 8px; background: #f9f0ff; min-height: 150px;
+  }
+  .footer {
+    clear: both; background: #333; color: #fff;
+    padding: 10px; text-align: center; margin-top: 20px;
+    border-radius: 6px;
+  }
+  .clearfix::after { content: ""; display: table; clear: both; }
+&lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="header"&gt;&lt;h2&gt;My Div-based Layout&lt;/h2&gt;&lt;/div&gt;
+
+    &lt;div class="clearfix"&gt;
+      &lt;div class="col"&gt;
+        &lt;h3&gt;Column 1&lt;/h3&gt;
+        &lt;p&gt;Box properties: width 30%, float left, padding 15px, margin 1.66%, border, border-radius.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="col"&gt;
+        &lt;h3&gt;Column 2&lt;/h3&gt;
+        &lt;p&gt;Each column uses CSS classes for reusable styling.&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;div class="col"&gt;
+        &lt;h3&gt;Column 3&lt;/h3&gt;
+        &lt;p&gt;The clearfix after the columns prevents footer overlap.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class="footer"&gt;&amp;copy; 2026 Div Layout Demo&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-layers me-1"></i>Div-based 3-column layout rendered</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <style>
+                      *{box-sizing:border-box;margin:0;padding:0}
+                      body{font-family:Arial,sans-serif;background:#f4f4f4;padding:12px}
+                      .c{width:100%;background:#fff;padding:14px;border:2px solid #7209b7;border-radius:10px}
+                      .h{background:#7209b7;color:#fff;padding:12px;text-align:center;margin-bottom:14px;border-radius:6px}
+                      .col{width:30%;float:left;margin:0 1.66%;padding:12px;border:1px solid #ddd;border-radius:8px;background:#f9f0ff;min-height:120px;font-size:13px}
+                      .f{clear:both;background:#333;color:#fff;padding:8px;text-align:center;margin-top:14px;border-radius:6px;font-size:13px}
+                      .cf::after{content:'';display:table;clear:both}
+                    </style>
+                    <div class='c'>
+                      <div class='h'><b>My Div-based Layout</b></div>
+                      <div class='cf'>
+                        <div class='col'><b>Column 1</b><br>Box properties: width 30%, float, padding, margin, border.</div>
+                        <div class='col'><b>Column 2</b><br>Reusable CSS classes control the box model properties.</div>
+                        <div class='col'><b>Column 3</b><br>Clearfix prevents footer from floating up.</div>
+                      </div>
+                      <div class='f'>© 2026 Div Layout Demo</div>
+                    </div>
+                  </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Show the use of <strong>float, clearfix, and box-sizing</strong> — these are the essentials of div-based layout.</li>
+                    <li>Include box properties: <strong>width, margin, padding, border, border-radius, background</strong>.</li>
+                    <li>Mistake: forgetting the <strong>clearfix</strong> — floated children cause parent collapse without it.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Div layout: <strong>"F.C.B"</strong> = Float, Clearfix, Box properties.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q12 ================= -->
+      <section class="question-section" id="u2-q12">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q12">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q12</span>
+                Develop a Bootstrap admin dashboard using tables, alerts, and navigation bar.
+              </button>
+            </h2>
+            <div id="c-u2-q12" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>An <strong>admin dashboard</strong> is a control panel that gives administrators an overview of the system with key metrics, data tables, alerts, and navigation. Bootstrap makes building such dashboards fast and consistent.</p>
+                  <p><strong>Core components of an admin dashboard:</strong></p>
+                  <ul>
+                    <li><strong>Navigation Bar (.navbar):</strong> Fixed top navigation with brand logo, menu links, and user avatar. <code>navbar-expand-lg</code> makes it responsive.</li>
+                    <li><strong>Alerts (.alert):</strong> Contextual notification banners — <code>.alert-success</code> (green), <code>.alert-danger</code> (red), <code>.alert-warning</code> (yellow), <code>.alert-info</code> (blue). They can include dismiss buttons.</li>
+                    <li><strong>Tables (.table):</strong> Display records like users, orders, or logs with <code>.table-striped</code>, <code>.table-hover</code>, and <code>.table-responsive</code>.</li>
+                    <li><strong>Cards (.card):</strong> Containers for stats, charts, and summary widgets.</li>
+                    <li><strong>Badges (.badge):</strong> Small labels for counts and status indicators.</li>
+                  </ul>
+                  <p>The dashboard layout typically follows a 2-column structure: a narrow sidebar with navigation and a wide main content area. Bootstrap's grid system (<code>col-md-2</code> + <code>col-md-10</code>) creates this layout easily. The entire dashboard is responsive by default, adapting to mobile screens.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Dashboard Layout Structure</div>
+                <div class="flow-diagram vertical" style="padding:1.5rem">
+                  <div class="flow-box app" style="min-width:70%">&lt;nav class="navbar"&gt; Top Nav Bar &lt;/nav&gt;</div>
+                  <div style="display:flex;gap:0;width:80%">
+                    <div class="flow-box client" style="min-width:25%;border-radius:8px 0 0 8px">&lt;div class="col-md-2"&gt;<br>Sidebar Menu</div>
+                    <div class="flow-box green" style="min-width:75%;border-radius:0 8px 8px 0"><small>&lt;div class="col-md-10"&gt; Main Content</small><br>Alerts · Table · Cards</div>
+                  </div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>admin-dashboard.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;!-- Top Navbar --&gt;
+  &lt;nav class="navbar navbar-expand-lg navbar-dark bg-dark"&gt;
+    &lt;div class="container-fluid"&gt;
+      &lt;a class="navbar-brand" href="#"&gt;⚡ AdminPanel&lt;/a&gt;
+      &lt;button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav"&gt;
+        &lt;span class="navbar-toggler-icon"&gt;&lt;/span&gt;
+      &lt;/button&gt;
+      &lt;div class="collapse navbar-collapse" id="nav"&gt;
+        &lt;ul class="navbar-nav ms-auto"&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link active" href="#"&gt;Dashboard&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Users&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;Reports&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/nav&gt;
+
+  &lt;div class="container-fluid mt-3"&gt;
+    &lt;div class="row"&gt;
+      &lt;!-- Sidebar --&gt;
+      &lt;div class="col-md-2 bg-light p-3 rounded"&gt;
+        &lt;h6&gt;Menu&lt;/h6&gt;
+        &lt;ul class="nav flex-column"&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;📊 Overview&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;👥 Users&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;📦 Orders&lt;/a&gt;&lt;/li&gt;
+          &lt;li class="nav-item"&gt;&lt;a class="nav-link" href="#"&gt;⚙ Settings&lt;/a&gt;&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/div&gt;
+
+      &lt;!-- Main Content --&gt;
+      &lt;div class="col-md-10"&gt;
+        &lt;!-- Alerts --&gt;
+        &lt;div class="alert alert-success alert-dismissible"&gt;
+          ✅ Welcome back, Admin! System running smoothly.
+          &lt;button class="btn-close" data-bs-dismiss="alert"&gt;&lt;/button&gt;
+        &lt;/div&gt;
+        &lt;div class="alert alert-warning"&gt;
+          ⚠ 3 pending user registrations require approval.
+        &lt;/div&gt;
+
+        &lt;!-- Stats Cards --&gt;
+        &lt;div class="row mb-3"&gt;
+          &lt;div class="col-md-3"&gt;&lt;div class="card text-center p-3 bg-primary text-white"&gt;&lt;h5&gt;145&lt;/h5&gt;Users&lt;/div&gt;&lt;/div&gt;
+          &lt;div class="col-md-3"&gt;&lt;div class="card text-center p-3 bg-success text-white"&gt;&lt;h5&gt;₹85K&lt;/h5&gt;Revenue&lt;/div&gt;&lt;/div&gt;
+          &lt;div class="col-md-3"&gt;&lt;div class="card text-center p-3 bg-warning text-white"&gt;&lt;h5&gt;12&lt;/h5&gt;Pending&lt;/div&gt;&lt;/div&gt;
+          &lt;div class="col-md-3"&gt;&lt;div class="card text-center p-3 bg-danger text-white"&gt;&lt;h5&gt;3&lt;/h5&gt;Issues&lt;/div&gt;&lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- Table --&gt;
+        &lt;div class="table-responsive"&gt;
+          &lt;table class="table table-striped table-hover"&gt;
+            &lt;thead class="table-dark"&gt;
+              &lt;tr&gt;&lt;th&gt;ID&lt;/th&gt;&lt;th&gt;Name&lt;/th&gt;&lt;th&gt;Role&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;
+            &lt;/thead&gt;
+            &lt;tbody&gt;
+              &lt;tr&gt;&lt;td&gt;1&lt;/td&gt;&lt;td&gt;Riya Sharma&lt;/td&gt;&lt;td&gt;Admin&lt;/td&gt;&lt;td&gt;&lt;span class="badge bg-success"&gt;Active&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td&gt;2&lt;/td&gt;&lt;td&gt;Amit Verma&lt;/td&gt;&lt;td&gt;Editor&lt;/td&gt;&lt;td&gt;&lt;span class="badge bg-warning"&gt;Pending&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+              &lt;tr&gt;&lt;td&gt;3&lt;/td&gt;&lt;td&gt;Sana Khan&lt;/td&gt;&lt;td&gt;Viewer&lt;/td&gt;&lt;td&gt;&lt;span class="badge bg-danger"&gt;Inactive&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+            &lt;/tbody&gt;
+          &lt;/table&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+
+  &lt;script src="bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-speedometer2 me-1"></i>Admin Dashboard rendered</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:400px" srcdoc="
+                    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css' rel='stylesheet'>
+                    <body>
+                      <nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+                        <div class='container-fluid'><a class='navbar-brand' href='#'>⚡ AdminPanel</a></div>
+                      </nav>
+                      <div class='container-fluid mt-2'>
+                        <div class='row'>
+                          <div class='col-md-2 bg-light p-2 rounded'>
+                            <h6 class='text-muted'>Menu</h6>
+                            <ul class='nav flex-column small'>
+                              <li class='nav-item'><a class='nav-link' href='#'>📊 Overview</a></li>
+                              <li class='nav-item'><a class='nav-link' href='#'>👥 Users</a></li>
+                              <li class='nav-item'><a class='nav-link' href='#'>📦 Orders</a></li>
+                              <li class='nav-item'><a class='nav-link' href='#'>⚙ Settings</a></li>
+                            </ul>
+                          </div>
+                          <div class='col-md-10'>
+                            <div class='alert alert-success py-2'>✅ Welcome back, Admin!</div>
+                            <div class='alert alert-warning py-2'>⚠ 3 pending registrations.</div>
+                            <div class='row mb-2'>
+                              <div class='col-md-3 mb-1'><div class='card text-center p-2 bg-primary text-white'><h5>145</h5><small>Users</small></div></div>
+                              <div class='col-md-3 mb-1'><div class='card text-center p-2 bg-success text-white'><h5>₹85K</h5><small>Revenue</small></div></div>
+                              <div class='col-md-3 mb-1'><div class='card text-center p-2 bg-warning text-white'><h5>12</h5><small>Pending</small></div></div>
+                              <div class='col-md-3 mb-1'><div class='card text-center p-2 bg-danger text-white'><h5>3</h5><small>Issues</small></div></div>
+                            </div>
+                            <div class='table-responsive'>
+                              <table class='table table-striped table-hover table-sm'>
+                                <thead class='table-dark'><tr><th>ID</th><th>Name</th><th>Role</th><th>Status</th></tr></thead>
+                                <tbody>
+                                  <tr><td>1</td><td>Riya Sharma</td><td>Admin</td><td><span class='badge bg-success'>Active</span></td></tr>
+                                  <tr><td>2</td><td>Amit Verma</td><td>Editor</td><td><span class='badge bg-warning'>Pending</span></td></tr>
+                                  <tr><td>3</td><td>Sana Khan</td><td>Viewer</td><td><span class='badge bg-danger'>Inactive</span></td></tr>
+                                </tbody>
+                              </table>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Include all <strong>3 required components</strong>: navbar, alerts, and a table — do not miss any.</li>
+                    <li>Use <strong>badges for status</strong> (Active/Pending/Inactive) — it shows attention to detail.</li>
+                    <li>Mistake: writing a dashboard without <strong>responsiveness</strong> — always use <code>.container-fluid</code> and <code>.table-responsive</code>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Dashboard must-haves: <strong>"N.A.T"</strong> = Navbar, Alerts, Table.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- ================= Q13 ================= -->
+      <section class="question-section" id="u2-q13">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q13">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q13</span>
+                Explain the three types of CSS and their purpose with suitable example.
+              </button>
+            </h2>
+            <div id="c-u2-q13" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The three types of CSS — <strong>Inline, Internal, and External</strong> — are the three distinct ways to apply styles to HTML elements. Each serves a different purpose in web development.</p>
+                  <p><strong>1. Inline CSS:</strong> CSS is written directly inside an HTML element's <code>style</code> attribute. It only affects that specific element. Purpose: quick one-off overrides, JavaScript-driven changes, and email templates where external files are not supported. Example: <code>&lt;p style="color:red; font-size:16px"&gt;</code>. <strong>Pros:</strong> highest specificity, no separate file. <strong>Cons:</strong> mixes content with presentation, not reusable, hard to maintain.</p>
+                  <p><strong>2. Internal (Embedded) CSS:</strong> CSS is placed inside a <code>&lt;style&gt;</code> tag in the HTML <code>&lt;head&gt;</code>. It applies to the entire page. Purpose: single-page websites, styling a specific page differently from others, or when external file linking is not possible. Example: <code>&lt;style&gt; body { font-family: Arial; } &lt;/style&gt;</code>. <strong>Pros:</strong> keeps page styles together, no extra HTTP request. <strong>Cons:</strong> not reusable across pages, increases page size.</p>
+                  <p><strong>3. External CSS:</strong> CSS is written in a separate <code>.css</code> file and linked via <code>&lt;link rel="stylesheet" href="styles.css"&gt;</code>. Purpose: large websites, consistent styling across multiple pages, team collaboration. <strong>Pros:</strong> full separation of concerns, reusable (one file for entire site), browser caching reduces load time, easy maintenance. <strong>Cons:</strong> extra HTTP request (mitigated by caching).</p>
+                  <p>For any multi-page website, <strong>External CSS is the recommended approach</strong> because it follows the DRY principle and is the most maintainable. The cascade and specificity rules apply identically across all three methods.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Three CSS Types vs Characteristics</div>
+                <div style="overflow-x:auto">
+                  <table style="width:100%;border-collapse:collapse;margin:1rem 0;font-size:0.85rem">
+                    <tr style="background:var(--accent);color:#fff"><th style="padding:8px;border:1px solid var(--border-color)">Feature</th><th style="padding:8px;border:1px solid var(--border-color)">Inline</th><th style="padding:8px;border:1px solid var(--border-color)">Internal</th><th style="padding:8px;border:1px solid var(--border-color)">External</th></tr>
+                    <tr><td style="padding:8px;border:1px solid var(--border-color)"><strong>Location</strong></td><td style="padding:8px;border:1px solid var(--border-color)">Inside element</td><td style="padding:8px;border:1px solid var(--border-color)">&lt;style&gt; in &lt;head&gt;</td><td style="padding:8px;border:1px solid var(--border-color)">Separate .css file</td></tr>
+                    <tr><td style="padding:8px;border:1px solid var(--border-color)"><strong>Reusability</strong></td><td style="padding:8px;border:1px solid var(--border-color)">None</td><td style="padding:8px;border:1px solid var(--border-color)">Single page</td><td style="padding:8px;border:1px solid var(--border-color)">Multiple pages</td></tr>
+                    <tr><td style="padding:8px;border:1px solid var(--border-color)"><strong>Specificity</strong></td><td style="padding:8px;border:1px solid var(--border-color)">Highest</td><td style="padding:8px;border:1px solid var(--border-color)">Medium</td><td style="padding:8px;border:1px solid var(--border-color)">Lowest (external)</td></tr>
+                    <tr><td style="padding:8px;border:1px solid var(--border-color)"><strong>Performance</strong></td><td style="padding:8px;border:1px solid var(--border-color)">No request</td><td style="padding:8px;border:1px solid var(--border-color)">No request</td><td style="padding:8px;border:1px solid var(--border-color)">Cached by browser</td></tr>
+                    <tr><td style="padding:8px;border:1px solid var(--border-color)"><strong>Best for</strong></td><td style="padding:8px;border:1px solid var(--border-color)">Quick overrides</td><td style="padding:8px;border:1px solid var(--border-color)">Single-page sites</td><td style="padding:8px;border:1px solid var(--border-color)">Production websites</td></tr>
+                  </table>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>three-types-of-css.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;!-- 🔗 External CSS (linked) --&gt;
+  &lt;link rel="stylesheet" href="global.css"&gt;
+
+  &lt;!-- 📄 Internal CSS (embedded) --&gt;
+  &lt;style&gt;
+    body { background: #f9f9f9; font-family: Arial; }
+    h2 { color: #7209b7; border-bottom: 2px solid; }
+    .box { padding: 15px; margin: 10px 0; border-radius: 8px; }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;h2&gt;🔷 Internal CSS Styling&lt;/h2&gt;
+
+  &lt;!-- ✏️ Inline CSS (on the element) --&gt;
+  &lt;p style="color: #f72585; font-weight: bold; font-size: 1.1rem;"&gt;
+    This paragraph is styled with INLINE CSS.
+  &lt;/p&gt;
+
+  &lt;div class="box" style="background: #ffe0ee; border: 1px solid #f72585;"&gt;
+    Inline + Internal combined.
+  &lt;/div&gt;
+
+  &lt;p&gt;This text gets its style from Internal CSS.&lt;/p&gt;
+
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- styles.css (External) would contain:
+     p { line-height: 1.6; color: #333; }
+     .btn { background: #7209b7; color: #fff; } --&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-palette2 me-1"></i>Inline + Internal CSS demo</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <style>
+                      body{background:#f9f9f9;font-family:Arial;padding:16px}
+                      h2{color:#7209b7;border-bottom:2px solid #7209b7;padding-bottom:4px}
+                      .box{padding:12px;margin:10px 0;border-radius:8px}
+                    </style>
+                    <h2> Internal CSS Styling</h2>
+                    <p style='color:#f72585;font-weight:bold;font-size:1.1rem'>This paragraph is styled with INLINE CSS.</p>
+                    <div class='box' style='background:#ffe0ee;border:1px solid #f72585'>Inline + Internal combined.</div>
+                    <p>This text gets its style from Internal CSS only.</p>
+                    <p style='font-size:13px;color:#666'>External CSS would be linked from a .css file (not shown here)</p>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Clearly name <strong>all three types</strong> and state that <strong>External is best practice</strong> for production sites.</li>
+                    <li>Provide a <strong>comparison table</strong> — examiners award marks for organised comparisons.</li>
+                    <li>Mistake: calling Internal CSS "Inline" — they are different. Inline = <code>style</code> attribute, Internal = <code>&lt;style&gt;</code> tag.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Three types: <strong>"I.I.E"</strong> = Inline · Internal · External (in increasing order of reusability).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q14 ================= -->
+      <section class="question-section" id="u2-q14">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q14">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q14</span>
+                Describe different types of CSS Selectors with example.
+              </button>
+            </h2>
+            <div id="c-u2-q14" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>CSS Selectors</strong> are patterns used to select the HTML elements you want to style. They are the bridge between your stylesheet and the HTML document. Understanding selectors is fundamental to writing efficient CSS.</p>
+                  <p><strong>Types of CSS Selectors:</strong></p>
+                  <ul>
+                    <li><strong>1. Universal Selector (<code>*</code>):</strong> Selects every element on the page. Used in CSS resets. Example: <code>* { margin: 0; padding: 0; box-sizing: border-box; }</code></li>
+                    <li><strong>2. Type/Element Selector:</strong> Selects all elements of a given tag name. Example: <code>h1 { color: blue; }</code> — targets every <code>&lt;h1&gt;</code>.</li>
+                    <li><strong>3. Class Selector (<code>.</code>):</strong> Selects elements with a specific class attribute. Example: <code>.btn { background: green; }</code> — targets <code>&lt;div class="btn"&gt;</code>.</li>
+                    <li><strong>4. ID Selector (<code>#</code>):</strong> Selects a single element with a specific id. Example: <code>#header { height: 60px; }</code> — targets <code>&lt;div id="header"&gt;</code>. IDs must be unique.</li>
+                    <li><strong>5. Attribute Selector:</strong> Selects elements based on an attribute or attribute value. Examples: <code>[type="text"]</code>, <code>[href^="https"]</code>, <code>[class*="btn"]</code>.</li>
+                    <li><strong>6. Descendant Selector (space):</strong> Selects elements nested inside another. Example: <code>div p</code> selects all <code>&lt;p&gt;</code> inside a <code>&lt;div&gt;</code>.</li>
+                    <li><strong>7. Child Selector (<code>&gt;</code>):</strong> Selects direct children only. Example: <code>ul &gt; li</code> selects <code>&lt;li&gt;</code> directly under <code>&lt;ul&gt;</code>, ignoring deeper nested ones.</li>
+                    <li><strong>8. Adjacent Sibling Selector (<code>+</code>):</strong> Selects the element immediately after a specified element. Example: <code>h2 + p</code> targets the first <code>&lt;p&gt;</code> after each <code>&lt;h2&gt;</code>.</li>
+                    <li><strong>9. Pseudo-class Selector (<code>:</code>):</strong> Selects elements in a specific state. Examples: <code>:hover</code>, <code>:focus</code>, <code>:nth-child(2)</code>, <code>:first-child</code>, <code>:not()</code>.</li>
+                    <li><strong>10. Pseudo-element Selector (<code>::</code>):</strong> Selects a specific part of an element. Examples: <code>::before</code>, <code>::after</code>, <code>::first-line</code>, <code>::first-letter</code>.</li>
+                  </ul>
+                  <p>Selectors can be <strong>combined</strong> to be more specific (e.g., <code>div.card &gt; p:first-child</code>). The more specific the selector, the higher its <strong>specificity weight</strong>.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> CSS Selectors Overview</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:100px">Element<br><small>div, p, h1</small></div>
+                  <div class="flow-box green" style="min-width:100px">Class<br><small>.card, .btn</small></div>
+                  <div class="flow-box app" style="min-width:100px">ID<br><small>#header</small></div>
+                  <div class="flow-box process" style="min-width:100px">Attribute<br><small>[type], [href]</small></div>
+                  <div class="flow-box db" style="min-width:100px">Combinator<br><small>&gt; + ~ space</small></div>
+                  <div class="flow-box red" style="min-width:100px">Pseudo<br><small>:hover, ::before</small></div>
+                </div>
+                <p class="flow-label">Six categories of CSS selectors ranging from simple to complex</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>css-selectors.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;style&gt;
+  /* Universal */    * { box-sizing: border-box; }
+  /* Element */     h2 { color: #7209b7; }
+  /* Class */       .highlight { background: #fff3cd; }
+  /* ID */          #special { border: 3px solid #f72585; }
+  /* Attribute */   input[type="text"] { border: 1px solid #ccc; }
+  /* Descendant */  article p { line-height: 1.6; }
+  /* Child */       ul &gt; li { list-style: square; }
+  /* Adjacent */    h3 + p { font-weight: bold; color: #f72585; }
+  /* Pseudo-class */ li:nth-child(odd) { background: #f0f0f0; }
+  /* Pseudo-element */ p::first-letter { font-size: 2em; }
+&lt;/style&gt;
+
+&lt;article&gt;
+  &lt;h3&gt;Article Title&lt;/h3&gt;
+  &lt;p&gt;Adjacent sibling: bold pink (h3 + p).&lt;/p&gt;
+  &lt;p&gt;Descendant selector (article p).&lt;/p&gt;
+&lt;/article&gt;
+&lt;ul&gt;
+  &lt;li&gt;Child selector (ul &gt; li)&lt;/li&gt;
+  &lt;li class="highlight"&gt;Class selector&lt;/li&gt;
+&lt;/ul&gt;
+&lt;input type="text" placeholder="Attribute selector"&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-filter-square me-1"></i>CSS Selectors live demo</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:360px" srcdoc="
+                    <style>
+                      *{box-sizing:border-box}
+                      h2{color:#7209b7}
+                      .hl{background:#fff3cd;padding:4px}
+                      #sp{border:3px solid #f72585;padding:8px;margin:6px 0}
+                      input[type='text']{border:1px solid #ccc;padding:6px;width:200px}
+                      article p{line-height:1.6}
+                      ul > li{list-style:square}
+                      h3 + p{font-weight:bold;color:#f72585}
+                      li:nth-child(odd){background:#f0f0f0}
+                      p::first-letter{font-size:1.8em;font-weight:bold;color:#7209b7}
+                    </style>
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h2>CSS Selectors Demo</h2>
+                      <article>
+                        <h3 style='margin:4px 0'>Adjacent Sibling</h3>
+                        <p>Bold pink — h3 + p selector.</p>
+                        <p>Descendant (article p) — first letter enlarged via ::first-letter</p>
+                      </article>
+                      <ul>
+                        <li>Child selector (ul > li) — square bullets</li>
+                        <li class='hl'>Class selector .highlight — yellow bg</li>
+                        <li>nth-child(odd) — gray bg on odd rows</li>
+                      </ul>
+                      <div id='sp'>ID selector — pink border</div>
+                      <input type='text' placeholder='Attribute selector [type=text]'>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List <strong>at least 8 selector types</strong> with examples for each — exam questions often ask "explain different types."</li>
+                    <li>Distinguish <strong>pseudo-classes</strong> (state: <code>:hover</code>) from <strong>pseudo-elements</strong> (part: <code>::before</code>).</li>
+                    <li>Mistake: using a single colon for pseudo-elements (<code>:before</code>) — CSS3 uses <strong>double colon</strong> (<code>::before</code>).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Selector categories: <strong>"U.E.C.I.A.C.A.P"</strong> = Universal, Element, Class, ID, Attribute, Combinator, Adjacent, Pseudo.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q15 ================= -->
+      <section class="question-section" id="u2-q15">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u2-q15">
+                <span class="badge text-white me-2" style="background:var(--unit2)">Q15</span>
+                Explain the different CSS 3D transformation techniques.
+              </button>
+            </h2>
+            <div id="c-u2-q15" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>CSS 3D transforms</strong> allow you to manipulate elements in <strong>three-dimensional space</strong> using the <code>transform</code> property with 3D functions. The browser's rendering engine utilises the GPU for hardware-accelerated 3D transformations.</p>
+                  <p><strong>Key concepts:</strong></p>
+                  <ul>
+                    <li><strong>3D Coordinate System:</strong> X-axis (horizontal), Y-axis (vertical), Z-axis (depth — towards/away from viewer). Positive Z moves the element toward you.</li>
+                    <li><strong>perspective:</strong> Defines the distance from the viewer to the z=0 plane. Smaller values = more dramatic 3D effect. Applied to the <strong>parent</strong> element. <code>perspective: 600px;</code></li>
+                    <li><strong>transform-style: preserve-3d:</strong> Tells the browser that child elements should be rendered in 3D space (not flattened). Essential for nesting 3D objects.</li>
+                    <li><strong>backface-visibility: hidden:</strong> Hides the back side of an element when it faces away — critical for flip-card effects.</li>
+                  </ul>
+                  <p><strong>3D Transform Functions:</strong></p>
+                  <ul>
+                    <li><strong>rotateX(angle):</strong> Rotates around the X-axis (top-to-bottom flip). Example: <code>rotateX(45deg)</code>.</li>
+                    <li><strong>rotateY(angle):</strong> Rotates around the Y-axis (left-to-right flip). Example: <code>rotateY(180deg)</code> — classic card flip.</li>
+                    <li><strong>rotateZ(angle):</strong> Rotates around the Z-axis (same as 2D rotate).</li>
+                    <li><strong>translateZ(z):</strong> Moves the element along the Z-axis (closer or farther).</li>
+                    <li><strong>translate3d(x, y, z):</strong> Moves in all three axes at once.</li>
+                    <li><strong>scaleZ(s):</strong> Scales along the Z-axis (affects depth).</li>
+                    <li><strong>scale3d(x, y, z):</strong> Scales in all three dimensions.</li>
+                    <li><strong>matrix3d(...):</strong> Combines all transforms into a 4×4 matrix (advanced).</li>
+                  </ul>
+                  <p>Common use cases: <strong>flipping cards, 3D product showcases, image galleries with depth, animated 3D cubes, and perspective-scrolling effects.</strong></p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> 3D Coordinate System</div>
+                <div class="flow-diagram" style="gap:1rem">
+                  <div class="flow-box red" style="min-width:100px">X-axis<br><small>→ horizontal</small></div>
+                  <div class="flow-box green" style="min-width:100px">Y-axis<br><small>↓ vertical</small></div>
+                  <div class="flow-box client" style="min-width:100px">Z-axis<br><small>⊙ depth</small></div>
+                  <div class="flow-box app" style="min-width:100px">perspective<br><small>viewer distance</small></div>
+                </div>
+                <div class="flow-diagram" style="gap:0.5rem;padding:1rem">
+                  <div class="flow-box process" style="min-width:130px">rotateX(deg)<br><small>flip top→bottom</small></div>
+                  <div class="flow-box green" style="min-width:130px">rotateY(deg)<br><small>flip left→right</small></div>
+                  <div class="flow-box db" style="min-width:130px">translateZ(z)<br><small>move closer/farther</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>3d-transforms.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;style&gt;
+  .scene { perspective: 600px; width: 200px; height: 200px; margin: 20px auto; }
+  .cube {
+    width: 200px; height: 200px;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+  }
+  .cube:hover { transform: rotateX(30deg) rotateY(45deg); }
+
+  .face {
+    position: absolute;
+    width: 200px; height: 200px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: bold; color: #fff;
+    border: 1px solid rgba(255,255,255,0.3);
+  }
+  .front { transform: translateZ(100px); background: #7209b7; }
+  .back  { transform: rotateY(180deg) translateZ(100px); background: #f72585; }
+  .right { transform: rotateY(90deg) translateZ(100px); background: #4361ee; }
+  .left  { transform: rotateY(-90deg) translateZ(100px); background: #06d6a0; }
+  .top   { transform: rotateX(90deg) translateZ(100px); background: #fb8500; }
+  .bottom{ transform: rotateX(-90deg) translateZ(100px); background: #0dcaf0; }
+
+  @keyframes spin {
+    0% { transform: rotateX(0) rotateY(0); }
+    100% { transform: rotateX(360deg) rotateY(360deg); }
+  }
+  .spinning { animation: spin 6s linear infinite; }
+&lt;/style&gt;
+
+&lt;div class="scene"&gt;
+  &lt;div class="cube spinning"&gt;
+    &lt;div class="face front"&gt;Front&lt;/div&gt;
+    &lt;div class="face back"&gt;Back&lt;/div&gt;
+    &lt;div class="face right"&gt;Right&lt;/div&gt;
+    &lt;div class="face left"&gt;Left&lt;/div&gt;
+    &lt;div class="face top"&gt;Top&lt;/div&gt;
+    &lt;div class="face bottom"&gt;Bottom&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-boxes me-1"></i>3D Cube spinning automatically (hover to pause)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:420px" srcdoc="
+                    <style>
+                      .scene{perspective:600px;width:180px;height:180px;margin:20px auto}
+                      .cube{width:180px;height:180px;transform-style:preserve-3d;transition:transform 0.8s;position:relative}
+                      .cube:hover{transform:rotateX(30deg) rotateY(45deg);animation:none}
+                      .face{position:absolute;width:180px;height:180px;display:flex;align-items:center;justify-content:center;font-weight:bold;color:#fff;border:1px solid rgba(255,255,255,0.3);font-size:14px;backface-visibility:hidden}
+                      .front{transform:translateZ(90px);background:#7209b7}
+                      .back{transform:rotateY(180deg) translateZ(90px);background:#f72585}
+                      .right{transform:rotateY(90deg) translateZ(90px);background:#4361ee}
+                      .left{transform:rotateY(-90deg) translateZ(90px);background:#06d6a0}
+                      .top{transform:rotateX(90deg) translateZ(90px);background:#fb8500}
+                      .bottom{transform:rotateX(-90deg) translateZ(90px);background:#0dcaf0}
+                      @keyframes spin{0%{transform:rotateX(0) rotateY(0)}100%{transform:rotateX(360deg) rotateY(360deg)}}
+                      .spinning{animation:spin 6s linear infinite}
+                    </style>
+                    <body style='font-family:sans-serif;padding:16px;text-align:center'>
+                      <p style='font-weight:bold;margin-bottom:4px'>3D Cube — Pure CSS Animation</p>
+                      <div class='scene'><div class='cube spinning'><div class='face front'>Front</div><div class='face back'>Back</div><div class='face right'>Right</div><div class='face left'>Left</div><div class='face top'>Top</div><div class='face bottom'>Bottom</div></div></div>
+                      <p style='font-size:13px;color:#666'>Hover to pause · Uses rotateX/Y, translateZ, perspective</p>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Explain the <strong>3-axis coordinate system</strong> and how <strong>perspective</strong> creates a sense of depth.</li>
+                    <li>List <strong>at least 3 functions</strong> (rotateX, rotateY, translateZ) and explain <code>transform-style: preserve-3d</code>.</li>
+                    <li>Mistake: applying <code>perspective</code> to the <strong>element itself</strong> rather than its <strong>parent</strong> — perspective must be on the container.</li>
+                  </ul>
+                  <div class="mnemonic">💡 3D transforms: <strong>"P.R.T"</strong> = Perspective · Rotate · TranslateZ.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center my-5">
+        <a href="../unit3/index.html" class="btn btn-study" style="background:var(--unit3);border:none;color:#fff;width:auto;padding:0.6rem 1.6rem">
+          Next: Unit 3 — JavaScript &amp; AJAX <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <p class="mb-1"><i class="bi bi-book-half me-2" style="color:var(--unit2)"></i><strong>Web Technology ETE Study Guide</strong></p>
+    <p class="mb-0" style="font-size:0.8rem;">Made for ETE 2026 · Unit 2 of 5 · 15 Questions Completed</p>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

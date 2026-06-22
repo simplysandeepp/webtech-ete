@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 5: JSP &amp; Spring — WebTech ETE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-unit="5">
+
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top main-navbar">
+  <div class="container-fluid px-lg-4">
+    <a class="navbar-brand" href="../index.html"><i class="bi bi-book-half me-2"></i>WebTech ETE</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link u1" href="../unit1/index.html">Unit 1</a></li>
+        <li class="nav-item"><a class="nav-link u2" href="../unit2/index.html">Unit 2</a></li>
+        <li class="nav-item"><a class="nav-link u3" href="../unit3/index.html">Unit 3</a></li>
+        <li class="nav-item"><a class="nav-link u4" href="../unit4/index.html">Unit 4</a></li>
+        <li class="nav-item"><a class="nav-link u5 active" href="../unit5/index.html">Unit 5</a></li>
+      </ul>
+    </div>
+    <button id="theme-toggle" class="ms-3" onclick="toggleTheme()"><i class="bi bi-moon-fill"></i></button>
+  </div>
+</nav>
+
+<!-- Unit Hero -->
+<section class="unit-hero">
+  <div class="container-fluid px-lg-4">
+    <span class="unit-badge text-white" style="background:var(--unit5)"><i class="bi bi-5-circle-fill me-1"></i> UNIT 5</span>
+    <h1 class="mt-2">JSP, Spring MVC &amp; Spring Boot</h1>
+    <p class="mb-0" style="color:var(--text-secondary)">JSP vs Servlets · MVC Architecture · Spring Framework · Spring Boot · JSP Directives &amp; Scriptlets · Spring MVC Controllers &amp; Views</p>
+  </div>
+</section>
+
+<div class="container-fluid px-lg-4">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <nav class="col-lg-3 col-xl-3 sidebar" id="sidebar">
+      <div class="sidebar-heading">Unit 5 — Questions</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#u5-q1">Q1. JSP vs Servlets</a>
+        <a class="nav-link" href="#u5-q2">Q2. Servlets as MVC Controllers</a>
+        <a class="nav-link" href="#u5-q3">Q3. Spring Framework Architecture</a>
+        <a class="nav-link" href="#u5-q4">Q4. Spring Boot Features &amp; Advantages</a>
+        <a class="nav-link" href="#u5-q5">Q5. JSP Directives &amp; Expression Tags</a>
+        <a class="nav-link" href="#u5-q6">Q6. MVC Paradigm in JSP</a>
+        <a class="nav-link" href="#u5-q7">Q7. Spring Boot Web Application</a>
+        <a class="nav-link" href="#u5-q8">Q8. Spring · Spring MVC · Spring Boot</a>
+        <a class="nav-link" href="#u5-q9">Q9. JSP Directives, Declarations &amp; Scriptlets</a>
+        <a class="nav-link" href="#u5-q10">Q10. Basic Spring MVC Application</a>
+      </nav>
+    </nav>
+
+    <!-- Content -->
+    <main class="col-lg-9 col-xl-9 content-area">
+
+      <!-- ================= Q1 ================= -->
+      <section class="question-section" id="u5-q1">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q1">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q1</span>
+                Differentiate between JSP and Servlets with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u5-q1" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Both <strong>Servlets</strong> and <strong>JSP (JavaServer Pages)</strong> are server-side Java technologies used to build <strong>dynamic web applications</strong>, but they approach the problem from opposite directions.</p>
+                  <ul>
+                    <li><strong>Servlet:</strong> A pure <strong>Java class</strong> that extends <code>HttpServlet</code>. It contains Java code with HTML <strong>embedded inside</strong> <code>out.println()</code> statements. It is best for <strong>processing logic and control</strong>.</li>
+                    <li><strong>JSP:</strong> An <strong>HTML page</strong> with <strong>Java code embedded</strong> inside special tags (<code>&lt;% %&gt;</code>). It is best for the <strong>presentation/view</strong> layer.</li>
+                  </ul>
+                  <p><strong>Key differences:</strong></p>
+                  <ul>
+                    <li><strong>Coding style:</strong> Servlet = Java with HTML inside; JSP = HTML with Java inside.</li>
+                    <li><strong>Translation:</strong> A JSP is automatically <strong>translated into a Servlet</strong> by the container, then compiled. So JSP runs <em>as</em> a Servlet internally.</li>
+                    <li><strong>Ease of writing:</strong> JSP is easier for designers since the page looks like HTML; Servlets are harder for large UIs.</li>
+                    <li><strong>Maintenance:</strong> JSP separates presentation, so it is easier to maintain; Servlets mix logic and markup.</li>
+                    <li><strong>Best role (MVC):</strong> Servlet acts as the <strong>Controller</strong>, JSP acts as the <strong>View</strong>.</li>
+                  </ul>
+                  <p>In practice both are used together: the <strong>Servlet handles the request</strong> and business logic, then forwards data to a <strong>JSP that renders the response</strong>. This combination is the foundation of the JSP-based MVC pattern.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Comparison Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app" style="min-width:170px">SERVLET<br><small>Java class · HTML inside Java · Controller</small></div>
+                  <div class="flow-box neutral">VS</div>
+                  <div class="flow-box green" style="min-width:170px">JSP<br><small>HTML page · Java inside HTML · View</small></div>
+                </div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box neutral">JSP file (hello.jsp)</div>
+                  <div class="flow-arrow">↓ translated by container</div>
+                  <div class="flow-box process">hello_jsp.java (a Servlet)</div>
+                  <div class="flow-arrow">↓ compiled</div>
+                  <div class="flow-box green">hello_jsp.class → response HTML</div>
+                </div>
+                <p class="flow-label">JSP is internally converted into a Servlet before execution</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>HelloServlet.java vs hello.jsp</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== SERVLET: Java code with HTML inside out.println() =====
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+public class HelloServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+        res.setContentType("text/html");      // set response type
+        PrintWriter out = res.getWriter();     // get output stream
+        out.println("&lt;html&gt;&lt;body&gt;");
+        out.println("&lt;h2&gt;Hello from a Servlet!&lt;/h2&gt;"); // HTML inside Java
+        out.println("&lt;/body&gt;&lt;/html&gt;");
+    }
+}
+
+/* ===== JSP: HTML with Java embedded inside &lt;% %&gt; =====
+&lt;html&gt;&lt;body&gt;
+  &lt;h2&gt;Hello from a JSP!&lt;/h2&gt;
+  &lt;%  String user = "Riya";   // Java scriptlet inside HTML %&gt;
+  &lt;p&gt;Welcome, &lt;%= user %&gt;&lt;/p&gt;  &lt;%-- expression prints value --%&gt;
+&lt;/body&gt;&lt;/html&gt;
+*/</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Apache Tomcat — console</span></div>
+                  <div class="terminal-body"><span class="info">INFO: Starting Servlet Engine: Apache Tomcat/10.1</span>
+<span class="output">INFO: Deploying web application [/app]</span>
+<span class="success">INFO: Server startup in 842 ms</span>
+<span class="prompt">GET /app/HelloServlet</span>
+<span class="output">Hello from a Servlet!</span>
+<span class="prompt">GET /app/hello.jsp</span>
+<span class="warn">INFO: Translating hello.jsp -&gt; hello_jsp.java</span>
+<span class="warn">INFO: Compiling hello_jsp.java -&gt; hello_jsp.class</span>
+<span class="output">Hello from a JSP!</span>
+<span class="output">Welcome, Riya</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>One-liner to remember: <strong>"Servlet = Java in HTML; JSP = HTML in Java."</strong> State that JSP is <strong>translated into a Servlet</strong>.</li>
+                    <li>Always give the <strong>MVC role</strong>: Servlet = Controller, JSP = View — this earns extra marks.</li>
+                    <li>Mistake: saying JSP and Servlet are unrelated. JSP <em>becomes</em> a Servlet at runtime.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"JSP for Show, Servlet for Logic."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q2 ================= -->
+      <section class="question-section" id="u5-q2">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q2">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q2</span>
+                Explain the functions of Servlets as controllers in MVC architecture.
+              </button>
+            </h2>
+            <div id="c-u5-q2" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>In the <strong>MVC (Model–View–Controller)</strong> pattern, a <strong>Servlet</strong> plays the role of the <strong>Controller</strong> — the central component that receives every request, decides what to do, and chooses the response page.</p>
+                  <p><strong>Functions of a Servlet as Controller:</strong></p>
+                  <ul>
+                    <li><strong>Receives requests:</strong> All client requests first arrive at the Servlet through <code>doGet()</code> / <code>doPost()</code>.</li>
+                    <li><strong>Reads input:</strong> It extracts form data using <code>request.getParameter()</code>.</li>
+                    <li><strong>Calls the Model:</strong> It invokes <strong>business logic / JavaBeans / DAO</strong> classes to process data or query the database.</li>
+                    <li><strong>Stores results:</strong> It puts data into request/session scope using <code>request.setAttribute()</code>.</li>
+                    <li><strong>Selects the View:</strong> It <strong>forwards</strong> control to a JSP using <code>RequestDispatcher.forward()</code>, which renders the HTML.</li>
+                    <li><strong>Controls navigation:</strong> Based on logic it can choose different JSP pages (success / error).</li>
+                  </ul>
+                  <p>The key idea is <strong>separation of concerns</strong>: the Servlet (Controller) never generates HTML itself; it only coordinates. The <strong>Model</strong> holds data and logic, the <strong>View (JSP)</strong> displays it. This makes the application <strong>cleaner, reusable and easier to maintain</strong>, because a designer can change the JSP without touching Java logic, and a developer can change logic without touching the HTML.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Controller Flow Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser<br><small>Request</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">Servlet<br><small>Controller</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">Model<br><small>JavaBean / DAO</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">JSP<br><small>View</small></div>
+                </div>
+                <p class="flow-label">Servlet decides logic → calls Model → forwards to JSP View (response flows back to browser)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>LoginController.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">@WebServlet("/login")                       // maps URL to this controller
+public class LoginController extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        // 1) READ input from the request
+        String user = req.getParameter("username");
+        String pass = req.getParameter("password");
+
+        // 2) CALL the Model (business logic)
+        UserService service = new UserService();
+        boolean ok = service.validate(user, pass);
+
+        // 3) STORE result + 4) SELECT the View
+        if (ok) {
+            req.setAttribute("name", user);          // pass data to View
+            RequestDispatcher rd = req.getRequestDispatcher("welcome.jsp");
+            rd.forward(req, res);                     // forward to JSP (View)
+        } else {
+            req.setAttribute("error", "Invalid login");
+            req.getRequestDispatcher("login.jsp").forward(req, res);
+        }
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Apache Tomcat — MVC flow log</span></div>
+                  <div class="terminal-body"><span class="prompt">POST /login   username=riya&amp;password=****</span>
+<span class="info">[Controller] LoginController.doPost() invoked</span>
+<span class="info">[Model] UserService.validate("riya") -&gt; true</span>
+<span class="output">[Controller] setAttribute name=riya</span>
+<span class="warn">[Controller] forward -&gt; welcome.jsp</span>
+<span class="success">[View] welcome.jsp rendered:</span>
+<span class="output">  &lt;h2&gt;Welcome, riya!&lt;/h2&gt;</span>
+<span class="success">HTTP/1.1 200 OK  (text/html)</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Name the three roles: <strong>Servlet = Controller, JavaBean = Model, JSP = View</strong>.</li>
+                    <li>The key keyword is <code>RequestDispatcher.forward()</code> — that is how the Controller passes control to the View.</li>
+                    <li>Mistake: making the Servlet print HTML. In MVC the Controller must <strong>never render HTML</strong> — it forwards to a JSP.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"R.P.F"</strong> — Read input, Process (Model), Forward to View.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q3 ================= -->
+      <section class="question-section" id="u5-q3">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q3">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q3</span>
+                Explain the architecture and key features of the Spring Framework.
+              </button>
+            </h2>
+            <div id="c-u5-q3" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The <strong>Spring Framework</strong> is a lightweight, open-source <strong>Java application framework</strong> used to build enterprise applications. It is built around two core principles: <strong>IoC (Inversion of Control)</strong> and <strong>DI (Dependency Injection)</strong>, which together make code <strong>loosely coupled, testable and maintainable</strong>.</p>
+                  <p><strong>Spring Architecture (layered modules):</strong></p>
+                  <ul>
+                    <li><strong>Core Container:</strong> The heart of Spring. Contains <strong>Core, Beans, Context and SpEL</strong> modules. The <strong>BeanFactory / ApplicationContext</strong> (the IoC container) creates and manages objects called <strong>beans</strong>.</li>
+                    <li><strong>Data Access / Integration:</strong> <strong>JDBC, ORM, JMS, Transactions</strong> — simplifies database access and transaction management.</li>
+                    <li><strong>Web Layer:</strong> <strong>Spring Web, Spring MVC, WebSocket</strong> — for building web applications and REST APIs.</li>
+                    <li><strong>AOP (Aspect Oriented Programming):</strong> Adds cross-cutting concerns (logging, security, transactions) without changing business code.</li>
+                    <li><strong>Test:</strong> Supports unit and integration testing with JUnit/TestNG.</li>
+                  </ul>
+                  <p><strong>Key features:</strong></p>
+                  <ul>
+                    <li><strong>IoC &amp; Dependency Injection:</strong> The container injects dependencies instead of objects creating them — reduces tight coupling.</li>
+                    <li><strong>AOP:</strong> Modularises cross-cutting concerns.</li>
+                    <li><strong>Lightweight &amp; modular:</strong> Use only the modules you need.</li>
+                    <li><strong>Transaction management:</strong> Consistent, declarative transactions.</li>
+                    <li><strong>MVC framework:</strong> Powerful web layer.</li>
+                    <li><strong>Integration:</strong> Works with Hibernate, JPA, JMS, REST.</li>
+                  </ul>
+                  <p>In short, Spring provides a complete <strong>infrastructure</strong> so developers focus on business logic while the framework manages object lifecycle, wiring and transactions.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Spring Architecture (Layered Modules)</div>
+                <div class="layer-stack" style="max-width:520px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">Web Layer <small>— Spring MVC, Web, WebSocket, REST</small></div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(247,37,133,0.12);border-color:#f72585;color:#f72585">Data Access / Integration <small>— JDBC, ORM, JMS, Transactions</small></div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.12);border-color:#fb8500;color:#fb8500">AOP &amp; Aspects <small>— Logging, Security, Cross-cutting concerns</small></div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:var(--unit5);color:var(--unit5)">Core Container <small>— Core, Beans, Context, SpEL (IoC Container)</small></div>
+                </div>
+                <p class="flow-label">Every layer is built on top of the Core Container (the IoC / DI engine)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>Dependency Injection demo (Java config)</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== Model / Service beans managed by the IoC container =====
+@Component                                  // tells Spring to manage this bean
+class MessageService {
+    String getMessage() { return "Hello from Spring IoC!"; }
+}
+
+@Component
+class Greeter {
+    private final MessageService service;
+
+    // Dependency Injection: Spring INJECTS MessageService here
+    @Autowired
+    Greeter(MessageService service) { this.service = service; }
+
+    void greet() { System.out.println(service.getMessage()); }
+}
+
+// ===== Main: ApplicationContext is the IoC container =====
+@Configuration
+@ComponentScan                              // scan @Component classes
+public class AppConfig {
+    public static void main(String[] args) {
+        var ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        Greeter g = ctx.getBean(Greeter.class);   // container gives wired bean
+        g.greet();                                 // -&gt; "Hello from Spring IoC!"
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Spring — IoC container console</span></div>
+                  <div class="terminal-body"><span class="info">INFO  AnnotationConfigApplicationContext - Refreshing context</span>
+<span class="output">INFO  Creating bean 'messageService'</span>
+<span class="output">INFO  Creating bean 'greeter'</span>
+<span class="warn">INFO  Autowiring MessageService into Greeter</span>
+<span class="success">INFO  Context initialized — 2 beans ready</span>
+<span class="prompt">$ greeter.greet()</span>
+<span class="output">Hello from Spring IoC!</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Always draw the <strong>layered architecture</strong> and put the <strong>Core Container (IoC)</strong> at the bottom — it supports everything else.</li>
+                    <li>Define <strong>IoC</strong> (container controls object creation) and <strong>DI</strong> (dependencies injected) — these are guaranteed questions.</li>
+                    <li>Mistake: confusing Spring (framework) with Spring Boot (a tool that auto-configures Spring).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"C.A.D.W"</strong> — Core, AOP, Data access, Web.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q4 ================= -->
+      <section class="question-section" id="u5-q4">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q4">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q4</span>
+                Describe the features and advantages of Spring Boot in Java application development.
+              </button>
+            </h2>
+            <div id="c-u5-q4" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Spring Boot</strong> is a project built on top of the Spring Framework that makes it <strong>fast and easy</strong> to create <strong>stand-alone, production-ready</strong> Spring applications with <strong>minimal configuration</strong>. Its motto is <em>"convention over configuration."</em></p>
+                  <p><strong>Key features:</strong></p>
+                  <ul>
+                    <li><strong>Auto-Configuration:</strong> Automatically configures beans based on the libraries on the classpath — no manual XML.</li>
+                    <li><strong>Starter Dependencies:</strong> Single dependencies like <code>spring-boot-starter-web</code> pull in everything needed for that feature.</li>
+                    <li><strong>Embedded Server:</strong> Includes a built-in <strong>Tomcat / Jetty</strong> — run the app with <code>java -jar</code>, no external server.</li>
+                    <li><strong>Spring Boot Actuator:</strong> Production endpoints for <strong>health, metrics, monitoring</strong>.</li>
+                    <li><strong>Spring Initializr:</strong> Web tool to generate a ready project skeleton.</li>
+                    <li><strong>No XML / boilerplate:</strong> Uses annotations and sensible defaults.</li>
+                  </ul>
+                  <p><strong>Advantages:</strong></p>
+                  <ul>
+                    <li><strong>Rapid development:</strong> Less configuration, faster startup of projects.</li>
+                    <li><strong>Standalone deployment:</strong> A single executable JAR with embedded server.</li>
+                    <li><strong>Microservice ready:</strong> Ideal for building independent REST microservices.</li>
+                    <li><strong>Reduced boilerplate:</strong> Auto-configuration removes repetitive setup code.</li>
+                    <li><strong>Easy testing &amp; monitoring</strong> via Actuator and test starters.</li>
+                  </ul>
+                  <p>In short, Spring Boot lets developers focus on <strong>business logic</strong> rather than configuration, which is why it is the modern standard for Java web and microservice development.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Spring Boot = Spring + Conventions</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app" style="min-width:120px">Spring<br><small>Framework</small></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-box process" style="min-width:120px">Auto-Config<br><small>+ Starters</small></div>
+                  <div class="flow-arrow">+</div>
+                  <div class="flow-box db" style="min-width:120px">Embedded<br><small>Tomcat</small></div>
+                  <div class="flow-arrow">=</div>
+                  <div class="flow-box green" style="min-width:130px">Spring Boot<br><small>Runnable JAR</small></div>
+                </div>
+                <p class="flow-label">Spring Boot bundles configuration, dependencies and a server into one runnable app</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>DemoApplication.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">package com.example.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.*;
+
+// @SpringBootApplication = @Configuration + @EnableAutoConfiguration + @ComponentScan
+@SpringBootApplication
+@RestController
+public class DemoApplication {
+
+    // main() launches the embedded Tomcat server automatically
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args);
+    }
+
+    // A REST endpoint mapped to GET /hello
+    @GetMapping("/hello")
+    public String hello() {
+        return "Hello from Spring Boot!";
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Spring Boot — console</span></div>
+                  <div class="terminal-body"><span class="info">  .   ____          _            __ _ _</span>
+<span class="info"> /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \</span>
+<span class="info">( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \</span>
+<span class="success"> :: Spring Boot ::                (v3.2.0)</span>
+<span class="output">INFO  Starting DemoApplication using Java 17</span>
+<span class="output">INFO  Tomcat initialized with port(s): 8080 (http)</span>
+<span class="success">INFO  Tomcat started on port(s): 8080 (http)</span>
+<span class="success">INFO  Started DemoApplication in 1.624 seconds</span>
+<span class="prompt">GET /hello</span>
+<span class="output">Hello from Spring Boot!</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>The four headline features: <strong>Auto-Configuration, Starters, Embedded Server, Actuator</strong> — list all four.</li>
+                    <li>Say <code>@SpringBootApplication</code> combines three annotations (Config + AutoConfig + ComponentScan).</li>
+                    <li>Mistake: thinking Boot replaces Spring. Boot <strong>uses</strong> Spring and removes its configuration burden.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"A.S.E.A"</strong> — Auto-config, Starters, Embedded server, Actuator.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q5 ================= -->
+      <section class="question-section" id="u5-q5">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q5">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q5</span>
+                Create a JSP program using directives and expression tags. Explain in detail.
+              </button>
+            </h2>
+            <div id="c-u5-q5" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>JSP scripting elements</strong> let you embed Java inside an HTML page. This question focuses on two of them: <strong>directives</strong> and <strong>expression tags</strong>.</p>
+                  <p><strong>1. Directives</strong> <code>&lt;%@ ... %&gt;</code> give instructions to the JSP container at <strong>translation time</strong>. There are three:</p>
+                  <ul>
+                    <li><strong>page directive</strong> <code>&lt;%@ page %&gt;</code> — sets page properties like <code>language</code>, <code>contentType</code>, <code>import</code>, <code>errorPage</code>.</li>
+                    <li><strong>include directive</strong> <code>&lt;%@ include file="..." %&gt;</code> — statically includes another file (header/footer) at translation time.</li>
+                    <li><strong>taglib directive</strong> <code>&lt;%@ taglib %&gt;</code> — declares a custom/JSTL tag library.</li>
+                  </ul>
+                  <p><strong>2. Expression tag</strong> <code>&lt;%= expression %&gt;</code> evaluates a Java expression, converts the result to a <strong>String</strong>, and <strong>writes it directly into the output</strong>. There is <strong>no semicolon</strong> inside an expression tag.</p>
+                  <p>Together they cover the two most common tasks: <strong>directives configure the page</strong> (imports, content type) and <strong>expression tags display dynamic values</strong> (dates, calculations, variables) inside the HTML. Because directives run at translation and expressions run at request time, a single JSP can both set up its environment and output live data.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> JSP Scripting Elements</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box app">Directive &lt;%@ page %&gt; <small>config at translation time</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box process">Declaration &lt;%! ... %&gt; <small>fields / methods</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box db">Scriptlet &lt;% ... %&gt; <small>Java statements</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">Expression &lt;%= ... %&gt; <small>prints value to output</small></div>
+                </div>
+                <p class="flow-label">This question uses the highlighted Directive and Expression elements</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>datetime.jsp</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;%-- PAGE DIRECTIVE: sets language, content type and imports --%&gt;
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+         import="java.util.Date, java.time.LocalDate" %&gt;
+
+&lt;%-- INCLUDE DIRECTIVE: statically inserts a header file --%&gt;
+&lt;%@ include file="header.jsp" %&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2&gt;JSP Directives &amp; Expression Tags&lt;/h2&gt;
+
+  &lt;!-- EXPRESSION TAG: prints the value directly (no semicolon) --&gt;
+  &lt;p&gt;Current date &amp; time: &lt;%= new Date() %&gt;&lt;/p&gt;
+  &lt;p&gt;Today is: &lt;%= LocalDate.now() %&gt;&lt;/p&gt;
+
+  &lt;!-- Expression doing a calculation --&gt;
+  &lt;p&gt;Sum of 25 + 75 = &lt;%= 25 + 75 %&gt;&lt;/p&gt;
+  &lt;p&gt;Server name: &lt;%= request.getServerName() %&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Browser — rendered datetime.jsp</span></div>
+                  <div class="terminal-body"><span class="prompt">GET /app/datetime.jsp</span>
+<span class="info">[Tomcat] Translating datetime.jsp -&gt; datetime_jsp.java</span>
+<span class="success">[Tomcat] Rendered HTML output:</span>
+<span class="output">JSP Directives &amp; Expression Tags</span>
+<span class="output">Current date &amp; time: Mon Jun 22 10:45:18 IST 2026</span>
+<span class="output">Today is: 2026-06-22</span>
+<span class="output">Sum of 25 + 75 = 100</span>
+<span class="output">Server name: localhost</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Name all <strong>3 directives</strong> (page, include, taglib) and give the <code>page</code> directive's common attributes.</li>
+                    <li>Stress that an <strong>expression tag has NO semicolon</strong> — that is a favourite 1-mark trap.</li>
+                    <li>Mistake: confusing <code>&lt;%= %&gt;</code> (expression, prints) with <code>&lt;% %&gt;</code> (scriptlet, statements).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"P.I.T"</strong> directives = Page, Include, Taglib. Expression = "Equals = print."</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q6 ================= -->
+      <section class="question-section" id="u5-q6">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q6">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q6</span>
+                Describe the MVC paradigm in JSP-based web applications with neat architecture and working flow.
+              </button>
+            </h2>
+            <div id="c-u5-q6" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>MVC (Model–View–Controller)</strong> is a design pattern that <strong>separates an application into three layers</strong> so that presentation, logic and data are independent. In a JSP-based web application this is called <strong>Model 2 architecture</strong>.</p>
+                  <ul>
+                    <li><strong>Model:</strong> Represents the <strong>data and business logic</strong> — usually <strong>JavaBeans, POJOs and DAO</strong> classes that talk to the database.</li>
+                    <li><strong>View:</strong> The <strong>presentation layer</strong> — implemented with <strong>JSP pages</strong> that display data to the user. The View contains <strong>no business logic</strong>.</li>
+                    <li><strong>Controller:</strong> A <strong>Servlet</strong> that receives all requests, calls the Model, and selects the correct View.</li>
+                  </ul>
+                  <p><strong>Working flow (Model 2):</strong></p>
+                  <ul>
+                    <li>1. The browser sends a <strong>request</strong> to the Controller (Servlet).</li>
+                    <li>2. The Controller reads parameters and <strong>calls the Model</strong> for processing.</li>
+                    <li>3. The Model executes <strong>business logic / database</strong> operations and returns results.</li>
+                    <li>4. The Controller stores the result (<code>setAttribute</code>) and <strong>forwards</strong> to a JSP.</li>
+                    <li>5. The <strong>JSP (View)</strong> renders the HTML <strong>response</strong> back to the browser.</li>
+                  </ul>
+                  <p><strong>Why MVC?</strong> It gives <strong>separation of concerns</strong>, <strong>reusability</strong>, <strong>parallel development</strong> (designers edit JSP, developers edit logic) and <strong>easy maintenance</strong>. The older <strong>Model 1</strong> put logic inside the JSP itself, which mixed concerns; Model 2 (MVC) fixes that by adding a Servlet controller.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> MVC (Model 2) Working Flow</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">1. Browser<br><small>HTTP Request</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">2. Controller<br><small>Servlet</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">3. Model<br><small>Bean / DAO / DB</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">3. Model<br><small>returns data</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">4. Controller<br><small>forward()</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">5. View (JSP)<br><small>renders HTML</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box client">Browser<br><small>Response</small></div>
+                </div>
+                <p class="flow-label">Request flows Controller → Model → Controller → View → Browser (separation of concerns)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>MVC: Model + Controller + View</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== MODEL: a JavaBean holding data =====
+public class Student {
+    private String name; private int marks;
+    public Student(String n, int m){ name=n; marks=m; }
+    public String getName(){ return name; }
+    public int getMarks(){ return marks; }
+}
+
+// ===== CONTROLLER: Servlet that wires Model to View =====
+@WebServlet("/result")
+public class ResultController extends HttpServlet {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+        Student s = new Student("Riya", 88);   // call/build the Model
+        req.setAttribute("student", s);         // store data for the View
+        req.getRequestDispatcher("result.jsp")  // select the View
+           .forward(req, res);                  // forward to JSP
+    }
+}
+
+/* ===== VIEW (result.jsp): only displays data, no logic =====
+&lt;jsp:useBean id="student" class="Student" scope="request" /&gt;
+&lt;h2&gt;Result&lt;/h2&gt;
+&lt;p&gt;Name : &lt;%= student.getName() %&gt;&lt;/p&gt;
+&lt;p&gt;Marks: &lt;%= student.getMarks() %&gt;&lt;/p&gt;
+*/</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Apache Tomcat — MVC Model-2 flow</span></div>
+                  <div class="terminal-body"><span class="prompt">GET /app/result</span>
+<span class="info">[Controller] ResultController.doGet()</span>
+<span class="info">[Model] new Student("Riya", 88) created</span>
+<span class="output">[Controller] setAttribute student=Student(Riya,88)</span>
+<span class="warn">[Controller] forward -&gt; result.jsp</span>
+<span class="success">[View] result.jsp rendered:</span>
+<span class="output">  Result</span>
+<span class="output">  Name : Riya</span>
+<span class="output">  Marks: 88</span>
+<span class="success">HTTP/1.1 200 OK</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Draw the <strong>numbered flow</strong> (1–5) — examiners give marks for the request/response arrows.</li>
+                    <li>State <strong>Model 1 vs Model 2</strong>: Model 1 = JSP does everything; Model 2 = Servlet controller (true MVC).</li>
+                    <li>Mistake: putting business logic in the JSP. The <strong>View must only display</strong> data.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"M-V-C"</strong> = Model (data), View (JSP), Controller (Servlet).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q7 ================= -->
+      <section class="question-section" id="u5-q7">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q7">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q7</span>
+                Develop and run a Spring Boot web application with directory structure and controller implementation.
+              </button>
+            </h2>
+            <div id="c-u5-q7" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>Spring Boot web application</strong> is created in a few standard steps and follows a fixed <strong>Maven directory structure</strong>. This question tests whether you can show the layout, the <code>pom.xml</code>, the main class and a controller, then run it.</p>
+                  <p><strong>Steps to develop:</strong></p>
+                  <ul>
+                    <li>1. Generate the project from <strong>Spring Initializr</strong> with the <code>spring-boot-starter-web</code> dependency.</li>
+                    <li>2. <code>pom.xml</code> declares the parent and the web starter (pulls in Tomcat + Spring MVC).</li>
+                    <li>3. The <strong>main class</strong> annotated <code>@SpringBootApplication</code> bootstraps the app and starts embedded Tomcat.</li>
+                    <li>4. A <strong>@RestController</strong> (or <code>@Controller</code>) defines request mappings.</li>
+                    <li>5. Run with <code>mvn spring-boot:run</code> or <code>java -jar target/app.jar</code>; open <code>http://localhost:8080</code>.</li>
+                  </ul>
+                  <p><strong>Standard directory structure:</strong> source code lives under <code>src/main/java</code>, configuration (like <code>application.properties</code>) and templates under <code>src/main/resources</code>, and tests under <code>src/test/java</code>. The build output JAR is placed in <code>target/</code>. Spring Boot's <strong>auto-configuration</strong> means you do not write any server or dispatcher setup — the framework wires everything from the classpath, so the running result is a self-contained web server responding on port 8080.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Spring Boot Project Structure</div>
+                <div class="tree">
+                  <ul style="list-style:none;display:inline-block">
+                    <li><span class="node tag">demo/ (project root)</span>
+                      <ul>
+                        <li><span class="node attr">pom.xml</span></li>
+                        <li><span class="node tag">src/main/java</span>
+                          <ul>
+                            <li><span class="node txt">com/example/demo/DemoApplication.java</span></li>
+                            <li><span class="node txt">com/example/demo/HelloController.java</span></li>
+                          </ul>
+                        </li>
+                        <li><span class="node tag">src/main/resources</span>
+                          <ul>
+                            <li><span class="node txt">application.properties</span></li>
+                            <li><span class="node txt">templates/ &nbsp;static/</span></li>
+                          </ul>
+                        </li>
+                        <li><span class="node tag">src/test/java</span></li>
+                        <li><span class="node attr">target/demo-0.0.1.jar</span></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <p class="flow-label">Standard Maven layout: code in src/main/java, config in resources, build in target</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>pom.xml + DemoApplication.java + HelloController.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;!-- ===== pom.xml (web starter pulls Tomcat + Spring MVC) ===== --&gt;
+&lt;project&gt;
+  &lt;parent&gt;
+    &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+    &lt;artifactId&gt;spring-boot-starter-parent&lt;/artifactId&gt;
+    &lt;version&gt;3.2.0&lt;/version&gt;
+  &lt;/parent&gt;
+  &lt;groupId&gt;com.example&lt;/groupId&gt;
+  &lt;artifactId&gt;demo&lt;/artifactId&gt;
+  &lt;version&gt;0.0.1&lt;/version&gt;
+  &lt;dependencies&gt;
+    &lt;dependency&gt;
+      &lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;
+      &lt;artifactId&gt;spring-boot-starter-web&lt;/artifactId&gt;
+    &lt;/dependency&gt;
+  &lt;/dependencies&gt;
+&lt;/project&gt;</code></pre>
+                </div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>DemoApplication.java + HelloController.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== DemoApplication.java : the bootstrap / main class =====
+package com.example.demo;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication                      // enables auto-configuration
+public class DemoApplication {
+    public static void main(String[] args) {
+        SpringApplication.run(DemoApplication.class, args); // starts Tomcat
+    }
+}
+
+// ===== HelloController.java : handles web requests =====
+package com.example.demo;
+import org.springframework.web.bind.annotation.*;
+
+@RestController                              // returns data directly as response
+public class HelloController {
+
+    @GetMapping("/")                         // maps GET /
+    public String home() { return "Welcome to Spring Boot!"; }
+
+    @GetMapping("/greet/{name}")             // path variable
+    public String greet(@PathVariable String name) {
+        return "Hello, " + name + "!";
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Spring Boot — mvn spring-boot:run</span></div>
+                  <div class="terminal-body"><span class="prompt">$ mvn spring-boot:run</span>
+<span class="success"> :: Spring Boot ::                (v3.2.0)</span>
+<span class="output">INFO  Starting DemoApplication using Java 17</span>
+<span class="output">INFO  Tomcat initialized with port(s): 8080 (http)</span>
+<span class="info">INFO  Mapped "{[/]}" onto home()</span>
+<span class="info">INFO  Mapped "{[/greet/{name}]}" onto greet(String)</span>
+<span class="success">INFO  Tomcat started on port(s): 8080 (http)</span>
+<span class="success">INFO  Started DemoApplication in 1.71 seconds</span>
+<span class="prompt">GET http://localhost:8080/</span>
+<span class="output">Welcome to Spring Boot!</span>
+<span class="prompt">GET http://localhost:8080/greet/Riya</span>
+<span class="output">Hello, Riya!</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Draw the <strong>directory tree</strong> (src/main/java, resources, target) — it is directly asked.</li>
+                    <li>Show the <strong>web starter</strong> in <code>pom.xml</code> and the <code>@SpringBootApplication</code> main class with <code>SpringApplication.run()</code>.</li>
+                    <li>Mistake: forgetting that Boot has an <strong>embedded Tomcat</strong> — no external server is deployed.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"Initializr → pom → @SpringBootApplication → @RestController → run."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q8 ================= -->
+      <section class="question-section" id="u5-q8">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q8">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q8</span>
+                Describe Spring Framework, Spring MVC, and Spring Boot with their features.
+              </button>
+            </h2>
+            <div id="c-u5-q8" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>These three are <strong>related but distinct</strong>. Spring MVC and Spring Boot are both built on top of the core Spring Framework.</p>
+                  <p><strong>1. Spring Framework</strong> — the <strong>foundation</strong>. A lightweight container providing <strong>IoC / Dependency Injection, AOP, transactions</strong> and integration. <em>Features:</em> loose coupling, modular design, AOP, declarative transactions, wide integration (Hibernate, JPA, JMS).</p>
+                  <p><strong>2. Spring MVC</strong> — the <strong>web module</strong> of Spring. It implements the <strong>Model–View–Controller</strong> pattern for web apps. The central piece is the <strong>DispatcherServlet (front controller)</strong> that routes requests to <code>@Controller</code> methods and resolves <strong>views</strong> (JSP/Thymeleaf). <em>Features:</em> annotation-based controllers (<code>@RequestMapping</code>), flexible view resolution, form binding &amp; validation, REST support.</p>
+                  <p><strong>3. Spring Boot</strong> — a <strong>tool / convention layer</strong> that makes Spring (and Spring MVC) <strong>easy to set up</strong>. <em>Features:</em> auto-configuration, starter dependencies, embedded Tomcat, Actuator, no XML — produces a runnable JAR.</p>
+                  <p><strong>Relationship:</strong> Spring is the base engine; Spring MVC adds the web layer; Spring Boot removes the configuration pain and packages everything for production. You typically build a <strong>Spring MVC web app inside Spring Boot</strong>, sitting on the Spring core.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> How They Stack Together</div>
+                <div class="layer-stack" style="max-width:480px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:var(--unit5);color:var(--unit5)">Spring Boot <small>— Auto-config, Starters, Embedded server</small></div>
+                  <div class="flow-arrow text-center">↓ builds on</div>
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">Spring MVC <small>— DispatcherServlet, @Controller, View resolver</small></div>
+                  <div class="flow-arrow text-center">↓ builds on</div>
+                  <div class="arch-layer" style="background:rgba(114,9,183,0.12);border-color:#7209b7;color:#7209b7">Spring Framework (Core) <small>— IoC / DI, AOP, Transactions</small></div>
+                </div>
+                <p class="flow-label">Boot sits on MVC, which sits on the core Spring Framework</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>All three in one Boot app</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== SPRING BOOT: bootstraps everything, embedded Tomcat =====
+@SpringBootApplication
+public class App {
+    public static void main(String[] a){ SpringApplication.run(App.class, a); }
+}
+
+// ===== SPRING FRAMEWORK (Core): a DI-managed service bean =====
+@Service                                     // IoC container manages this
+class GreetService {
+    String message(String n){ return "Hi " + n + ", from Spring core!"; }
+}
+
+// ===== SPRING MVC: a web controller using the injected service =====
+@Controller
+class WebController {
+    private final GreetService service;
+    WebController(GreetService s){ this.service = s; }  // DI
+
+    @GetMapping("/welcome")
+    public String welcome(@RequestParam String name, Model model){
+        model.addAttribute("msg", service.message(name)); // Model
+        return "welcome";                    // View name resolved to welcome.jsp
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Spring Boot — console</span></div>
+                  <div class="terminal-body"><span class="success"> :: Spring Boot ::                (v3.2.0)</span>
+<span class="info">INFO  [Core] Creating bean 'greetService' (IoC)</span>
+<span class="info">INFO  [MVC] DispatcherServlet initialized</span>
+<span class="info">INFO  [MVC] Mapped "{[/welcome]}" onto welcome()</span>
+<span class="success">INFO  Tomcat started on port(s): 8080 (http)</span>
+<span class="prompt">GET /welcome?name=Riya</span>
+<span class="warn">INFO  [MVC] view 'welcome' resolved -&gt; /WEB-INF/views/welcome.jsp</span>
+<span class="output">Hi Riya, from Spring core!</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Give a one-line role each: <strong>Spring = core (IoC), Spring MVC = web layer, Spring Boot = easy setup</strong>.</li>
+                    <li>Name the <strong>DispatcherServlet</strong> as Spring MVC's front controller — a common exam point.</li>
+                    <li>Mistake: treating them as competitors. They are <strong>layers</strong> that work together.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"Core → MVC → Boot"</strong> = Engine → Web → Easy launcher.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q9 ================= -->
+      <section class="question-section" id="u5-q9">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q9">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q9</span>
+                Create a JSP program with JSP directives, declarations, and scriptlets.
+              </button>
+            </h2>
+            <div id="c-u5-q9" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>This question combines three JSP <strong>scripting elements</strong> in one page: <strong>directives, declarations and scriptlets</strong>.</p>
+                  <ul>
+                    <li><strong>Directive</strong> <code>&lt;%@ ... %&gt;</code> — configures the page at translation time (e.g. <code>&lt;%@ page import="..." %&gt;</code>).</li>
+                    <li><strong>Declaration</strong> <code>&lt;%! ... %&gt;</code> — declares <strong>instance variables and methods</strong> that become members of the generated Servlet class. Used to define reusable methods/fields.</li>
+                    <li><strong>Scriptlet</strong> <code>&lt;% ... %&gt;</code> — contains <strong>Java statements</strong> that go inside the <code>_jspService()</code> method and execute on <strong>every request</strong>.</li>
+                  </ul>
+                  <p><strong>Key difference (declaration vs scriptlet):</strong></p>
+                  <ul>
+                    <li>A <strong>declaration</strong> defines methods/fields <em>outside</em> the service method (class level) — written <strong>once</strong>.</li>
+                    <li>A <strong>scriptlet</strong> runs code <em>inside</em> the service method — executes <strong>each request</strong>.</li>
+                  </ul>
+                  <p>So a declaration is ideal for a <strong>helper method</strong> or counter variable, while a scriptlet is used for <strong>logic that runs per request</strong> (loops, conditions, calling methods). Combined with an <strong>expression tag</strong> <code>&lt;%= %&gt;</code> to print results, these elements let a single JSP both define logic and produce dynamic output — though best practice limits scriptlets in favour of JSTL/EL.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Where Each Element Lands in the Servlet</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box app">&lt;%@ page %&gt; Directive <small>→ imports / class config</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box process">&lt;%! int count; String fn(){...} %&gt; Declaration <small>→ class-level members (once)</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box db">&lt;% for(...) {...} %&gt; Scriptlet <small>→ inside _jspService() (per request)</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">&lt;%= value %&gt; Expression <small>→ writes to response</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>counter.jsp</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;%-- DIRECTIVE: page configuration + import --%&gt;
+&lt;%@ page language="java" contentType="text/html; charset=UTF-8"
+         import="java.util.*" %&gt;
+
+&lt;%-- DECLARATION: class-level field + method (defined once) --%&gt;
+&lt;%!
+    int visits = 0;                       // instance variable
+    int square(int n) { return n * n; }   // reusable method
+%&gt;
+
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2&gt;JSP Directives, Declarations &amp; Scriptlets&lt;/h2&gt;
+
+  &lt;%-- SCRIPTLET: runs on every request --%&gt;
+  &lt;%
+      visits++;                            // increment counter each request
+      out.println("&lt;p&gt;Page visits: " + visits + "&lt;/p&gt;");
+
+      // a loop printing squares using the declared method
+      for (int i = 1; i &lt;= 5; i++) {
+          out.println("&lt;p&gt;Square of " + i + " = " + square(i) + "&lt;/p&gt;");
+      }
+  %&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Browser — rendered counter.jsp (2nd request)</span></div>
+                  <div class="terminal-body"><span class="prompt">GET /app/counter.jsp</span>
+<span class="info">[Tomcat] counter_jsp.class executing _jspService()</span>
+<span class="success">Rendered HTML output:</span>
+<span class="output">JSP Directives, Declarations &amp; Scriptlets</span>
+<span class="output">Page visits: 2</span>
+<span class="output">Square of 1 = 1</span>
+<span class="output">Square of 2 = 4</span>
+<span class="output">Square of 3 = 9</span>
+<span class="output">Square of 4 = 16</span>
+<span class="output">Square of 5 = 25</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Memorise the symbols: <strong>Directive <code>&lt;%@%&gt;</code>, Declaration <code>&lt;%! %&gt;</code>, Scriptlet <code>&lt;% %&gt;</code>, Expression <code>&lt;%= %&gt;</code></strong>.</li>
+                    <li>State that a <strong>declaration is class-level (runs once)</strong> while a <strong>scriptlet runs per request</strong> — favourite comparison.</li>
+                    <li>Mistake: putting a method definition in a scriptlet — methods go in a <strong>declaration</strong>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"@ = at-config, ! = declare, blank = code, = = print."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q10 ================= -->
+      <section class="question-section" id="u5-q10">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u5-q10">
+                <span class="badge text-white me-2" style="background:var(--unit5)">Q10</span>
+                Create a basic Spring MVC application with controller and view.
+              </button>
+            </h2>
+            <div id="c-u5-q10" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>basic Spring MVC application</strong> follows the <strong>Model–View–Controller</strong> pattern using Spring's web module. The central component is the <strong>DispatcherServlet (front controller)</strong>, which receives every request and delegates it.</p>
+                  <p><strong>Working flow:</strong></p>
+                  <ul>
+                    <li>1. The request reaches the <strong>DispatcherServlet</strong>.</li>
+                    <li>2. It consults the <strong>HandlerMapping</strong> to find the matching <code>@Controller</code> method.</li>
+                    <li>3. The <strong>Controller</strong> runs logic, adds data to the <strong>Model</strong>, and returns a <strong>view name</strong>.</li>
+                    <li>4. The <strong>ViewResolver</strong> maps that name to an actual page (e.g. <code>welcome.jsp</code>).</li>
+                    <li>5. The <strong>View</strong> renders the Model data and the response goes back to the browser.</li>
+                  </ul>
+                  <p><strong>Key annotations:</strong> <code>@Controller</code> marks the class as a web controller; <code>@RequestMapping</code> / <code>@GetMapping</code> map URLs to methods; <code>Model</code> carries data to the view; <code>@RequestParam</code> reads query parameters. The Controller returns a <strong>logical view name</strong>, not HTML, keeping presentation separate. This separation is exactly what MVC provides — the Controller handles logic, the View (JSP/Thymeleaf) handles display, and Spring wires them through the DispatcherServlet and ViewResolver.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Spring MVC Request Flow</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">DispatcherServlet<br><small>Front Controller</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">@Controller<br><small>+ Model</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">@Controller<br><small>returns view name</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box db">ViewResolver<br><small>name → JSP</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">View (JSP)<br><small>renders Model</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box client">Browser</div>
+                </div>
+                <p class="flow-label">DispatcherServlet → Controller → ViewResolver → View → Browser</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>HelloController.java + view config</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== CONTROLLER =====
+package com.example.demo;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+@Controller
+public class HelloController {
+
+    @GetMapping("/welcome")                  // maps GET /welcome
+    public String welcome(@RequestParam(defaultValue = "Guest") String name,
+                          Model model) {
+        model.addAttribute("name", name);    // add data to the Model
+        model.addAttribute("course", "Web Technology");
+        return "welcome";                     // logical VIEW name
+    }
+}</code></pre>
+                </div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>welcome.jsp (View) + application.properties</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;%-- ===== VIEW: welcome.jsp ===== --&gt;
+&lt;html&gt;
+&lt;body&gt;
+  &lt;h2&gt;Welcome to Spring MVC!&lt;/h2&gt;
+  &lt;!-- EL reads attributes added by the Controller's Model --&gt;
+  &lt;p&gt;Hello, ${name}!&lt;/p&gt;
+  &lt;p&gt;Course: ${course}&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+&lt;!-- ===== application.properties : ViewResolver config ===== --&gt;
+&lt;!-- maps "welcome" -&gt; /WEB-INF/views/welcome.jsp --&gt;
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Spring Boot — Spring MVC console</span></div>
+                  <div class="terminal-body"><span class="success"> :: Spring Boot ::                (v3.2.0)</span>
+<span class="info">INFO  Initializing Spring DispatcherServlet 'dispatcherServlet'</span>
+<span class="info">INFO  Mapped "{[/welcome]}" onto welcome(String, Model)</span>
+<span class="success">INFO  Tomcat started on port(s): 8080 (http)</span>
+<span class="prompt">GET http://localhost:8080/welcome?name=Riya</span>
+<span class="warn">INFO  Controller returned view name 'welcome'</span>
+<span class="warn">INFO  ViewResolver -&gt; /WEB-INF/views/welcome.jsp</span>
+<span class="success">Rendered HTML:</span>
+<span class="output">  Welcome to Spring MVC!</span>
+<span class="output">  Hello, Riya!</span>
+<span class="output">  Course: Web Technology</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Always name the <strong>5 components</strong>: DispatcherServlet, HandlerMapping, Controller, ViewResolver, View.</li>
+                    <li>The Controller returns a <strong>logical view name</strong> (a String), not HTML — the ViewResolver maps it to a JSP.</li>
+                    <li>Mistake: returning HTML from <code>@Controller</code>. Use <code>@RestController</code> only when returning raw data, not views.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"D.H.C.V.V"</strong> — Dispatcher, Handler, Controller, ViewResolver, View.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center my-5">
+        <a href="../index.html" class="btn btn-study" style="background:var(--unit1);border:none;color:#fff;width:auto;padding:0.6rem 1.6rem">
+          <i class="bi bi-house-door me-1"></i> Back to Home
+        </a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <p class="mb-1"><i class="bi bi-book-half me-2" style="color:var(--unit5)"></i><strong>Web Technology ETE Study Guide</strong></p>
+    <p class="mb-0" style="font-size:0.8rem;">Made for ETE 2026 · Unit 5 of 5 · 10 Questions Completed</p>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

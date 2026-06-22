@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 4: Servlets, JSP &amp; JDBC — WebTech ETE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-unit="4">
+
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top main-navbar">
+  <div class="container-fluid px-lg-4">
+    <a class="navbar-brand" href="../index.html"><i class="bi bi-book-half me-2"></i>WebTech ETE</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link u1" href="../unit1/index.html">Unit 1</a></li>
+        <li class="nav-item"><a class="nav-link u2" href="../unit2/index.html">Unit 2</a></li>
+        <li class="nav-item"><a class="nav-link u3" href="../unit3/index.html">Unit 3</a></li>
+        <li class="nav-item"><a class="nav-link u4 active" href="../unit4/index.html">Unit 4</a></li>
+        <li class="nav-item"><a class="nav-link u5" href="../unit5/index.html">Unit 5</a></li>
+      </ul>
+    </div>
+    <button id="theme-toggle" class="ms-3" onclick="toggleTheme()"><i class="bi bi-moon-fill"></i></button>
+  </div>
+</nav>
+
+<!-- Unit Hero -->
+<section class="unit-hero">
+  <div class="container-fluid px-lg-4">
+    <span class="unit-badge text-white" style="background:var(--unit4)"><i class="bi bi-4-circle-fill me-1"></i> UNIT 4</span>
+    <h1 class="mt-2">Servlets, JSP &amp; JDBC</h1>
+    <p class="mb-0" style="color:var(--text-secondary)">Apache Tomcat · Client vs Server Scripting · Servlet Life Cycle · JDBC Architecture · AJAX · jQuery · Session Tracking</p>
+  </div>
+</section>
+
+<div class="container-fluid px-lg-4">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <nav class="col-lg-3 col-xl-3 sidebar" id="sidebar">
+      <div class="sidebar-heading">Unit 4 — Questions</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#u4-q1">Q1. Apache Tomcat Architecture</a>
+        <a class="nav-link" href="#u4-q2">Q2. Client vs Server Scripting</a>
+        <a class="nav-link" href="#u4-q3">Q3. Servlet Life Cycle</a>
+        <a class="nav-link" href="#u4-q4">Q4. JDBC Architecture</a>
+        <a class="nav-link" href="#u4-q5">Q5. Servlet Request &amp; Response Handling</a>
+        <a class="nav-link" href="#u4-q6">Q6. Deploying Servlet / JSP Application</a>
+        <a class="nav-link" href="#u4-q7">Q7. Servlet Initialization Parameters</a>
+        <a class="nav-link" href="#u4-q8">Q8. JDBC Database Connection</a>
+        <a class="nav-link" href="#u4-q9">Q9. jQuery hide, show &amp; toggle</a>
+        <a class="nav-link" href="#u4-q10">Q10. Advantages of AJAX</a>
+        <a class="nav-link" href="#u4-q11">Q11. JDBC + DBConnection + Servlets</a>
+        <a class="nav-link" href="#u4-q12">Q12. AJAX Dynamic Content Loading</a>
+        <a class="nav-link" href="#u4-q13">Q13. Deploy with Apache Tomcat</a>
+        <a class="nav-link" href="#u4-q14">Q14. Servlets + Sessions + JDBC App</a>
+        <a class="nav-link" href="#u4-q15">Q15. Session Tracking Techniques</a>
+      </nav>
+    </nav>
+
+    <!-- Content -->
+    <main class="col-lg-9 col-xl-9 content-area">
+
+      <!-- ================= Q1 ================= -->
+      <section class="question-section" id="u4-q1">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q1">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q1</span>
+                Explain the architecture of Apache Tomcat with a neat diagram.
+              </button>
+            </h2>
+            <div id="c-u4-q1" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Apache Tomcat</strong> is an open-source <strong>Servlet container</strong> and <strong>web server</strong> that implements the <strong>Jakarta Servlet</strong>, <strong>JSP</strong>, and <strong>WebSocket</strong> specifications. It provides a pure Java HTTP web server environment for running Java web applications.</p>
+                  <p><strong>Core architectural components:</strong></p>
+                  <ul>
+                    <li><strong>Catalina (Servlet Container):</strong> The heart of Tomcat — manages the <strong>servlet life cycle</strong>, handles <strong>request dispatching</strong>, and enforces <strong>security constraints</strong>. It contains the <strong>Engine, Host, Context</strong> and <strong>Wrapper</strong> containers in a hierarchical pipeline.</li>
+                    <li><strong>Coyote (HTTP Connector):</strong> The <strong>HTTP connector</strong> that listens on a TCP port (default 8080) for incoming HTTP requests, parses them into <strong>HttpServletRequest</strong> objects, and sends <strong>HttpServletResponse</strong> objects back to the client.</li>
+                    <li><strong>Jasper (JSP Engine):</strong> The <strong>JSP compiler</strong> that translates <code>.jsp</code> files into Java <code>Servlet</code> source code, then compiles them into <code>.class</code> files for execution. Jasper handles the entire JSP-to-Servlet translation pipeline.</li>
+                    <li><strong>Cluster:</strong> Supports session replication and load balancing across multiple Tomcat instances for high availability and scalability.</li>
+                  </ul>
+                  <p>The architecture follows a <strong>layered, modular</strong> design: the <strong>Connector</strong> receives raw HTTP requests, hands them to the <strong>Engine</strong>, which routes them through the <strong>Host → Context → Wrapper</strong> hierarchy to the target <strong>Servlet</strong>. The response flows back along the same path. This separation allows Tomcat to serve static content efficiently while also supporting dynamic Servlet/JSP processing, security realms, and clustering — all in a single server process.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Tomcat Architecture Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">HTTP Request<br><small>Port 8080</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">Coyote<br><small>HTTP Connector</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">Catalina<br><small>Servlet Container</small></div>
+                </div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box neutral" style="min-width:180px">Engine (localhost)</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box neutral" style="min-width:180px">Host (www.example.com)</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box neutral" style="min-width:180px">Context (/myapp)</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green" style="min-width:180px">Wrapper (MyServlet)</div>
+                </div>
+                <p class="flow-label">HTTP Request flows: Connector → Engine → Host → Context → Wrapper → Servlet</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>server.xml (Tomcat configuration — Catalina engine + Coyote connector)</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;!-- ===== server.xml (conf/server.xml) ===== --&gt;
+&lt;!-- Coyote HTTP Connector: listens on port 8080 --&gt;
+&lt;Connector port="8080" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443" /&gt;
+
+&lt;!-- Catalina Engine: processes requests --&gt;
+&lt;Engine name="Catalina" defaultHost="localhost"&gt;
+
+  &lt;!-- Virtual Host --&gt;
+  &lt;Host name="localhost" appBase="webapps"
+        unpackWARs="true" autoDeploy="true"&gt;
+
+    &lt;!-- Context: maps a web application --&gt;
+    &lt;Context path="/myapp" docBase="myapp"&gt;
+      &lt;!-- Wrapper configuration per servlet --&gt;
+    &lt;/Context&gt;
+  &lt;/Host&gt;
+&lt;/Engine&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Apache Tomcat — startup console</span></div>
+                  <div class="terminal-body"><span class="info">INFO: Starting Servlet Engine: Apache Tomcat/10.1.x</span>
+<span class="output">INFO: Initializing Coyote HTTP/1.1 on port 8080</span>
+<span class="info">INFO: Starting service [Catalina]</span>
+<span class="output">INFO: Deploying web application [/myapp]</span>
+<span class="warn">INFO: Jasper JSP engine initialized</span>
+<span class="success">INFO: Server startup in [742 ms]</span>
+<span class="output">Listening for requests on http://localhost:8080</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Name the <strong>three core components</strong>: Catalina (servlet engine), Coyote (HTTP connector), Jasper (JSP engine).</li>
+                    <li>Draw the <strong>Engine → Host → Context → Wrapper</strong> hierarchy — this is a guaranteed diagram question.</li>
+                    <li>Mistake: confusing Tomcat (a servlet container) with a full Java EE application server (like JBoss/WildFly). Tomcat does not include an EJB container.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"C.C.J"</strong> — Catalina, Coyote, Jasper.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q2 ================= -->
+      <section class="question-section" id="u4-q2">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q2">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q2</span>
+                Distinguish between client-side scripting and server-side scripting.
+              </button>
+            </h2>
+            <div id="c-u4-q2" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Client-side scripting</strong> refers to code that runs on the <strong>user's browser</strong> (client machine), while <strong>server-side scripting</strong> runs on the <strong>web server</strong>. Both generate dynamic web content but operate in fundamentally different environments with distinct trade-offs.</p>
+                  <p><strong>Client-side scripting (e.g. JavaScript):</strong></p>
+                  <ul>
+                    <li><strong>Execution location:</strong> In the <strong>browser</strong> after the page is downloaded. The source code is visible to the user.</li>
+                    <li><strong>Speed:</strong> Very fast after loading — no network round trip for each action. UI updates are instant.</li>
+                    <li><strong>Capabilities:</strong> Can manipulate the DOM, handle events, validate forms, create animations, and make AJAX calls. Cannot access server files or databases directly.</li>
+                    <li><strong>Security:</strong> Less secure — code is exposed and can be viewed/modified by the user.</li>
+                    <li><strong>Example languages:</strong> JavaScript, TypeScript, jQuery, React.</li>
+                  </ul>
+                  <p><strong>Server-side scripting (e.g. Java Servlets, JSP, PHP):</strong></p>
+                  <ul>
+                    <li><strong>Execution location:</strong> On the <strong>web server</strong> before the response is sent to the browser. The source code is never visible to the client.</li>
+                    <li><strong>Speed:</strong> Slower per interaction — each action requires a request-response cycle over the network.</li>
+                    <li><strong>Capabilities:</strong> Can access databases, files, session data, and perform business logic. Cannot directly manipulate the browser DOM.</li>
+                    <li><strong>Security:</strong> More secure — code stays on the server; only output HTML is sent to the client.</li>
+                    <li><strong>Example languages:</strong> Java Servlets, JSP, PHP, Python (Django), Node.js, ASP.NET.</li>
+                  </ul>
+                  <p>Modern web applications <strong>combine both</strong>: server-side code handles data processing and storage (the "backend"), while client-side JavaScript provides a responsive, interactive user interface (the "frontend"). This separation is the foundation of the <strong>client-server</strong> and <strong>MVC</strong> architectures.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Comparison Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:170px">CLIENT-SIDE<br><small>Browser (JavaScript)<br>Visible code · Fast UI<br>No DB access</small></div>
+                  <div class="flow-box neutral">VS</div>
+                  <div class="flow-box server" style="min-width:170px">SERVER-SIDE<br><small>Server (Java/PHP)<br>Hidden code · DB access<br>Business logic</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser runs JS → UI updates</div>
+                  <div class="flow-arrow">⇄</div>
+                  <div class="flow-box server">Server runs Servlet → DB queries</div>
+                </div>
+                <p class="flow-label">Both work together: client handles UI, server handles data/logic</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>client.js vs server.jsp (comparison)</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">// ===== CLIENT-SIDE (JavaScript in browser) =====
+// Runs on the user's machine — visible in browser dev tools
+function validateForm() {
+  let name = document.getElementById('name').value;
+  if (name.length < 3) {
+    alert('Name must be at least 3 characters');
+    return false;  // prevents form submission
+  }
+  return true;
+}
+
+// ===== SERVER-SIDE (Java Servlet) =====
+// Runs on the server — source is hidden from users
+@WebServlet("/register")
+public class RegisterServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+        String name = req.getParameter("name");
+        // Business logic — database access on the server
+        UserDAO dao = new UserDAO();
+        dao.saveUser(name);               // write to DB (server-side only)
+        req.setAttribute("msg", "User " + name + " registered!");
+        req.getRequestDispatcher("done.jsp").forward(req, res);
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Client vs Server — execution trace</span></div>
+                  <div class="terminal-body"><span class="prompt">[CLIENT] Browser loads page</span>
+<span class="output">[CLIENT] JavaScript: validateForm() — checks input length</span>
+<span class="success">[CLIENT] Validation passed</span>
+<span class="prompt">[NETWORK] POST /register  name=Riya</span>
+<span class="warn">[SERVER] RegisterServlet.doPost() invoked</span>
+<span class="warn">[SERVER] UserDAO.saveUser("Riya") — writing to DB</span>
+<span class="success">[SERVER] Forward to done.jsp — response sent</span>
+<span class="output">[CLIENT] Browser renders response HTML</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>State the key difference with a one-liner: <strong>"Client-side runs in the browser (visible); Server-side runs on the server (hidden)."</strong></li>
+                    <li>Give <strong>examples of each</strong>: JavaScript (client) vs Servlet/JSP (server).</li>
+                    <li>Mistake: saying client-side cannot access databases — it cannot directly, but it can via AJAX to a server API.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"Client = UI (visible, fast); Server = Data (hidden, secure)."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q3 ================= -->
+      <section class="question-section" id="u4-q3">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q3">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q3</span>
+                Explain the servlet life cycle and describe its different phases.
+              </button>
+            </h2>
+            <div id="c-u4-q3" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The <strong>Servlet life cycle</strong> defines the sequence of methods invoked by the servlet container from the moment a servlet is loaded till it is destroyed. It is managed entirely by the <strong>container (e.g. Apache Tomcat's Catalina)</strong>.</p>
+                  <p><strong>Three main phases:</strong></p>
+                  <ul>
+                    <li><strong>1. Initialization (init()):</strong> Called <strong>once</strong> when the servlet is first loaded into memory. The container creates the servlet instance and calls <code>init(ServletConfig)</code>. This is where you open database connections, read configuration parameters, or set up resources. Throwing <code>ServletException</code> here prevents the servlet from being placed into service.</li>
+                    <li><strong>2. Service (service() → doGet()/doPost()):</strong> Called for <strong>each client request</strong>. The container creates <code>ServletRequest</code> and <code>ServletResponse</code> objects and passes them to <code>service()</code>, which examines the HTTP method and delegates to <code>doGet()</code>, <code>doPost()</code>, etc. This method executes the servlet's core logic — reading parameters, processing data, and writing the response.</li>
+                    <li><strong>3. Destruction (destroy()):</strong> Called <strong>once</strong> when the container decides to remove the servlet (server shutdown, reload). Use this to <strong>clean up</strong> — close DB connections, release file handles, stop background threads. After <code>destroy()</code> returns, the servlet is eligible for garbage collection.</li>
+                  </ul>
+                  <p>The container also manages <strong>loading</strong> (either eagerly via <code>load-on-startup</code> in <code>web.xml</code> or lazily on first request) and <strong>multithreading</strong>: since the servlet is a singleton, the <code>service()</code> method runs <strong>concurrently</strong> for multiple requests — the developer is responsible for thread safety when accessing shared instance variables.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Servlet Life Cycle Phases</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box process">1. Loading &amp; Instantiation<br><small>Container loads servlet class</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box app">2. init() — Initialization (once)<br><small>Setup resources, config</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box db">3. service() → doGet/doPost (per request)<br><small>Handle client requests</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">4. destroy() — Cleanup (once)<br><small>Close connections, release</small></div>
+                </div>
+                <p class="flow-label">A servlet is loaded once, serves many requests, then destroyed once</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>LifeCycleServlet.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+
+@WebServlet("/lifecycle")
+public class LifeCycleServlet extends HttpServlet {
+
+    // 1. INIT — called once when servlet is first loaded
+    @Override
+    public void init(ServletConfig config) throws ServletException {
+        super.init(config);
+        System.out.println("=== INIT: Servlet loaded. " +
+            "Opening DB connection...");
+        // e.g., DriverManager.getConnection(...);
+    }
+
+    // 2. SERVICE — called per-request, dispatches to doGet/doPost
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+        System.out.println("=== SERVICE: Handling GET request");
+        res.setContentType("text/html");
+        res.getWriter().println("&lt;h2&gt;Servlet Life Cycle Demo&lt;/h2&gt;");
+    }
+
+    // 3. DESTROY — called once before removal
+    @Override
+    public void destroy() {
+        System.out.println("=== DESTROY: Closing DB connection...");
+        // e.g., connection.close();
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Apache Tomcat — servlet life cycle log</span></div>
+                  <div class="terminal-body"><span class="prompt">[Tomcat] Deploying /myapp</span>
+<span class="warn">[Tomcat] Loading LifeCycleServlet (first request)</span>
+<span class="success">=== INIT: Servlet loaded. Opening DB connection...</span>
+<span class="output">GET /lifecycle — user Riya</span>
+<span class="info">=== SERVICE: Handling GET request → HTML response</span>
+<span class="output">GET /lifecycle — user Amit</span>
+<span class="info">=== SERVICE: Handling GET request → HTML response</span>
+<span class="prompt">[Tomcat] Reloading /myapp</span>
+<span class="warn">=== DESTROY: Closing DB connection...</span>
+<span class="success">LifeCycleServlet destroyed and garbage collected</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Memorise the <strong>three methods</strong>: <code>init()</code>, <code>service()</code> (or <code>doGet/doPost</code>), <code>destroy()</code>.</li>
+                    <li>Emphasise that <strong>init() and destroy() run once; service() runs per request</strong>. This is the most common exam distinction.</li>
+                    <li>Mistake: forgetting that the servlet is a <strong>singleton</strong> — instance variables are shared across concurrent requests, so thread safety matters.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"I.S.D"</strong> — Init, Service, Destroy.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q4 ================= -->
+      <section class="question-section" id="u4-q4">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q4">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q4</span>
+                Explain the JDBC architecture with a neat diagram.
+              </button>
+            </h2>
+            <div id="c-u4-q4" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>JDBC (Java Database Connectivity)</strong> is a <strong>Java API</strong> that provides a standard way to connect Java applications with relational databases. It follows a <strong>driver-based architecture</strong> that decouples application code from database-specific implementation.</p>
+                  <p><strong>Architecture layers (top-down):</strong></p>
+                  <ul>
+                    <li><strong>Java Application:</strong> Your Java code that uses the JDBC API to execute SQL queries and process results. The application interacts only with the abstract JDBC interfaces — it does not know which database vendor is underneath.</li>
+                    <li><strong>JDBC API (java.sql package):</strong> A set of standard interfaces — <code>DriverManager</code>, <code>Connection</code>, <code>Statement</code>, <code>PreparedStatement</code>, <code>CallableStatement</code>, <code>ResultSet</code>. These are the same regardless of the database.</li>
+                    <li><strong>JDBC Driver Manager:</strong> <code>DriverManager</code> class manages a list of registered <strong>JDBC drivers</strong>. When you call <code>getConnection()</code>, it iterates through registered drivers and picks the one that can handle the given <strong>JDBC URL</strong>.</li>
+                    <li><strong>JDBC Drivers:</strong> Vendor-specific implementations of the JDBC interfaces. There are four types: <strong>Type 1</strong> (JDBC-ODBC bridge — deprecated), <strong>Type 2</strong> (native API, partly Java), <strong>Type 3</strong> (network protocol, pure Java), and <strong>Type 4</strong> (pure Java, direct-to-database — the most common, e.g. MySQL Connector/J, PostgreSQL JDBC).</li>
+                    <li><strong>Database:</strong> The actual DBMS (MySQL, Oracle, PostgreSQL, etc.) that stores and manages data.</li>
+                  </ul>
+                  <p><strong>Key point:</strong> JDBC provides <strong>database independence</strong>. Changing the database vendor only requires swapping the driver JAR and changing the connection URL — your Java code stays the same. This is the fundamental advantage of the JDBC layered architecture.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> JDBC Architecture Diagram</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box app">Java Application<br><small>Your Code (DAO / Servlet)</small></div>
+                  <div class="flow-arrow">↓ uses JDBC API</div>
+                  <div class="flow-box neutral">JDBC API<br><small>DriverManager · Connection · Statement · ResultSet</small></div>
+                  <div class="flow-arrow">↓ managed by</div>
+                  <div class="flow-box process">JDBC Driver Manager<br><small>loads and manages drivers</small></div>
+                  <div class="flow-arrow">↓ delegates to</div>
+                  <div class="flow-box green" style="min-width:200px">JDBC Driver (Type 4 — Pure Java)<br><small>MySQL Connector/J · PostgreSQL JDBC</small></div>
+                  <div class="flow-arrow">↓ connects to</div>
+                  <div class="flow-box db">Database<br><small>MySQL / Oracle / PostgreSQL</small></div>
+                </div>
+                <p class="flow-label">The Driver Manager acts as a bridge between the JDBC API and the vendor-specific driver</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>JDBC connection example</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">import java.sql.*;
+
+public class JdbcDemo {
+    public static void main(String[] args) throws Exception {
+        // 1. Load the JDBC driver (optional in modern JDBC 4+)
+        Class.forName("com.mysql.cj.jdbc.Driver");
+
+        // 2. Get connection via DriverManager
+        String url = "jdbc:mysql://localhost:3306/mydb";
+        String user = "root";
+        String pass = "password";
+        Connection conn = DriverManager.getConnection(url, user, pass);
+
+        // 3. Create a Statement
+        Statement stmt = conn.createStatement();
+
+        // 4. Execute query and get ResultSet
+        ResultSet rs = stmt.executeQuery("SELECT * FROM students");
+
+        // 5. Process results
+        while (rs.next()) {
+            System.out.println(rs.getInt("id") + " - " +
+                               rs.getString("name"));
+        }
+
+        // 6. Close resources (always in reverse order)
+        rs.close();  stmt.close();  conn.close();
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>JDBC — console output</span></div>
+                  <div class="terminal-body"><span class="info">[JDBC] Loading driver: com.mysql.cj.jdbc.Driver</span>
+<span class="success">[JDBC] Registered MySQL JDBC driver</span>
+<span class="info">[JDBC] Opening connection to jdbc:mysql://localhost:3306/mydb</span>
+<span class="success">[JDBC] Connected! — Connection established</span>
+<span class="prompt">SQL> SELECT * FROM students</span>
+<span class="output">1 - Riya Sharma</span>
+<span class="output">2 - Amit Patel</span>
+<span class="output">3 - Priya Singh</span>
+<span class="warn">[JDBC] Closing ResultSet, Statement, Connection</span>
+<span class="success">Resources released — connection returned to pool</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Draw the <strong>layered diagram</strong> (App → JDBC API → DriverManager → Driver → DB) — it is a frequently asked diagram.</li>
+                    <li>Name <strong>4 types of JDBC drivers</strong> and say <strong>Type 4 (pure Java)</strong> is most commonly used.</li>
+                    <li>Mistake: forgetting to close resources (Connection, Statement, ResultSet) — always mention <strong>closing in reverse order</strong>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"L.G.E.C"</strong> — Load driver, Get connection, Execute query, Close resources.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q5 ================= -->
+      <section class="question-section" id="u4-q5">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q5">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q5</span>
+                Explain servlet request and response handling with an example.
+              </button>
+            </h2>
+            <div id="c-u4-q5" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>In Java Servlets, every HTTP request is encapsulated in an <strong>HttpServletRequest</strong> object and every response is written via an <strong>HttpServletResponse</strong> object. These two objects are the fundamental interface between the servlet and the HTTP protocol.</p>
+                  <p><strong>HttpServletRequest — receiving data from the client:</strong></p>
+                  <ul>
+                    <li><code>getParameter(name)</code> — reads a single query/form parameter value.</li>
+                    <li><code>getParameterValues(name)</code> — reads multiple values for the same parameter (e.g. checkboxes).</li>
+                    <li><code>getMethod()</code> — returns GET, POST, PUT, etc.</li>
+                    <li><code>getRequestURI()</code> / <code>getQueryString()</code> — URL details.</li>
+                    <li><code>getSession()</code> — returns the current <code>HttpSession</code>.</li>
+                    <li><code>getHeader(name)</code> — reads request headers.</li>
+                    <li><code>getReader()</code> / <code>getInputStream()</code> — reads the request body.</li>
+                  </ul>
+                  <p><strong>HttpServletResponse — sending data to the client:</strong></p>
+                  <ul>
+                    <li><code>setContentType(type)</code> — sets the MIME type (e.g. <code>text/html</code>, <code>application/json</code>).</li>
+                    <li><code>getWriter()</code> — returns a <code>PrintWriter</code> for writing text output.</li>
+                    <li><code>getOutputStream()</code> — returns a <code>ServletOutputStream</code> for binary output (images, files).</li>
+                    <li><code>sendRedirect(url)</code> — sends a 302 redirect to another URL.</li>
+                    <li><code>setHeader(name, value)</code> — sets response headers.</li>
+                    <li><code>setStatus(sc)</code> — sets the HTTP status code (200, 404, 500, etc.).</li>
+                  </ul>
+                  <p>The typical flow: the servlet reads parameters from the <strong>request</strong>, processes them (calling business logic / DAO layers), sets response content type, and writes the HTML (or JSON, XML) to the <strong>response</strong> writer. In an MVC pattern, the servlet forwards to a JSP instead of writing HTML directly, but the request and response objects are passed along.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Request-Response Flow</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser<br><small>HTTP Request</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">Servlet<br><small>doGet() / doPost()</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">Logic / DAO<br><small>Process data</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">Logic / DAO<br><small>Returns result</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">Servlet<br><small>Writes to response</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box client">Browser<br><small>HTTP Response</small></div>
+                </div>
+                <p class="flow-label">ServletRequest carries input → Servlet processes → ServletResponse carries output</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>GreetServlet.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">@WebServlet("/greet")
+public class GreetServlet extends HttpServlet {
+
+    // Handles GET requests: reads query params, writes HTML response
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        // ---- REQUEST HANDLING: read input ----
+        String name = req.getParameter("name");         // ?name=Riya
+        String lang = req.getParameter("lang");         // ?lang=en
+
+        // ---- RESPONSE HANDLING: write output ----
+        res.setContentType("text/html");                // set MIME type
+        PrintWriter out = res.getWriter();              // get writer
+
+        out.println("&lt;html&gt;&lt;body&gt;");
+        out.println("&lt;h2&gt;Hello, " + name + "!&lt;/h2&gt;");
+        out.println("&lt;p&gt;Language: " + lang + "&lt;/p&gt;");
+        out.println("&lt;/body&gt;&lt;/html&gt;");
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Apache Tomcat — request/response log</span></div>
+                  <div class="terminal-body"><span class="prompt">GET /greet?name=Riya&lang=en</span>
+<span class="info">[REQUEST] Parameter name = "Riya"</span>
+<span class="info">[REQUEST] Parameter lang = "en"</span>
+<span class="output">[RESPONSE] Content-Type: text/html</span>
+<span class="output">[RESPONSE] Writer opened — writing HTML...</span>
+<span class="success">HTTP/1.1 200 OK</span>
+<span class="output">Body: &lt;html&gt;&lt;body&gt;&lt;h2&gt;Hello, Riya!&lt;/h2&gt;...</span>
+<span class="success">Response sent successfully (142 bytes)</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Mention <strong>both request methods</strong>: <code>getParameter()</code> and <code>getWriter()</code> — the former reads input, the latter writes output.</li>
+                    <li>Always <strong>set Content-Type</strong> before writing — the default is <code>text/html</code> but <code>text/plain</code> or <code>application/json</code> are also common.</li>
+                    <li>Mistake: calling <code>getWriter()</code> before <code>setContentType()</code> — the order matters and some containers will throw <code>IllegalStateException</code>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"Read request params → Write response output."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q6 ================= -->
+      <section class="question-section" id="u4-q6">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q6">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q6</span>
+                Explain the steps involved in deploying a basic Servlet or JSP application.
+              </button>
+            </h2>
+            <div id="c-u4-q6" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Deploying a <strong>Servlet/JSP web application</strong> to Apache Tomcat involves creating a standard <strong>WAR (Web ARchive)</strong> file structure and placing it in the correct Tomcat directory. The process ensures the container can discover and run all servlets, JSPs, and static resources.</p>
+                  <p><strong>Step-by-step deployment process:</strong></p>
+                  <ul>
+                    <li><strong>1. Create project structure:</strong> Follow the standard Java EE directory layout: all Java source goes under <code>src/main/java</code>, JSP files and static resources under <code>webapp</code> (or <code>WebContent</code>).</li>
+                    <li><strong>2. Write the deployment descriptor:</strong> Create <code>WEB-INF/web.xml</code> (or use <code>@WebServlet</code> annotations) to declare servlets, URL mappings, and configuration. If using annotations, <code>web.xml</code> is optional but must have <code>version="6.0"</code> metadata-complete="false".</li>
+                    <li><strong>3. Compile and package:</strong> Use <code>javac</code> or a build tool (Maven/Gradle) to compile the <code>.java</code> files into <code>.class</code> files. Place them in <code>WEB-INF/classes</code>. Library JARs go in <code>WEB-INF/lib</code>. Package everything into a <code>.war</code> file using the <code>jar</code> command or Maven's <code>package</code> goal.</li>
+                    <li><strong>4. Deploy to Tomcat:</strong> Copy the WAR file to <code>$CATALINA_HOME/webapps/</code>. Tomcat automatically detects the WAR, extracts it (into a directory with the same name), and deploys the application. Alternatively, deploy via the Tomcat Manager web app.</li>
+                    <li><strong>5. Start/restart Tomcat:</strong> Run <code>startup.sh</code> (Linux/Mac) or <code>startup.bat</code> (Windows). Tomcat auto-deploys the WAR. Open <code>http://localhost:8080/yourapp/</code> to access the application.</li>
+                  </ul>
+                  <p>The <strong>key artifact</strong> is the <code>WEB-INF</code> directory — it is <strong>not accessible</strong> from the browser. It contains <code>web.xml</code>, compiled classes, and library JARs. Everything outside <code>WEB-INF</code> (JSP files, HTML, images, CSS) is directly accessible to the client.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> WAR Directory Structure</div>
+                <div class="tree">
+                  <ul style="list-style:none;display:inline-block">
+                    <li><span class="node tag">myapp.war (or myapp/)</span>
+                      <ul>
+                        <li><span class="node attr">index.html / *.jsp</span></li>
+                        <li><span class="node tag">WEB-INF/</span>
+                          <ul>
+                            <li><span class="node txt">web.xml (deployment descriptor)</span></li>
+                            <li><span class="node txt">classes/ (compiled .class files)</span>
+                              <ul>
+                                <li><span class="node attr">com/example/MyServlet.class</span></li>
+                              </ul>
+                            </li>
+                            <li><span class="node txt">lib/ (JAR dependencies)</span>
+                              <ul>
+                                <li><span class="node attr">mysql-connector-java.jar</span></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <p class="flow-label">WEB-INF is protected — classes and lib JARs are invisible to the browser</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>web.xml + build command</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;!-- ===== WEB-INF/web.xml (Deployment Descriptor) ===== --&gt;
+&lt;web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         version="6.0"&gt;
+
+  &lt;display-name&gt;MyWebApp&lt;/display-name&gt;
+
+  &lt;!-- Servlet declaration + URL mapping --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.example.HelloServlet&lt;/servlet-class&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;HelloServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/hello&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+
+  &lt;!-- Welcome file list --&gt;
+  &lt;welcome-file-list&gt;
+    &lt;welcome-file&gt;index.html&lt;/welcome-file&gt;
+  &lt;/welcome-file-list&gt;
+&lt;/web-app&gt;</code></pre>
+                </div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>Package and deploy commands</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-bash"># Compile classes
+javac -cp "$CATALINA_HOME/lib/servlet-api.jar" \
+      -d WEB-INF/classes src/com/example/*.java
+
+# Package WAR
+jar -cvf myapp.war WEB-INF index.html
+
+# Deploy: copy to Tomcat's webapps directory
+cp myapp.war $CATALINA_HOME/webapps/
+
+# Start Tomcat
+$CATALINA_HOME/bin/startup.sh</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Tomcat — deployment log</span></div>
+                  <div class="terminal-body"><span class="prompt">$ cp myapp.war $CATALINA_HOME/webapps/</span>
+<span class="info">INFO: Deploying web application archive [myapp.war]</span>
+<span class="warn">INFO: Expanding myapp.war to /webapps/myapp</span>
+<span class="output">INFO: Loading servlet: com.example.HelloServlet</span>
+<span class="success">INFO: Deployment of [myapp] finished in 213 ms</span>
+<span class="prompt">App URL: http://localhost:8080/myapp/hello</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List the <strong>5 steps</strong>: Create structure → Write web.xml → Compile → Package WAR → Deploy to Tomcat.</li>
+                    <li>Draw the <strong>directory tree</strong> showing <code>WEB-INF/classes</code> and <code>WEB-INF/lib</code> — this is a common diagram question.</li>
+                    <li>Mistake: placing JSP files inside WEB-INF — they can go there (not directly accessible) or outside it (directly accessible).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"W.A.R = Web ARchive"</strong> — Servlet + JSP + web.xml packaged together.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q7 ================= -->
+      <section class="question-section" id="u4-q7">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q7">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q7</span>
+                Explain how initialization parameters are used to configure Servlets.
+              </button>
+            </h2>
+            <div id="c-u4-q7" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Servlet initialization parameters</strong> are configuration key-value pairs that are passed to a servlet at startup, before it handles any request. They allow you to <strong>externalize configuration</strong> from the Java code, making the servlet more flexible and reusable across different environments.</p>
+                  <p><strong>Two types of init parameters:</strong></p>
+                  <ul>
+                    <li><strong>Servlet-level init parameters:</strong> Defined inside the <code>&lt;servlet&gt;</code> block in <code>web.xml</code> using <code>&lt;init-param&gt;</code>. They are accessible only to that specific servlet via <code>getInitParameter(name)</code> on the <code>ServletConfig</code> object. Common uses: database connection string, file paths, API keys, email addresses.</li>
+                    <li><strong>Context-level init parameters:</strong> Defined globally in <code>&lt;context-param&gt;</code> in <code>web.xml</code>. They are accessible to <strong>all</strong> servlets and JSPs in the application via <code>getServletContext().getInitParameter(name)</code>. Common uses: application-wide settings like admin email, global upload directory.</li>
+                  </ul>
+                  <p><strong>Key methods:</strong></p>
+                  <ul>
+                    <li><code>getServletConfig().getInitParameter("paramName")</code> — reads a servlet-level parameter.</li>
+                    <li><code>getServletConfig().getInitParameterNames()</code> — lists all servlet init parameter names.</li>
+                    <li><code>getServletContext().getInitParameter("globalParam")</code> — reads a context-level parameter.</li>
+                  </ul>
+                  <p>Init parameters are resolved at deployment time. Changing a value in <code>web.xml</code> and reloading the application picks up the new value — no recompilation is needed. This separates <strong>configuration from code</strong>, a core principle of maintainable software engineering.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Init Parameter Scopes</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app" style="min-width:160px">Servlet-Init<br><small>Scoped to one servlet</small></div>
+                  <div class="flow-arrow">VS</div>
+                  <div class="flow-box green" style="min-width:160px">Context-Init<br><small>Scoped to whole app</small></div>
+                </div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box neutral">web.xml</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box process">ServletConfig (per servlet)<br><small>getInitParameter()</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box db">ServletContext (all servlets)<br><small>getInitParameter() via context</small></div>
+                </div>
+                <p class="flow-label">Context params are global; servlet params are local to one servlet</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>web.xml + ConfigServlet.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;!-- ===== web.xml: init params ===== --&gt;
+&lt;web-app&gt;
+
+  &lt;!-- CONTEXT-LEVEL param (available to ALL servlets) --&gt;
+  &lt;context-param&gt;
+    &lt;param-name&gt;adminEmail&lt;/param-name&gt;
+    &lt;param-value&gt;admin@myapp.com&lt;/param-value&gt;
+  &lt;/context-param&gt;
+
+  &lt;!-- SERVLET-LEVEL param (only ConfigServlet can see this) --&gt;
+  &lt;servlet&gt;
+    &lt;servlet-name&gt;ConfigServlet&lt;/servlet-name&gt;
+    &lt;servlet-class&gt;com.example.ConfigServlet&lt;/servlet-class&gt;
+    &lt;init-param&gt;
+      &lt;param-name&gt;dbUrl&lt;/param-name&gt;
+      &lt;param-value&gt;jdbc:mysql://localhost:3306/mydb&lt;/param-value&gt;
+    &lt;/init-param&gt;
+  &lt;/servlet&gt;
+  &lt;servlet-mapping&gt;
+    &lt;servlet-name&gt;ConfigServlet&lt;/servlet-name&gt;
+    &lt;url-pattern&gt;/config&lt;/url-pattern&gt;
+  &lt;/servlet-mapping&gt;
+&lt;/web-app&gt;</code></pre>
+                </div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>ConfigServlet.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">@WebServlet(
+    urlPatterns = "/config",
+    initParams = {
+        @WebInitParam(name = "dbUrl",
+                      value = "jdbc:mysql://localhost:3306/mydb")
+    }
+)
+public class ConfigServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+
+        // Read servlet-level init param
+        String dbUrl = getServletConfig().getInitParameter("dbUrl");
+
+        // Read context-level init param
+        String adminEmail = getServletContext()
+                              .getInitParameter("adminEmail");
+
+        res.setContentType("text/html");
+        PrintWriter out = res.getWriter();
+        out.println("&lt;h3&gt;DB URL: " + dbUrl + "&lt;/h3&gt;");
+        out.println("&lt;h3&gt;Admin Email: " + adminEmail + "&lt;/h3&gt;");
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Tomcat — init parameter resolution log</span></div>
+                  <div class="terminal-body"><span class="prompt">[Init] ConfigServlet.init() called</span>
+<span class="info">[ServletConfig] Reading init-param 'dbUrl'...</span>
+<span class="output">[ServletConfig] dbUrl = jdbc:mysql://localhost:3306/mydb</span>
+<span class="info">[ServletContext] Reading context-param 'adminEmail'...</span>
+<span class="output">[ServletContext] adminEmail = admin@myapp.com</span>
+<span class="success">Init params resolved — servlet ready</span>
+<span class="prompt">GET /config → HTML response</span>
+<span class="output">DB URL: jdbc:mysql://localhost:3306/mydb</span>
+<span class="output">Admin Email: admin@myapp.com</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Distinguish between <strong>servlet-level (ServletConfig)</strong> and <strong>context-level (ServletContext)</strong> init params.</li>
+                    <li>Show both <strong>XML-based</strong> (<code>&lt;init-param&gt;</code>) and <strong>annotation-based</strong> (<code>@WebInitParam</code>) configuration.</li>
+                    <li>Mistake: calling <code>getInitParameter()</code> on the wrong object — servlet params need <code>getServletConfig()</code>, context params need <code>getServletContext()</code>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"ServletConfig = local; ServletContext = global."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q8 ================= -->
+      <section class="question-section" id="u4-q8">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q8">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q8</span>
+                Explain the steps involved in connecting a Java application with a database using JDBC.
+              </button>
+            </h2>
+            <div id="c-u4-q8" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Connecting a Java application to a database via <strong>JDBC</strong> follows six sequential steps. These steps are the same regardless of which database vendor you use (MySQL, PostgreSQL, Oracle) — only the JDBC URL and driver class change.</p>
+                  <p><strong>The six steps:</strong></p>
+                  <ul>
+                    <li><strong>1. Load the JDBC Driver:</strong> Using <code>Class.forName("com.mysql.cj.jdbc.Driver")</code>. This registers the driver with the <code>DriverManager</code>. In JDBC 4.0+ (Java 6+), this step is optional because drivers are auto-loaded from the classpath (META-INF/services/java.sql.Driver). However, explicitly loading is still common for compatibility.</li>
+                    <li><strong>2. Create a Connection:</strong> Call <code>DriverManager.getConnection(url, user, password)</code>. The URL format is vendor-specific: <code>jdbc:mysql://host:port/dbname</code> for MySQL, <code>jdbc:postgresql://host:port/dbname</code> for PostgreSQL. This returns a <code>Connection</code> object representing a socket-level connection to the database.</li>
+                    <li><strong>3. Create a Statement:</strong> Use <code>connection.createStatement()</code> for static SQL, or <code>connection.prepareStatement(sql)</code> for parameterized queries (recommended to prevent SQL injection). A <code>Statement</code> object is the vehicle for sending SQL to the database.</li>
+                    <li><strong>4. Execute the Query:</strong> Call <code>statement.executeQuery(sql)</code> for SELECT queries (returns <code>ResultSet</code>), or <code>statement.executeUpdate(sql)</code> for INSERT/UPDATE/DELETE (returns int row count).</li>
+                    <li><strong>5. Process the ResultSet:</strong> Iterate through <code>resultSet.next()</code> and read column values with <code>getString()</code>, <code>getInt()</code>, <code>getDate()</code>, etc. Each <code>next()</code> call moves the cursor to the next row and returns <code>false</code> when no more rows remain.</li>
+                    <li><strong>6. Close Resources:</strong> Always close <code>ResultSet</code>, <code>Statement</code>, and <code>Connection</code> in <strong>reverse order</strong> of creation. Use a <code>try-with-resources</code> block (Java 7+) to ensure automatic closure even if an exception occurs. Failing to close connections leads to resource leaks and database server connection exhaustion.</li>
+                  </ul>
+                  <p>These six steps form the foundation of all JDBC-based database access in Java, whether in a standalone application or inside a Servlet/JSP web application.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> JDBC Connection Flow</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box process">1. Load Driver<br><small>Class.forName("...Driver")</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box app">2. Get Connection<br><small>DriverManager.getConnection(url, user, pass)</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box client">3. Create Statement<br><small>conn.createStatement() / prepareStatement()</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box db">4. Execute Query<br><small>executeQuery() / executeUpdate()</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">5. Process ResultSet<br><small>rs.next() → getString() / getInt()</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box neutral">6. Close Resources<br><small>rs.close() → stmt.close() → conn.close()</small></div>
+                </div>
+                <p class="flow-label">Always close resources in reverse order to prevent memory leaks</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>JdbcSteps.java — all six steps with try-with-resources</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">import java.sql.*;
+
+public class JdbcSteps {
+
+    public static void main(String[] args) {
+        String url = "jdbc:mysql://localhost:3306/college";
+        String user = "root";
+        String pass = "password";
+
+        // Step 1: Load driver (optional in JDBC 4+)
+        try { Class.forName("com.mysql.cj.jdbc.Driver"); }
+        catch (ClassNotFoundException e) { e.printStackTrace(); return; }
+
+        // Steps 2–6 inside try-with-resources (auto-close)
+        String sql = "SELECT id, name, marks FROM students WHERE marks > ?";
+
+        try (Connection conn = DriverManager.getConnection(url, user, pass);  // Step 2
+             PreparedStatement pstmt = conn.prepareStatement(sql);            // Step 3
+        ) {
+            pstmt.setInt(1, 80);                      // set parameter
+
+            try (ResultSet rs = pstmt.executeQuery()) {                     // Step 4
+                while (rs.next()) {                                         // Step 5
+                    int id = rs.getInt("id");
+                    String name = rs.getString("name");
+                    int marks = rs.getInt("marks");
+                    System.out.println(id + " | " + name + " | " + marks);
+                }
+            } // Step 6: rs closed automatically
+
+        } catch (SQLException e) { e.printStackTrace(); }
+        // Step 6: pstmt and conn closed automatically
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>JDBC — query execution log</span></div>
+                  <div class="terminal-body"><span class="info">[Step 1] Loading driver: com.mysql.cj.jdbc.Driver</span>
+<span class="success">[Step 1] Driver registered</span>
+<span class="info">[Step 2] Connecting to jdbc:mysql://localhost:3306/college</span>
+<span class="success">[Step 2] Connection established</span>
+<span class="info">[Step 3] PreparedStatement created: SELECT id, name, marks FROM students WHERE marks > ?</span>
+<span class="warn">[Step 3] Parameter 1 set to: 80</span>
+<span class="info">[Step 4] Executing query...</span>
+<span class="success">[Step 4] Query executed — ResultSet returned</span>
+<span class="output">[Step 5] Processing rows:</span>
+<span class="output">  101 | Riya Sharma | 92</span>
+<span class="output">  102 | Amit Patel  | 88</span>
+<span class="output">  105 | Priya Singh | 95</span>
+<span class="success">[Step 6] All resources closed (reverse order)</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Memorise the <strong>6 steps in order</strong> — they are a guaranteed question with steps to be listed.</li>
+                    <li>Always mention <strong>PreparedStatement</strong> over Statement for preventing <strong>SQL injection</strong>.</li>
+                    <li>Mistake: forgetting to handle <code>ClassNotFoundException</code> and <code>SQLException</code> — both are checked and must be handled.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"L.C.S.E.P.C"</strong> — Load, Connect, Statement, Execute, Process, Close.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q9 ================= -->
+      <section class="question-section" id="u4-q9">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q9">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q9</span>
+                Explain jQuery hide, show and toggle methods.
+              </button>
+            </h2>
+            <div id="c-u4-q9" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>jQuery provides a set of <strong>effect methods</strong> that allow you to <strong>animate HTML elements</strong> with minimal code. The three fundamental methods — <code>hide()</code>, <code>show()</code>, and <code>toggle()</code> — control the <strong>visibility</strong> of elements on a web page.</p>
+                  <p><strong>Method details:</strong></p>
+                  <ul>
+                    <li><strong>.hide(speed, easing, callback):</strong> Hides the matched elements by setting their <code>display</code> property to <code>none</code> (with an optional animation). Without parameters, it instantly hides. With <code>speed</code> ("slow", "fast", or milliseconds), it shrinks the element's width, height, and opacity simultaneously.</li>
+                    <li><strong>.show(speed, easing, callback):</strong> Reveals hidden elements by restoring their <code>display</code> property (usually <code>block</code> or <code>inline</code>). Like <code>hide()</code>, it supports animated reveal with optional speed and callback.</li>
+                    <li><strong>.toggle(speed, easing, callback):</strong> The smartest of the three — it <strong>checks the current visibility</strong> of the element. If visible, it hides it; if hidden, it shows it. This eliminates the need for if-else logic. With a <strong>boolean parameter</strong> <code>.toggle(true)</code> forces show and <code>.toggle(false)</code> forces hide.</li>
+                  </ul>
+                  <p><strong>Additional related effects:</strong> <code>.fadeIn()</code>, <code>.fadeOut()</code>, <code>.fadeToggle()</code> (opacity-only animation), and <code>.slideDown()</code>, <code>.slideUp()</code>, <code>.slideToggle()</code> (height-only animation). All these share the same optional speed, easing, and callback signature. The callback function is executed after the animation completes — useful for chaining further actions.</p>
+                  <p>These methods are part of jQuery's <strong>Effects</strong> module and work in all modern browsers. They abstract away the complexities of CSS transitions and JavaScript timers, allowing developers to create polished UI interactions with a single line of code.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> jQuery Effect Methods — Visual</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">.hide()<br><small>display: none</small></div>
+                  <div class="flow-arrow">⇄</div>
+                  <div class="flow-box green">.show()<br><small>display: block</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box process" style="min-width:200px">.toggle() — Smart switch<br><small>If visible → hide; if hidden → show</small></div>
+                </div>
+                <p class="flow-label">toggle() replaces the pattern: if(visible) hide() else show()</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>jquery-hide-show-toggle.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+  &lt;title&gt;jQuery Hide / Show / Toggle&lt;/title&gt;
+  &lt;script src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+
+  &lt;div id="box" style="width:200px;height:100px;
+       background:#fb8500;color:#fff;padding:10px;
+       border-radius:8px;text-align:center"&gt;
+    Hello from jQuery!
+  &lt;/div&gt;
+
+  &lt;br&gt;
+  &lt;button id="hideBtn"&gt;Hide&lt;/button&gt;
+  &lt;button id="showBtn"&gt;Show&lt;/button&gt;
+  &lt;button id="toggleBtn"&gt;Toggle&lt;/button&gt;
+
+  &lt;script&gt;
+    $(document).ready(function() {
+      $('#hideBtn').click(function() {
+        $('#box').hide(600);  // hides with 600ms animation
+      });
+      $('#showBtn').click(function() {
+        $('#box').show(600);  // shows with 600ms animation
+      });
+      $('#toggleBtn').click(function() {
+        $('#box').toggle(400, function() {
+          // callback after animation completes
+          console.log('Toggle animation done!');
+        });
+      });
+    });
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-magic me-1"></i>jQuery hide/show/toggle — interactive demo</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:260px" srcdoc="
+                    <script src='https://code.jquery.com/jquery-3.7.1.min.js'><\/script>
+                    <body style='font-family:sans-serif;padding:20px;text-align:center'>
+                      <div id='box' style='width:200px;height:80px;background:#fb8500;color:#fff;padding:10px;border-radius:8px;text-align:center;margin:10px auto;line-height:80px'>Hello from jQuery!</div>
+                      <button id='h' style='padding:8px 14px;margin:4px;border:none;background:#4361ee;color:#fff;border-radius:6px;cursor:pointer'>Hide</button>
+                      <button id='s' style='padding:8px 14px;margin:4px;border:none;background:#06d6a0;color:#fff;border-radius:6px;cursor:pointer'>Show</button>
+                      <button id='t' style='padding:8px 14px;margin:4px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer'>Toggle</button>
+                      <script>
+                        $(document).ready(function(){
+                          $('#h').click(function(){ $('#box').hide(500); });
+                          $('#s').click(function(){ $('#box').show(500); });
+                          $('#t').click(function(){ $('#box').toggle(400); });
+                        });
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li><strong>.toggle()</strong> is the most important — it checks visibility automatically and eliminates if-else logic.</li>
+                    <li>Mention the <strong>three optional parameters</strong>: speed, easing, callback — all three methods share the same signature.</li>
+                    <li>Mistake: forgetting to wrap code in <code>$(document).ready()</code> — the DOM must be fully loaded before jQuery can manipulate elements.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"H.S.T"</strong> = Hide, Show, Toggle (Toggle is the smartest one).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q10 ================= -->
+      <section class="question-section" id="u4-q10">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q10">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q10</span>
+                Explain the advantages of AJAX in web applications with a suitable example.
+              </button>
+            </h2>
+            <div id="c-u4-q10" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>AJAX (Asynchronous JavaScript and XML)</strong> is a technique that allows web pages to <strong>communicate with the server asynchronously</strong> — sending requests and receiving responses <strong>without reloading the entire page</strong>. Despite "XML" in the name, AJAX commonly transfers <strong>JSON</strong> or plain text.</p>
+                  <p><strong>Key advantages of AJAX:</strong></p>
+                  <ul>
+                    <li><strong>1. No full page reloads:</strong> Only specific parts of the page are updated. The user can continue interacting with the rest of the page while the request processes in the background. This creates a <strong>fluid, desktop-like experience</strong>.</li>
+                    <li><strong>2. Reduced bandwidth usage:</strong> Instead of re-sending the entire HTML page on every interaction, only <strong>small data payloads</strong> (JSON/XML) travel over the network. This saves bandwidth and reduces server load.</li>
+                    <li><strong>3. Faster response time:</strong> Since only the relevant data is transferred (no re-rendering of the full page), the response feels <strong>instantaneous</strong>. The browser updates only the necessary DOM elements.</li>
+                    <li><strong>4. Asynchronous processing:</strong> The browser does <strong>not freeze</strong> while waiting for the server response. Users can continue typing, scrolling, or clicking other elements while the AJAX call completes in the background.</li>
+                    <li><strong>5. Improved interactivity:</strong> Features like <strong>autocomplete search, live form validation, real-time notifications, infinite scrolling, and chat</strong> are all powered by AJAX. These are now expected in modern web applications.</li>
+                    <li><strong>6. Separation of concerns:</strong> AJAX promotes a clean <strong>API-based architecture</strong> where the frontend (HTML/JS) is decoupled from the backend (REST API). This allows teams to develop and scale independently.</li>
+                  </ul>
+                  <p><strong>Example scenario:</strong> A search box on an e-commerce site. Without AJAX, each keystroke would reload the page. With AJAX, the search suggestions appear dynamically below the input field as the user types, pulled from the server in real-time — this is Google Search's autocomplete experience.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> AJAX vs Traditional Model</div>
+                <div class="flow-diagram">
+                  <div class="flow-box red" style="min-width:180px">Traditional (no AJAX)<br><small>User clicks → Full page reload → Wait → New page</small></div>
+                  <div class="flow-arrow">VS</div>
+                  <div class="flow-box green" style="min-width:180px">AJAX Model<br><small>User types → Background request → DOM update only</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser</div>
+                  <div class="flow-arrow">→ Async</div>
+                  <div class="flow-box process">XMLHttpRequest / fetch()</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">Server (Servlet/API)</div>
+                  <div class="flow-arrow">→ JSON</div>
+                  <div class="flow-box client">Browser updates DOM</div>
+                </div>
+                <p class="flow-label">AJAX: only data travels — no full page HTML is transferred</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>AJAX example using fetch()</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;AJAX Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;Live Search Users&lt;/h3&gt;
+  &lt;input type="text" id="searchBox"
+         placeholder="Type a name..."
+         onkeyup="searchUsers()"&gt;
+  &lt;div id="results"&gt;&lt;/div&gt;
+
+  &lt;script&gt;
+    function searchUsers() {
+      const query = document.getElementById('searchBox').value;
+
+      // AJAX call: fetch() sends an async HTTP request
+      fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response =&gt; response.json())      // parse JSON
+        .then(users =&gt; {
+          // Filter results locally (simulating server-side)
+          const filtered = users.filter(u =&gt;
+            u.name.toLowerCase().includes(query.toLowerCase())
+          );
+          // Update only the results div — no page reload!
+          const html = filtered.map(u =&gt;
+            '&lt;p&gt;' + u.name + ' &lt;small&gt;(' + u.email + ')&lt;/small&gt;&lt;/p&gt;'
+          ).join('');
+          document.getElementById('results').innerHTML =
+            query ? html : '';
+        });
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-arrow-repeat me-1"></i>AJAX — live search simulation</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:280px" srcdoc="
+                    <body style='font-family:sans-serif;padding:20px'>
+                      <h4>Live Search (AJAX Simulation)</h4>
+                      <input type='text' id='q' placeholder='Type a name...' style='padding:8px;width:250px;border-radius:6px;border:1px solid #ccc' onkeyup='search()'>
+                      <div id='r' style='margin-top:12px'></div>
+                      <script>
+                        const data=['Riya Sharma','Amit Patel','Priya Singh','Raj Verma','Sneha Gupta','Arun Kumar','Neha Joshi','Vikram Rao'];
+                        function search(){
+                          var q=document.getElementById('q').value.toLowerCase();
+                          var r=document.getElementById('r');
+                          if(!q){r.innerHTML='';return;}
+                          var filtered=data.filter(function(n){return n.toLowerCase().includes(q);});
+                          r.innerHTML=filtered.map(function(n){return '<div style=padding:6px;border-bottom:1px solid #eee>'+n+'</div>';}).join('');
+                        }
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List <strong>at least 4 advantages</strong>: no page reload, async, less bandwidth, faster UX.</li>
+                    <li>Give a <strong>real-world example</strong> — Google Search autocomplete, Facebook infinite scroll, or Gmail.</li>
+                    <li>Mistake: saying AJAX is a technology — it is a <strong>technique</strong> using a combination of technologies (JS + XML/JSON + server).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"N.A.F.S"</strong> = No reload, Async, Faster, Smooth UX.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q11 ================= -->
+      <section class="question-section" id="u4-q11">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q11">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q11</span>
+                Explain database connectivity in Java web applications using JDBC, DBConnection utility, and Servlets.
+              </button>
+            </h2>
+            <div id="c-u4-q11" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>In a <strong>Java web application</strong>, database connectivity is typically implemented through a combination of three components: a <strong>DBConnection utility class</strong> (to centralize connection management), <strong>JDBC API</strong> (for executing SQL), and <strong>Servlets</strong> (as the controller that ties user requests to database operations).</p>
+                  <p><strong>1. DBConnection Utility Class:</strong> A dedicated class that handles the <strong>boilerplate of loading the driver</strong> and <strong>creating Connection objects</strong>. It reads database credentials from <strong>init parameters</strong> (in web.xml) or a properties file. The class typically provides a <code>static getConnection()</code> method and a <code>static closeConnection()</code> method. This avoids duplicating the connection logic in every servlet.</p>
+                  <p><strong>2. JDBC in Servlets:</strong> The servlet's <code>doGet()</code> or <code>doPost()</code> method calls <code>DBConnection.getConnection()</code>, creates SQL statements, executes queries, processes <code>ResultSet</code>, and forwards the data to a JSP for display. Using <code>PreparedStatement</code> prevents SQL injection attacks.</p>
+                  <p><strong>3. DAO (Data Access Object) Pattern:</strong> A further improvement is to wrap all database operations in <strong>DAO classes</strong> (e.g. <code>StudentDAO</code>) that are called by the servlet. This separates data access logic from presentation/controller logic. The servlet only handles HTTP concerns (parameters, session, forwarding); the DAO handles SQL.</p>
+                  <p>This three-layer design — <strong>Servlet (Controller) → DAO (Data Access) → DBConnection (Connection)</strong> — creates a clean, maintainable architecture where each component has a single responsibility. Changing the database vendor only requires updating the DBConnection class; the DAO and servlet code remain unchanged.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> JDBC + Servlet + DBConnection Architecture</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">Servlet<br><small>Controller</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">DAO / Business<br><small>Data Access</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box neutral">DBConnection<br><small>Utility</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box db">Database</div>
+                </div>
+                <p class="flow-label">Servlet → DAO → DBConnection → Database (clean separation of concerns)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>DBConnection.java + UserDAO.java + UserServlet.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== DBConnection.java (Utility) =====
+public class DBConnection {
+    private static final String URL =
+        "jdbc:mysql://localhost:3306/mydb";
+    private static final String USER = "root";
+    private static final String PASS = "password";
+
+    static {
+        try { Class.forName("com.mysql.cj.jdbc.Driver"); }
+        catch (ClassNotFoundException e) { e.printStackTrace(); }
+    }
+
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASS);
+    }
+
+    public static void close(Connection conn, Statement stmt,
+                              ResultSet rs) {
+        try { if (rs != null) rs.close(); } catch (Exception e) {}
+        try { if (stmt != null) stmt.close(); } catch (Exception e) {}
+        try { if (conn != null) conn.close(); } catch (Exception e) {}
+    }
+}
+
+// ===== UserDAO.java (Data Access Object) =====
+public class UserDAO {
+    public List&lt;User&gt; getAllUsers() throws SQLException {
+        List&lt;User&gt; list = new ArrayList&lt;&gt;();
+        String sql = "SELECT id, name, email FROM users";
+        try (Connection conn = DBConnection.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                list.add(new User(rs.getInt("id"),
+                                  rs.getString("name"),
+                                  rs.getString("email")));
+            }
+        }
+        return list;
+    }
+}
+
+// ===== UserServlet.java (Controller) =====
+@WebServlet("/users")
+public class UserServlet extends HttpServlet {
+    protected void doGet(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+        try {
+            UserDAO dao = new UserDAO();
+            List&lt;User&gt; users = dao.getAllUsers();
+            req.setAttribute("userList", users);
+            req.getRequestDispatcher("users.jsp").forward(req, res);
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Web App — DB connection flow log</span></div>
+                  <div class="terminal-body"><span class="prompt">GET /myapp/users</span>
+<span class="info">[Servlet] UserServlet.doGet() invoked</span>
+<span class="info">[DAO] UserDAO.getAllUsers() called</span>
+<span class="info">[DBConnection] getConnection() — opening...</span>
+<span class="success">[DBConnection] Connected to mydb</span>
+<span class="output">[DAO] Executing: SELECT id, name, email FROM users</span>
+<span class="output">[DAO] Fetched 4 rows</span>
+<span class="warn">[DBConnection] Resources closed</span>
+<span class="info">[Servlet] Set attribute: userList = [4 users]</span>
+<span class="info">[Servlet] Forwarding to users.jsp</span>
+<span class="success">Response rendered to browser</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Explain the <strong>DAO pattern</strong> — it separates data access from controller logic and is a key design pattern for web apps.</li>
+                    <li>Show the <strong>DBConnection utility</strong> as a singleton or classic static helper — examiners like this "centralised connection" concept.</li>
+                    <li>Mistake: opening a new connection per request without closing it — always mention <strong>connection pooling</strong> (or at least proper close in finally block).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"S.D.D"</strong> = Servlet → DAO → DB (three-tier data flow).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q12 ================= -->
+      <section class="question-section" id="u4-q12">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q12">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q12</span>
+                Build an AJAX-based webpage for dynamic content loading.
+              </button>
+            </h2>
+            <div id="c-u4-q12" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>An <strong>AJAX-based webpage for dynamic content loading</strong> is a page that fetches and displays new content from the server <strong>without a full page refresh</strong>. This technique is the foundation of modern single-page applications (SPAs) and powers features like infinite scroll, tabbed content, and load-more buttons.</p>
+                  <p><strong>Core components:</strong></p>
+                  <ul>
+                    <li><strong>User trigger:</strong> A button click, scroll event, or timer initiates the content request.</li>
+                    <li><strong>JavaScript (AJAX call):</strong> Uses <code>fetch()</code> or <code>XMLHttpRequest</code> to send an asynchronous GET/POST request to a server endpoint. The request is non-blocking — the user can continue interacting with the page.</li>
+                    <li><strong>Server endpoint:</strong> A Servlet (or any server-side script) that processes the request and returns data — typically in <strong>JSON format</strong> (lightweight, easy to parse in JavaScript). The server does NOT return HTML — only raw data.</li>
+                    <li><strong>Client-side rendering:</strong> The JavaScript receives the JSON response, parses it, builds HTML elements dynamically, and inserts them into the DOM using <code>innerHTML</code> or DOM manipulation methods.</li>
+                    <li><strong>No page reload:</strong> The URL stays the same; only a specific section of the page (a <code>&lt;div&gt;</code> with a given ID) gets updated with fresh content.</li>
+                  </ul>
+                  <p>This approach <strong>decouples the frontend from the backend</strong>. The frontend becomes a "consumer" of a REST API, and the backend does not care about HTML rendering — it only returns data. This is the same architecture used by React, Angular, and Vue.js applications.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Dynamic Content Loading — Flow</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser<br><small>User clicks "Load More"</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">fetch() / AJAX<br><small>GET /api/content?page=2</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">Server (Servlet)<br><small>Returns JSON data</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">Server<br><small>JSON response</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">JavaScript<br><small>Parses JSON → builds HTML</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">DOM Updated<br><small>New content appended</small></div>
+                </div>
+                <p class="flow-label">Only data (JSON) travels — the HTML is built on the client side</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>ajax-dynamic-content.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;AJAX Dynamic Content&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h2&gt📰 News Feed (AJAX)&lt;/h2&gt;
+  &lt;div id="news-container"&gt;
+    &lt;p&gt;Click the button to load articles...&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;button id="loadBtn" onclick="loadMore()"&gt;
+    Load More Articles
+  &lt;/button&gt;
+
+  &lt;script&gt;
+    let page = 1;
+
+    function loadMore() {
+      // Simulate AJAX fetch to a server endpoint
+      fetch('https://jsonplaceholder.typicode.com/posts?_limit=3&_page=' + page)
+        .then(response =&gt; response.json())
+        .then(articles =&gt; {
+          const container = document.getElementById('news-container');
+          articles.forEach(article =&gt; {
+            // Build HTML dynamically — no page reload
+            const div = document.createElement('div');
+            div.className = 'article';
+            div.innerHTML = '&lt;h4&gt;' + article.title + '&lt;/h4&gt;' +
+              '&lt;p&gt;' + article.body.substring(0, 100) + '...&lt;/p&gt;';
+            container.appendChild(div);
+          });
+          page++;
+        });
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-newspaper me-1"></i>AJAX — dynamic content loading (simulated)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>📰 News Feed (AJAX Simulation)</h4>
+                      <div id='news'><p style='color:#888'>Click button to load articles...</p></div>
+                      <button onclick='load()' style='padding:8px 16px;background:#fb8500;color:#fff;border:none;border-radius:6px;cursor:pointer'>Load More Articles</button>
+                      <script>
+                        var page=1;
+                        var titles=['Breaking: Tech Conference 2026 Announced','New JavaScript Framework Released','Web Technology Trends to Watch','AI in Web Development','Serverless Architecture Guide','CSS Innovations in 2026'];
+                        var bodies=['The annual technology conference will feature talks on AI, web development, and cloud computing...','A new lightweight framework promises faster rendering and better developer experience...','Industry experts share their predictions for the future of web technologies...','How artificial intelligence is transforming the way we build and deploy web applications...','A comprehensive guide to building serverless applications with modern cloud platforms...','New CSS features including container queries and cascade layers are changing responsive design...'];
+                        function load(){
+                          var c=document.getElementById('news');
+                          var start=(page-1)*2;
+                          for(var i=start;i<start+2&&i<titles.length;i++){
+                            var d=document.createElement('div');
+                            d.style.cssText='border:1px solid #ddd;padding:10px;margin:8px 0;border-radius:8px';
+                            d.innerHTML='<b>'+titles[i]+'</b><p style=font-size:13px;color:#555>'+bodies[i]+'</p>';
+                            c.appendChild(d);
+                          }
+                          page++;
+                          if(page>3){event.target.disabled=true;event.target.textContent='No more articles';}
+                        }
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Show the <strong>full flow</strong>: Button click → fetch() → server returns JSON → DOM update (no reload).</li>
+                    <li>The <strong>server returns JSON data</strong>, not HTML — that is the key distinction of AJAX-based dynamic loading.</li>
+                    <li>Mistake: using <code>document.write()</code> — it overwrites the entire page. Always use DOM methods (<code>innerHTML</code>, <code>appendChild</code>).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"Fetch JSON → Build HTML → Update DOM"</strong> — no page reload.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q13 ================= -->
+      <section class="question-section" id="u4-q13">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q13">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q13</span>
+                Deploy a Java web application and explain the role of Apache Tomcat Server.
+              </button>
+            </h2>
+            <div id="c-u4-q13" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Apache Tomcat</strong> is the most widely used <strong>open-source Servlet container</strong> and <strong>JSP engine</strong>. Its role in deploying Java web applications is fundamentally important — without Tomcat (or another container), a Java web application cannot run.</p>
+                  <p><strong>Role of Apache Tomcat:</strong></p>
+                  <ul>
+                    <li><strong>Servlet Container:</strong> Tomcat implements the <strong>Jakarta Servlet specification</strong>. It manages the <strong>life cycle of servlets</strong> (loading, initialization, service, destruction) and handles the <strong>request-response pipeline</strong>. The container receives HTTP requests, creates request/response objects, calls the servlet's <code>service()</code> method, and sends the response back.</li>
+                    <li><strong>JSP Engine (Jasper):</strong> Tomcat includes <strong>Jasper</strong>, which translates <code>.jsp</code> files into Java servlet source code, compiles them, and executes them. This allows developers to write JSP pages without worrying about the translation step.</li>
+                    <li><strong>HTTP Web Server (Coyote):</strong> Tomcat's <strong>Coyote</strong> connector acts as a web server, listening for HTTP requests on a configurable port (default 8080). It can serve both <strong>static content</strong> (HTML, CSS, images) and <strong>dynamic content</strong> (through servlets/JSP).</li>
+                    <li><strong>Deployment Manager:</strong> Tomcat <strong>auto-deploys</strong> WAR files placed in the <code>webapps/</code> directory. It also provides a <strong>Manager App</strong> (at <code>/manager</code>) for deploying, starting, stopping, and reloading applications without restarting the server.</li>
+                    <li><strong>Security &amp; Realm:</strong> Tomcat supports <strong>declarative security</strong> via <code>web.xml</code> (login-config, security-constraint) and <strong>Realm</strong> implementations (JDBC, JNDI, Memory) for authentication and authorization.</li>
+                  </ul>
+                  <p><strong>Deployment process:</strong> Develop the application → Package as WAR → Copy WAR to <code>$CATALINA_HOME/webapps/</code> → Start/restart Tomcat → Access at <code>http://localhost:8080/appname/</code>. Tomcat extracts the WAR, creates a context, and makes the application available.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Tomcat Deployment Architecture</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">Developer<br><small>Builds WAR</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">$CATALINA_HOME/webapps/<br><small>WAR deployed</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">Tomcat<br><small>Auto-extracts &amp; deploys</small></div>
+                </div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box neutral">Coyote (HTTP)<br><small>Receives request on port 8080</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box neutral">Catalina (Container)<br><small>Routes to correct Context/Servlet</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box neutral">Jasper (JSP)<br><small>Translates &amp; compiles JSP</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">Servlet response or HTML<br><small>Sent back to browser</small></div>
+                </div>
+                <p class="flow-label">Tomcat is both a web server and a servlet container — no separate server needed</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>Deployment commands</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-bash"># ---- Step 1: Build the WAR ----
+# Using Maven:
+mvn clean package
+# WAR is generated at: target/myapp.war
+
+# Using direct jar command:
+jar -cvf myapp.war -C WebContent/ .
+
+# ---- Step 2: Deploy to Tomcat ----
+# Option A: Manual copy
+cp myapp.war $CATALINA_HOME/webapps/
+
+# Option B: Tomcat Manager (HTTP)
+curl -u admin:password \
+     "http://localhost:8080/manager/text/deploy?path=/myapp&war=file:/path/to/myapp.war"
+
+# ---- Step 3: Start / Restart Tomcat ----
+$CATALINA_HOME/bin/startup.sh     # Start
+$CATALINA_HOME/bin/shutdown.sh    # Stop
+
+# ---- Step 4: Access ----
+# Open browser:
+# http://localhost:8080/myapp/</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Tomcat — deployment &amp; access log</span></div>
+                  <div class="terminal-body"><span class="prompt">$ mvn clean package</span>
+<span class="success">BUILD SUCCESS — myapp.war (12 KB)</span>
+<span class="prompt">$ cp target/myapp.war $CATALINA_HOME/webapps/</span>
+<span class="info">INFO: Deploying web application archive [myapp.war]</span>
+<span class="warn">INFO: Expanding /webapps/myapp.war into /webapps/myapp</span>
+<span class="output">INFO: Loading servlet: com.example.IndexServlet</span>
+<span class="success">INFO: Deployment of [/myapp] finished in 186 ms</span>
+<span class="prompt">$ curl http://localhost:8080/myapp/hello</span>
+<span class="output">HTTP/1.1 200 OK</span>
+<span class="output">Hello from Java Web App! (served by Tomcat)</span>
+<span class="success">Application is live and running!</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>State Tomcat's <strong>three roles</strong>: Servlet container (Catalina), JSP engine (Jasper), HTTP server (Coyote).</li>
+                    <li>Explain the <strong>auto-deployment</strong> feature — placing a WAR in <code>webapps/</code> triggers extraction and deployment.</li>
+                    <li>Mistake: thinking Tomcat is a full Java EE server — it is a <strong>Servlet container</strong> (no EJB, no JMS container).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"WAR → webapps/ → Tomcat extracts → App is live."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q14 ================= -->
+      <section class="question-section" id="u4-q14">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q14">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q14</span>
+                Develop a simple web application using Servlets, sessions, and JDBC.
+              </button>
+            </h2>
+            <div id="c-u4-q14" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>complete web application</strong> using <strong>Servlets</strong> (controller), <strong>Sessions</strong> (state management), and <strong>JDBC</strong> (database access) is a classic exam question that demonstrates all the core Java web technologies working together. The typical example is a <strong>Login/Profile application</strong>.</p>
+                  <p><strong>Application modules:</strong></p>
+                  <ul>
+                    <li><strong>Login Page (login.jsp):</strong> A form with username and password fields. Submits POST to the <code>LoginServlet</code>.</li>
+                    <li><strong>LoginServlet (Controller):</strong> Reads the username/password from the request. Calls a <code>UserDAO</code> to validate credentials against the database using JDBC. If valid, creates an <code>HttpSession</code>, stores the user object in the session, and redirects to the profile page. If invalid, forwards back to the login page with an error message.</li>
+                    <li><strong>HttpSession (State):</strong> Once the user is logged in, the session object (<code>req.getSession()</code>) holds the user's data across multiple requests. This allows the profile page to display the logged-in user's information without re-querying the database on every request. The session persists until the user logs out or the session times out.</li>
+                    <li><strong>UserDAO (Data Access):</strong> Contains JDBC code to query the <code>users</code> table. Uses <code>DBConnection.getConnection()</code> and <code>PreparedStatement</code> to safely validate login credentials. Returns a <code>User</code> object (JavaBean) if found, or <code>null</code> if not.</li>
+                    <li><strong>Profile Page (profile.jsp):</strong> Reads the user from the session (<code>session.getAttribute("user")</code>) and displays their name, email, and other details. Includes a logout button.</li>
+                    <li><strong>LogoutServlet:</strong> Invalidates the session (<code>session.invalidate()</code>) and redirects to the login page.</li>
+                  </ul>
+                  <p>This application architecture — <strong>JSP (View) → Servlet (Controller) → DAO (Model) → Database</strong> — is the textbook implementation of <strong>MVC (Model-2 Architecture)</strong> in Java web development.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Login App Flow — Servlets + Sessions + JDBC</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser<br><small>login.jsp</small></div>
+                  <div class="flow-arrow">→ POST</div>
+                  <div class="flow-box process">LoginServlet<br><small>Controller</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app">UserDAO<br><small>JDBC query</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box db">Database</div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box app">UserDAO<br><small>returns User</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">LoginServlet<br><small>creates Session</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">profile.jsp<br><small>reads from session</small></div>
+                </div>
+                <p class="flow-label">Session persists user data across requests — no need to re-query DB</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>LoginServlet.java + UserDAO.java + User.java</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== User.java (Model/JavaBean) =====
+public class User {
+    private int id;
+    private String name;
+    private String email;
+    // constructor, getters, setters...
+}
+
+// ===== UserDAO.java (Data Access) =====
+public class UserDAO {
+    public User validateLogin(String email, String password)
+            throws SQLException {
+        String sql = "SELECT * FROM users WHERE email=? AND password=?";
+        try (Connection conn = DBConnection.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, email);
+            ps.setString(2, password);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    User u = new User();
+                    u.setId(rs.getInt("id"));
+                    u.setName(rs.getString("name"));
+                    u.setEmail(rs.getString("email"));
+                    return u;
+                }
+            }
+        }
+        return null;  // invalid credentials
+    }
+}
+
+// ===== LoginServlet.java (Controller) =====
+@WebServlet("/login")
+public class LoginServlet extends HttpServlet {
+    protected void doPost(HttpServletRequest req, HttpServletResponse res)
+            throws ServletException, IOException {
+        String email = req.getParameter("email");
+        String pass = req.getParameter("password");
+
+        try {
+            UserDAO dao = new UserDAO();
+            User user = dao.validateLogin(email, pass);
+
+            if (user != null) {
+                // CREATE SESSION and store user
+                HttpSession session = req.getSession();
+                session.setAttribute("user", user);
+                res.sendRedirect("profile.jsp");  // redirect (not forward)
+            } else {
+                req.setAttribute("error", "Invalid email or password");
+                req.getRequestDispatcher("login.jsp").forward(req, res);
+            }
+        } catch (SQLException e) {
+            throw new ServletException(e);
+        }
+    }
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Web App — Login + Session flow log</span></div>
+                  <div class="terminal-body"><span class="prompt">POST /login   email=riya@test.com&password=****</span>
+<span class="info">[Servlet] LoginServlet.doPost() invoked</span>
+<span class="info">[DAO] UserDAO.validateLogin(riya@test.com)</span>
+<span class="warn">[JDBC] Query: SELECT * FROM users WHERE email=? AND password=?</span>
+<span class="success">[JDBC] User found: Riya Sharma (id=1)</span>
+<span class="info">[Servlet] Creating HttpSession — session id: ABC123XYZ</span>
+<span class="info">[Servlet] setAttribute('user', User{id=1, name='Riya Sharma'})</span>
+<span class="info">[Servlet] Redirecting to profile.jsp</span>
+<span class="output">[Browser] GET /profile.jsp</span>
+<span class="output">[JSP] Reading session: user.name = Riya Sharma</span>
+<span class="success">Welcome, Riya Sharma!</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Show the <strong>login → session → profile</strong> flow clearly: after login, store in session, then redirect.</li>
+                    <li>Explain <strong>why sessions are needed</strong>: HTTP is stateless — sessions store user data across requests without re-authentication.</li>
+                    <li>Mistake: storing the password in the session — only store a user object (id, name, email), never sensitive data like passwords.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"Login → Session → Profile"</strong> — the three-step authenticated app flow.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q15 ================= -->
+      <section class="question-section" id="u4-q15">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u4-q15">
+                <span class="badge text-white me-2" style="background:var(--unit4)">Q15</span>
+                Describe session tracking techniques in Java Servlets.
+              </button>
+            </h2>
+            <div id="c-u4-q15" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Session tracking</strong> is the mechanism by which a web server maintains <strong>state across multiple HTTP requests</strong> from the same user. Since HTTP is <strong>stateless</strong>, each request is independent — without session tracking, the server would not know that two requests came from the same client. In Java Servlets, there are four standard session tracking techniques.</p>
+                  <p><strong>1. Cookies:</strong> The server sends a small piece of data (a <strong>session ID</strong>) in an HTTP response header: <code>Set-Cookie: JSESSIONID=ABC123; Path=/; HttpOnly</code>. The browser stores this cookie and sends it back with every subsequent request in the <code>Cookie</code> header. The servlet container uses the <code>JSESSIONID</code> to retrieve the correct <code>HttpSession</code> object via <code>req.getSession()</code>. <strong>Advantages:</strong> transparent to the developer, works automatically with <code>HttpSession</code>. <strong>Disadvantages:</strong> disabled if the user turns off cookies.</li>
+                    <li><strong>2. URL Rewriting:</strong> The session ID is appended to every URL as a query parameter: <code>http://host/app/page.jsp;jsessionid=ABC123</code> or <code>?jsessionid=ABC123</code>. The server reads the ID from the URL. In Servlets, call <code>response.encodeURL("page.jsp")</code> to automatically append the session ID. <strong>Advantages:</strong> works even when cookies are disabled. <strong>Disadvantages:</strong> adds complexity to URLs, breaks if the user bookmarks or shares the URL.</li>
+                    <li><strong>3. Hidden Form Fields:</strong> The session ID (or other state data) is stored in <code>&lt;input type="hidden" name="sessionId" value="ABC123"&gt;</code> within HTML forms. When the form is submitted, the hidden field value is sent to the server. <strong>Advantages:</strong> works without cookies. <strong>Disadvantages:</strong> only works with form submissions (not with anchor links), exposes session data in the HTML source.</li>
+                    <li><strong>4. HttpSession API (the standard Java approach):</strong> The <code>HttpSession</code> object (obtained via <code>req.getSession()</code>) automatically uses either <strong>cookies</strong> (default) or <strong>URL rewriting</strong> (as fallback) to track the session. The developer uses <code>session.setAttribute()</code> and <code>session.getAttribute()</code> to store/retrieve any Java object. The container handles the low-level tracking transparently.</li>
+                  </ul>
+                  <p>In modern Java web applications, <strong>HttpSession with cookies</strong> is the standard approach. The container automatically falls back to URL rewriting if cookies are not available. <strong>Session timeout</strong> is configured in <code>web.xml</code> (<code>&lt;session-config&gt;&lt;session-timeout&gt;30&lt;/session-timeout&gt;</code>) or programmatically via <code>session.setMaxInactiveInterval()</code>.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Session Tracking Techniques — Comparison</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app" style="min-width:160px">Cookies<br><small>JSESSIONID in header</small></div>
+                  <div class="flow-box process" style="min-width:160px">URL Rewriting<br><small>ID in URL</small></div>
+                  <div class="flow-box db" style="min-width:160px">Hidden Fields<br><small>ID in form input</small></div>
+                  <div class="flow-box green" style="min-width:160px">HttpSession API<br><small>Abstracts all above</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box neutral">Browser request</div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">Container reads session ID<br><small>from cookie / URL / hidden field</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green">HttpSession object<br><small>retrieved for that ID</small></div>
+                </div>
+                <p class="flow-label">HttpSession is the standard Java API — internally uses cookies or URL rewriting</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>Session tracking techniques — code examples</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-java">// ===== 1. COOKIES (automatic via HttpSession) =====
+HttpSession session = req.getSession();           // creates or gets session
+session.setAttribute("cart", shoppingCart);        // stores object
+// Container sends: Set-Cookie: JSESSIONID=ABC123; HttpOnly
+
+// ===== 2. URL REWRITING (fallback if cookies disabled) =====
+// In Servlet:
+String link = response.encodeURL("checkout.jsp");
+// Output: checkout.jsp;jsessionid=ABC123
+// Always use encodeURL() for links returned by your servlets
+
+// ===== 3. HIDDEN FORM FIELD =====
+// In JSP:
+// &lt;form action="process.jsp"&gt;
+//   &lt;input type="hidden" name="sessionId"
+//          value="&lt;%= session.getId() %&gt;"&gt;
+// &lt;/form&gt;
+
+// ===== 4. HttpSession API (standard approach) =====
+// Store (in LoginServlet):
+HttpSession session = req.getSession();
+session.setAttribute("user", loggedInUser);
+session.setMaxInactiveInterval(1800);  // 30 min timeout
+
+// Retrieve (in ProfileServlet):
+HttpSession session = req.getSession(false);  // false = don't create
+if (session != null) {
+    User u = (User) session.getAttribute("user");
+}
+
+// Destroy (in LogoutServlet):
+session.invalidate();  // clears all attributes + invalidates ID</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Simulated Output / Console</div>
+                <div class="terminal-output">
+                  <div class="terminal-header"><span class="terminal-dot red"></span><span class="terminal-dot yellow"></span><span class="terminal-dot green"></span><span>Tomcat — session tracking demonstration</span></div>
+                  <div class="terminal-body"><span class="prompt">=== COOKIE-BASED SESSION ===</span>
+<span class="info">[1st Request] No JSESSIONID cookie → container creates new session</span>
+<span class="output">[Response] Set-Cookie: JSESSIONID=ABC123; Path=/; HttpOnly</span>
+<span class="info">[2nd Request] Browser sends Cookie: JSESSIONID=ABC123</span>
+<span class="success">[Container] Session ABC123 found — user data retrieved</span>
+
+<span class="prompt">=== URL REWRITING (cookies disabled) ===</span>
+<span class="output">[Servlet] encodeURL("profile.jsp") → profile.jsp;jsessionid=ABC123</span>
+<span class="success">[Browser] URL contains session ID — container reads it</span>
+
+<span class="prompt">=== SESSION TIMEOUT ===</span>
+<span class="warn">[Container] Session ABC123 inactive for 30+ min → invalidated</span>
+<span class="output">[Next Request] New session DEF456 created</span>
+<span class="success">Session tracking ensures state across stateless HTTP requests</span></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List all <strong>4 techniques</strong> and state that <strong>HttpSession (cookies + URL rewriting)</strong> is the standard Java approach.</li>
+                    <li>Explain <strong>why session tracking is necessary</strong>: HTTP is stateless; without it, the server cannot link requests from the same user.</li>
+                    <li>Mistake: thinking URL rewriting is a separate technique from cookies — in Java, URL rewriting is the <strong>fallback</strong> when cookies are disabled.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"C.U.H.H"</strong> — Cookies, URL rewriting, Hidden fields, HttpSession.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center my-5">
+        <a href="../unit5/index.html" class="btn btn-study" style="background:var(--unit5);border:none;color:#fff;width:auto;padding:0.6rem 1.6rem">
+          Next: Unit 5 — JSP &amp; Spring MVC <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <p class="mb-1"><i class="bi bi-book-half me-2" style="color:var(--unit4)"></i><strong>Web Technology ETE Study Guide</strong></p>
+    <p class="mb-0" style="font-size:0.8rem;">Made for ETE 2026 · Unit 4 of 5 · 15 Questions Completed</p>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

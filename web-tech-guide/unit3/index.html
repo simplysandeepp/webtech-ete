@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 3: JavaScript &amp; AJAX — WebTech ETE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-unit="3">
+
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top main-navbar">
+  <div class="container-fluid px-lg-4">
+    <a class="navbar-brand" href="../index.html"><i class="bi bi-book-half me-2"></i>WebTech ETE</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link u1" href="../unit1/index.html">Unit 1</a></li>
+        <li class="nav-item"><a class="nav-link u2" href="../unit2/index.html">Unit 2</a></li>
+        <li class="nav-item"><a class="nav-link u3 active" href="../unit3/index.html">Unit 3</a></li>
+        <li class="nav-item"><a class="nav-link u4" href="../unit4/index.html">Unit 4</a></li>
+        <li class="nav-item"><a class="nav-link u5" href="../unit5/index.html">Unit 5</a></li>
+      </ul>
+    </div>
+    <button id="theme-toggle" class="ms-3" onclick="toggleTheme()"><i class="bi bi-moon-fill"></i></button>
+  </div>
+</nav>
+
+<!-- Unit Hero -->
+<section class="unit-hero">
+  <div class="container-fluid px-lg-4">
+    <span class="unit-badge text-white" style="background:var(--unit3)"><i class="bi bi-3-circle-fill me-1"></i> UNIT 3</span>
+    <h1 class="mt-2">JavaScript · jQuery · AJAX</h1>
+    <p class="mb-0" style="color:var(--text-secondary)">AJAX &amp; XMLHttpRequest · jQuery Effects · JS Operators · DOM Manipulation · Functions &amp; Objects · Arrays · Form Validation</p>
+  </div>
+</section>
+
+<div class="container-fluid px-lg-4">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <nav class="col-lg-3 col-xl-3 sidebar" id="sidebar">
+      <div class="sidebar-heading">Unit 3 — Questions</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#u3-q1">Q1. What is AJAX &amp; its Working</a>
+        <a class="nav-link" href="#u3-q2">Q2. Purpose &amp; Advantages of jQuery</a>
+        <a class="nav-link" href="#u3-q3">Q3. JavaScript Operators</a>
+        <a class="nav-link" href="#u3-q4">Q4. DOM Manipulation</a>
+        <a class="nav-link" href="#u3-q5">Q5. Functions &amp; Objects</a>
+        <a class="nav-link" href="#u3-q6">Q6. Arrays &amp; Objects App</a>
+        <a class="nav-link" href="#u3-q7">Q7. Credit Card Validation</a>
+        <a class="nav-link" href="#u3-q8">Q8. Form Handling &amp; Validation</a>
+        <a class="nav-link" href="#u3-q9">Q9. jQuery Animations &amp; Effects</a>
+        <a class="nav-link" href="#u3-q10">Q10. AJAX Architecture &amp; XMLHttpRequest</a>
+      </nav>
+    </nav>
+
+    <!-- Content -->
+    <main class="col-lg-9 col-xl-9 content-area">
+
+      <!-- ================= Q1 ================= -->
+      <section class="question-section" id="u3-q1">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q1">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q1</span>
+                What is AJAX? Analyze its working with a suitable AJAX program.
+              </button>
+            </h2>
+            <div id="c-u3-q1" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>AJAX (Asynchronous JavaScript And XML)</strong> is a web development technique that lets a web page <strong>exchange data with a server in the background</strong> and update parts of the page <strong>without reloading the whole page</strong>. It is not a programming language — it is a combination of existing technologies.</p>
+                  <ul>
+                    <li><strong>Asynchronous:</strong> the browser does not freeze; the user can keep interacting while the request is processed.</li>
+                    <li><strong>JavaScript:</strong> sends the request and handles the response.</li>
+                    <li><strong>XMLHttpRequest / fetch:</strong> the object/API that actually talks to the server.</li>
+                    <li><strong>Data format:</strong> the server can reply with <strong>JSON</strong> (most common today), XML, HTML or plain text.</li>
+                  </ul>
+                  <p><strong>How AJAX works (steps):</strong></p>
+                  <ul>
+                    <li>A user event (click/type) triggers JavaScript.</li>
+                    <li>JS creates an <strong>XMLHttpRequest</strong> (or uses <code>fetch()</code>) and sends it to the server.</li>
+                    <li>The server processes it and returns a <strong>response</strong>.</li>
+                    <li>A <strong>callback</strong> receives the data and updates only the needed part of the DOM.</li>
+                  </ul>
+                  <p>Main benefits are <strong>speed, less bandwidth, and a smooth user experience</strong> (live search, infinite scroll, form auto-save). The drawback is it depends on JavaScript being enabled and can complicate the browser back button.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> AJAX Working Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Browser Event<br><small>click / type</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box process">JavaScript<br><small>XMLHttpRequest / fetch</small></div>
+                  <div class="flow-arrow">⇄</div>
+                  <div class="flow-box server">Web Server<br><small>processes request</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box db">JSON / XML<br><small>response data</small></div>
+                </div>
+                <p class="flow-label">Async request goes right; the response flows back and a callback updates only part of the DOM (no full reload)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>ajax-demo.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;button onclick="loadUser()"&gt;Load User&lt;/button&gt;
+&lt;p id="out"&gt;Click to fetch data...&lt;/p&gt;
+
+&lt;script&gt;
+  function loadUser() {
+    // 1. Create the XMLHttpRequest object
+    const xhr = new XMLHttpRequest();
+
+    // 2. Configure: METHOD, URL, async = true
+    xhr.open('GET', 'https://jsonplaceholder.typicode.com/users/1', true);
+
+    // 3. Callback runs when the response is ready
+    xhr.onreadystatechange = function () {
+      // readyState 4 = done, status 200 = OK
+      if (xhr.readyState === 4 &amp;&amp; xhr.status === 200) {
+        const user = JSON.parse(xhr.responseText);   // parse JSON
+        document.getElementById('out').textContent =
+          'Name: ' + user.name + ' | Email: ' + user.email;
+      }
+    };
+
+    // 4. Send the request to the server
+    xhr.send();
+  }
+&lt;/script&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-broadcast me-1"></i>Real AJAX request (live)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>AJAX Live Demo</h4>
+                      <button id='b' style='padding:9px 16px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer'>Load User from Server</button>
+                      <p id='out' style='margin-top:14px'>Click to fetch data without reloading the page...</p>
+                      <script>
+                        document.getElementById('b').onclick=function(){
+                          var out=document.getElementById('out');
+                          out.textContent='Sending async request...';
+                          var xhr=new XMLHttpRequest();
+                          xhr.open('GET','https://jsonplaceholder.typicode.com/users/1',true);
+                          xhr.onreadystatechange=function(){
+                            if(xhr.readyState===4){
+                              if(xhr.status===200){
+                                var u=JSON.parse(xhr.responseText);
+                                out.innerHTML='<b>Server replied:</b><br>Name: '+u.name+'<br>Email: '+u.email+'<br>City: '+u.address.city;
+                              }else{
+                                out.textContent='Request failed (status '+xhr.status+')';
+                              }
+                            }
+                          };
+                          xhr.send();
+                        };
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Always state AJAX = <strong>partial page update, no full reload</strong> — that is the core marking point.</li>
+                    <li>Remember the magic numbers: <strong>readyState 4</strong> (done) and <strong>status 200</strong> (OK).</li>
+                    <li>Mistake: calling AJAX a language — it is a <strong>technique</strong> combining JS + XHR/fetch + JSON/XML.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"A.J.A.X"</strong> = Asynchronous JavaScript And XML.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q2 ================= -->
+      <section class="question-section" id="u3-q2">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q2">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q2</span>
+                Explain the purpose of jQuery and discuss its advantages with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u3-q2" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>jQuery</strong> is a fast, lightweight <strong>JavaScript library</strong> whose motto is <em>"write less, do more."</em> Its main purpose is to <strong>simplify common JavaScript tasks</strong> such as HTML/DOM manipulation, event handling, animation and AJAX, while hiding browser differences.</p>
+                  <p><strong>Purpose of jQuery:</strong></p>
+                  <ul>
+                    <li><strong>Simplified DOM selection</strong> using CSS-style selectors: <code>$('#id')</code>, <code>$('.class')</code>.</li>
+                    <li><strong>Cross-browser compatibility</strong> — one code works on all major browsers.</li>
+                    <li><strong>Easy event handling</strong>, animations and AJAX with short methods.</li>
+                  </ul>
+                  <p><strong>Advantages:</strong></p>
+                  <ul>
+                    <li><strong>Less code:</strong> one line replaces many lines of plain JS.</li>
+                    <li><strong>Chaining:</strong> <code>$('#box').css('color','red').slideUp().slideDown();</code></li>
+                    <li><strong>Rich effects:</strong> <code>hide(), show(), fadeIn(), slideToggle(), animate()</code>.</li>
+                    <li><strong>Simple AJAX:</strong> <code>$.get()</code>, <code>$.post()</code>, <code>$.ajax()</code>.</li>
+                    <li><strong>Large plugin ecosystem</strong> and easy learning curve.</li>
+                  </ul>
+                  <p>You include it with one CDN line: <code>&lt;script src="jquery.min.js"&gt;&lt;/script&gt;</code>. The <strong>$</strong> sign is the jQuery alias. Most code runs inside <code>$(document).ready()</code> so it executes after the DOM has loaded.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Plain JS vs jQuery</div>
+                <div class="flow-diagram">
+                  <div class="flow-box red" style="min-width:200px">Plain JavaScript<br><small>document.getElementById('x')<br>.style.display='none'</small></div>
+                  <div class="flow-box neutral">→ simplified to →</div>
+                  <div class="flow-box green" style="min-width:160px">jQuery<br><small>$('#x').hide();</small></div>
+                </div>
+                <p class="flow-label">jQuery wraps verbose DOM APIs into short, chainable, cross-browser methods</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>jquery-demo.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!-- Include jQuery from a CDN --&gt;
+&lt;script src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;
+
+&lt;button id="btn"&gt;Toggle Box&lt;/button&gt;
+&lt;div id="box"&gt;Hello jQuery!&lt;/div&gt;
+
+&lt;script&gt;
+  // Run only after the DOM is fully ready
+  $(document).ready(function () {
+
+    // Event handling + chaining in one short line
+    $('#btn').click(function () {
+      $('#box').css('color', 'crimson').slideToggle();
+    });
+
+    // Simple AJAX with $.get (write less, do more)
+    $.get('https://jsonplaceholder.typicode.com/todos/1', function (data) {
+      console.log('AJAX title:', data.title);
+    });
+  });
+&lt;/script&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-magic me-1"></i>jQuery running live</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <script src='https://code.jquery.com/jquery-3.7.1.min.js'><\/script>
+                      <button id='btn' style='padding:9px 16px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer'>Toggle Box</button>
+                      <div id='box' style='margin-top:12px;padding:14px;background:#ffe0ee;border-radius:8px;font-weight:bold'>Hello jQuery! Click the button to slide me.</div>
+                      <p id='ajax' style='color:#7209b7;margin-top:10px'>Loading AJAX data...</p>
+                      <script>
+                        $(document).ready(function(){
+                          $('#btn').click(function(){
+                            $('#box').css('color','crimson').slideToggle();
+                          });
+                          $.get('https://jsonplaceholder.typicode.com/todos/1',function(data){
+                            $('#ajax').text('AJAX result -&gt; title: '+data.title);
+                          });
+                        });
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Quote the motto <strong>"write less, do more"</strong> and list 4–5 concrete advantages.</li>
+                    <li>Always wrap code in <strong>$(document).ready()</strong> and explain <strong>$</strong> is the jQuery alias.</li>
+                    <li>Mistake: forgetting the <strong>CDN/library include</strong> — jQuery code fails without it.</li>
+                  </ul>
+                  <div class="mnemonic">💡 jQuery does the <strong>"D.E.A.L"</strong> — DOM, Events, Animation, Ajax.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q3 ================= -->
+      <section class="question-section" id="u3-q3">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q3">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q3</span>
+                Discuss the various JavaScript operators in detail with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u3-q3" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Operators</strong> are special symbols that perform operations on values (operands) to produce a result. JavaScript provides several categories of operators.</p>
+                  <ul>
+                    <li><strong>Arithmetic:</strong> <code>+  -  *  /  %  **  ++  --</code> — math operations. <code>%</code> is modulus (remainder), <code>**</code> is power.</li>
+                    <li><strong>Assignment:</strong> <code>=  +=  -=  *=  /=</code> — assign/update values. <code>x += 5</code> means <code>x = x + 5</code>.</li>
+                    <li><strong>Comparison:</strong> <code>==  ===  !=  !==  &gt;  &lt;  &gt;=  &lt;=</code> — return true/false. <code>==</code> checks value only; <strong><code>===</code> checks value AND type</strong>.</li>
+                    <li><strong>Logical:</strong> <code>&amp;&amp;</code> (AND), <code>||</code> (OR), <code>!</code> (NOT) — combine boolean conditions.</li>
+                    <li><strong>Bitwise:</strong> <code>&amp;  |  ^  ~  &lt;&lt;  &gt;&gt;</code> — operate on binary bits.</li>
+                    <li><strong>String:</strong> <code>+</code> concatenates: <code>'Web' + 'Tech'</code> → <code>'WebTech'</code>.</li>
+                    <li><strong>Ternary (conditional):</strong> <code>condition ? a : b</code> — short if-else.</li>
+                    <li><strong>typeof:</strong> returns the data type of a value.</li>
+                  </ul>
+                  <p>The most important exam point is the difference between <strong>== (loose, type-coercing)</strong> and <strong>=== (strict, no coercion)</strong>. For example <code>5 == '5'</code> is <strong>true</strong>, but <code>5 === '5'</code> is <strong>false</strong>. Operators follow a defined <strong>precedence</strong> (e.g. <code>*</code> before <code>+</code>), which can be overridden with parentheses.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Operator Categories</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:120px">Arithmetic<br><small>+ - * / % **</small></div>
+                  <div class="flow-box process" style="min-width:120px">Comparison<br><small>== === != &gt; &lt;</small></div>
+                  <div class="flow-box green" style="min-width:120px">Logical<br><small>&amp;&amp; || !</small></div>
+                  <div class="flow-box app" style="min-width:120px">Assignment<br><small>= += -= *=</small></div>
+                  <div class="flow-box db" style="min-width:120px">Ternary<br><small>cond ? a : b</small></div>
+                </div>
+                <p class="flow-label">JavaScript groups operators by purpose; precedence decides evaluation order (use () to force order)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>operators.js</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">// Arithmetic
+let a = 10, b = 3;
+console.log(a + b);   // 13
+console.log(a % b);   // 1  (remainder)
+console.log(a ** 2);  // 100 (power)
+
+// Assignment
+let x = 5;
+x += 3;               // x = x + 3  -> 8
+
+// Comparison: == vs ===
+console.log(5 == '5');   // true  (only value, type coerced)
+console.log(5 === '5');  // false (value AND type checked)
+
+// Logical
+let age = 20;
+console.log(age &gt; 18 &amp;&amp; age &lt; 60);  // true (AND)
+
+// Ternary (short if-else)
+let result = (age &gt;= 18) ? 'Adult' : 'Minor';
+console.log(result);   // "Adult"
+
+// typeof
+console.log(typeof "hi"); // "string"</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-calculator me-1"></i>Try the operators live</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>Operator Playground</h4>
+                      <input id='a' type='number' value='10' style='width:70px;padding:6px'>
+                      <select id='op' style='padding:6px'>
+                        <option>+</option><option>-</option><option>*</option><option>/</option><option>%</option><option>**</option>
+                      </select>
+                      <input id='b' type='number' value='3' style='width:70px;padding:6px'>
+                      <button id='go' style='padding:6px 12px;border:none;background:#f72585;color:#fff;border-radius:5px;cursor:pointer'>=</button>
+                      <p id='res' style='font-weight:bold;color:#f72585;margin-top:12px'></p>
+                      <hr>
+                      <p style='font-size:14px'><b>== vs ===</b> (comparing 5 and '5')</p>
+                      <p id='cmp' style='font-size:14px;color:#7209b7'></p>
+                      <script>
+                        var A=document.getElementById('a'),B=document.getElementById('b'),OP=document.getElementById('op'),R=document.getElementById('res');
+                        function calc(){
+                          var x=Number(A.value),y=Number(B.value),o=OP.value,r;
+                          switch(o){case '+':r=x+y;break;case '-':r=x-y;break;case '*':r=x*y;break;case '/':r=x/y;break;case '%':r=x%y;break;case '**':r=x**y;break;}
+                          R.textContent=x+' '+o+' '+y+' = '+r;
+                        }
+                        document.getElementById('go').onclick=calc; calc();
+                        document.getElementById('cmp').innerHTML='5 == \'5\' &rarr; '+(5=='5')+' &nbsp; | &nbsp; 5 === \'5\' &rarr; '+(5==='5');
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>The <strong>== vs ===</strong> difference is a guaranteed question — give the <code>5 == '5'</code> example.</li>
+                    <li>List <strong>all categories</strong> (arithmetic, assignment, comparison, logical, bitwise, ternary, typeof).</li>
+                    <li>Mistake: confusing <code>%</code> (modulus/remainder) with division.</li>
+                  </ul>
+                  <div class="mnemonic">💡 <strong>"=== is STRICT"</strong> — checks value AND type; == is loose.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q4 ================= -->
+      <section class="question-section" id="u3-q4">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q4">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q4</span>
+                Explain DOM manipulation in JavaScript with various DOM operations and examples.
+              </button>
+            </h2>
+            <div id="c-u3-q4" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The <strong>DOM (Document Object Model)</strong> represents an HTML page as a <strong>tree of objects (nodes)</strong>. <strong>DOM manipulation</strong> means using JavaScript to <strong>read, change, add or remove</strong> these elements so the page updates dynamically.</p>
+                  <p><strong>1. Selecting elements:</strong></p>
+                  <ul>
+                    <li><code>getElementById('id')</code> — single element by id.</li>
+                    <li><code>getElementsByClassName()</code> / <code>getElementsByTagName()</code> — collections.</li>
+                    <li><code>querySelector()</code> / <code>querySelectorAll()</code> — CSS-style selection (most flexible).</li>
+                  </ul>
+                  <p><strong>2. Changing content &amp; attributes:</strong></p>
+                  <ul>
+                    <li><code>innerHTML</code> (HTML), <code>textContent</code> (text only).</li>
+                    <li><code>setAttribute()</code>, <code>element.style.color</code>, <code>classList.add/remove/toggle()</code>.</li>
+                  </ul>
+                  <p><strong>3. Creating &amp; removing nodes:</strong></p>
+                  <ul>
+                    <li><code>createElement()</code> — make a new element.</li>
+                    <li><code>appendChild()</code> / <code>append()</code> — add it to the tree.</li>
+                    <li><code>removeChild()</code> / <code>remove()</code> — delete an element.</li>
+                  </ul>
+                  <p>These operations let pages respond to user actions in real time — adding list items, toggling classes, validating forms — making the web <strong>interactive and dynamic</strong> without reloading.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> DOM Tree</div>
+                <div class="tree">
+                  <ul style="list-style:none;display:inline-block">
+                    <li>
+                      <span class="node tag">document (root)</span>
+                      <ul>
+                        <li><span class="node tag">&lt;html&gt;</span>
+                          <ul>
+                            <li><span class="node tag">&lt;head&gt;</span></li>
+                            <li><span class="node tag">&lt;body&gt;</span>
+                              <ul>
+                                <li><span class="node txt">&lt;h1&gt;</span></li>
+                                <li><span class="node attr">&lt;ul&gt; → &lt;li&gt;</span></li>
+                              </ul>
+                            </li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <p class="flow-label">JS selects a node from this tree, then reads/edits/adds/removes it (the page updates instantly)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>dom-ops.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;h3 id="title"&gt;Old Title&lt;/h3&gt;
+&lt;ul id="list"&gt;&lt;li&gt;Item 1&lt;/li&gt;&lt;/ul&gt;
+&lt;button onclick="update()"&gt;Run DOM Operations&lt;/button&gt;
+
+&lt;script&gt;
+  function update() {
+    // 1. SELECT + change content
+    document.getElementById('title').textContent = 'New Title';
+
+    // 2. STYLE + class manipulation
+    document.querySelector('#title').style.color = '#f72585';
+
+    // 3. CREATE a new element and APPEND it
+    const li = document.createElement('li');
+    li.textContent = 'Item added by JS';
+    document.getElementById('list').appendChild(li);
+
+    // 4. REMOVE the first item
+    document.querySelector('#list li').remove();
+  }
+&lt;/script&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-pencil-square me-1"></i>DOM operations running live</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h3 id='title'>Old Title</h3>
+                      <ul id='list'><li>Item 1</li><li>Item 2</li></ul>
+                      <button id='run' style='padding:8px 14px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer'>Run DOM Operations</button>
+                      <button id='add' style='padding:8px 14px;border:none;background:#7209b7;color:#fff;border-radius:6px;cursor:pointer'>Add Item</button>
+                      <script>
+                        document.getElementById('run').onclick=function(){
+                          var t=document.getElementById('title');
+                          t.textContent='New Title (changed by JS)';
+                          t.style.color='#f72585';
+                          var li=document.createElement('li');
+                          li.textContent='Item added by JS';
+                          document.getElementById('list').appendChild(li);
+                        };
+                        var n=3;
+                        document.getElementById('add').onclick=function(){
+                          var li=document.createElement('li');
+                          li.textContent='Item '+(n++);
+                          document.getElementById('list').appendChild(li);
+                        };
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Group your answer into <strong>Select → Modify → Create/Remove</strong> — examiners love structured DOM answers.</li>
+                    <li>Know the difference: <strong>innerHTML</strong> parses HTML; <strong>textContent</strong> is plain text (safer).</li>
+                    <li>Mistake: <code>getElementById</code> takes the id <strong>without</strong> the <code>#</code>; <code>querySelector</code> needs the <code>#</code>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 DOM verbs: <strong>"Get, Set, Create, Append, Remove."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q5 ================= -->
+      <section class="question-section" id="u3-q5">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q5">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q5</span>
+                Explain JavaScript functions and objects with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u3-q5" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Functions</strong> are reusable blocks of code that perform a task and optionally <strong>return a value</strong>. They promote <strong>reusability</strong> and avoid repetition (DRY principle).</p>
+                  <ul>
+                    <li><strong>Function declaration:</strong> <code>function add(a,b){ return a+b; }</code></li>
+                    <li><strong>Function expression:</strong> <code>const add = function(a,b){...};</code></li>
+                    <li><strong>Arrow function:</strong> <code>const add = (a,b) =&gt; a+b;</code> — short ES6 syntax.</li>
+                    <li><strong>Parameters</strong> are inputs; <strong>arguments</strong> are the actual values passed.</li>
+                  </ul>
+                  <p><strong>Objects</strong> are collections of related data and behaviour stored as <strong>key–value pairs</strong>. A key is a <em>property</em>; a function value is called a <em>method</em>.</p>
+                  <ul>
+                    <li><strong>Create:</strong> <code>const car = { brand:'Tata', year:2024 };</code></li>
+                    <li><strong>Access:</strong> dot notation <code>car.brand</code> or bracket <code>car['brand']</code>.</li>
+                    <li><strong>Methods:</strong> functions inside objects; <code>this</code> refers to the current object.</li>
+                  </ul>
+                  <p>Together, functions and objects are the foundation of JavaScript — objects model real-world entities (a user, a car) while functions/methods define their behaviour. This supports <strong>modular, organised, object-oriented code</strong>.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Object Structure</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box app">const student = { ... }</div>
+                  <div class="flow-arrow">↓ contains</div>
+                  <div class="flow-box client">Properties (data)<br><small>name: 'Riya', age: 20</small></div>
+                  <div class="flow-arrow">↓ and</div>
+                  <div class="flow-box green">Methods (behaviour)<br><small>greet() { return this.name }</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>functions-objects.js</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">// 1. Function declaration
+function add(a, b) {
+  return a + b;            // returns a value
+}
+console.log(add(5, 3));    // 8
+
+// 2. Arrow function (ES6)
+const square = n =&gt; n * n;
+console.log(square(4));    // 16
+
+// 3. Object with properties AND a method
+const student = {
+  name: 'Riya',            // property
+  age: 20,                 // property
+  greet: function () {     // method
+    return 'Hi, I am ' + this.name + ', age ' + this.age;
+  }
+};
+
+console.log(student.name);     // dot access -> "Riya"
+console.log(student['age']);   // bracket access -> 20
+console.log(student.greet());  // calls the method</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-box me-1"></i>Functions &amp; objects in action</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>Function: add(a, b)</h4>
+                      <input id='a' type='number' value='5' style='width:70px;padding:6px'> +
+                      <input id='b' type='number' value='3' style='width:70px;padding:6px'>
+                      <button id='go' style='padding:6px 12px;border:none;background:#f72585;color:#fff;border-radius:5px;cursor:pointer'>Add</button>
+                      <p id='sum' style='font-weight:bold;color:#f72585'></p>
+                      <hr>
+                      <h4>Object: student.greet()</h4>
+                      <p id='obj' style='color:#7209b7;font-weight:bold'></p>
+                      <script>
+                        function add(a,b){return a+b;}
+                        document.getElementById('go').onclick=function(){
+                          var r=add(Number(document.getElementById('a').value),Number(document.getElementById('b').value));
+                          document.getElementById('sum').textContent='Result = '+r;
+                        };
+                        var student={name:'Riya',age:20,greet:function(){return 'Hi, I am '+this.name+', age '+this.age;}};
+                        document.getElementById('obj').textContent=student.greet();
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Show <strong>all three function forms</strong> (declaration, expression, arrow) for full marks.</li>
+                    <li>Define an object with both a <strong>property and a method</strong>, and explain <code>this</code>.</li>
+                    <li>Mistake: forgetting <code>return</code> — a function without it returns <code>undefined</code>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Object = <strong>"Properties + Methods"</strong> (data + behaviour).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q6 ================= -->
+      <section class="question-section" id="u3-q6">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q6">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q6</span>
+                Develop a JavaScript application using arrays and objects.
+              </button>
+            </h2>
+            <div id="c-u3-q6" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>An <strong>array</strong> is an ordered collection of values accessed by a numeric <strong>index</strong> (starting at 0). An <strong>object</strong> stores data as <strong>key–value pairs</strong>. Real applications combine them as an <strong>array of objects</strong> — for example a list of students or products.</p>
+                  <p><strong>Common array methods (very important for exams):</strong></p>
+                  <ul>
+                    <li><strong>push() / pop():</strong> add / remove at the end.</li>
+                    <li><strong>forEach():</strong> loop over each element.</li>
+                    <li><strong>map():</strong> transform every element into a new array.</li>
+                    <li><strong>filter():</strong> keep elements that pass a test.</li>
+                    <li><strong>reduce():</strong> combine all elements into one value (e.g. a total).</li>
+                    <li><strong>find() / sort() / length:</strong> search, order, and count.</li>
+                  </ul>
+                  <p>A typical <strong>application</strong> stores records as an array of objects, then uses these methods to <strong>add, list, filter and total</strong> data. For example, a "Student Marks" app keeps <code>[{name, marks}, ...]</code> and uses <code>filter()</code> to find pass students and <code>reduce()</code> to compute the average — demonstrating real data handling without a database.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Array of Objects</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:150px">students[0]<br><small>{name:'Riya', marks:85}</small></div>
+                  <div class="flow-box process" style="min-width:150px">students[1]<br><small>{name:'Amit', marks:40}</small></div>
+                  <div class="flow-box green" style="min-width:150px">students[2]<br><small>{name:'Sana', marks:72}</small></div>
+                </div>
+                <p class="flow-label">An array (index 0,1,2…) holding objects → filter()/map()/reduce() process the records</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>students-app.js</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">// Array of objects (a mini database)
+let students = [
+  { name: 'Riya', marks: 85 },
+  { name: 'Amit', marks: 40 },
+  { name: 'Sana', marks: 72 }
+];
+
+// ADD a new record with push()
+students.push({ name: 'Dev', marks: 90 });
+
+// FILTER students who passed (marks &gt;= 50)
+let passed = students.filter(s =&gt; s.marks &gt;= 50);
+console.log('Passed:', passed.map(s =&gt; s.name)); // ["Riya","Sana","Dev"]
+
+// REDUCE to find the average mark
+let total = students.reduce((sum, s) =&gt; sum + s.marks, 0);
+let average = total / students.length;
+console.log('Average:', average);  // 71.75
+
+// FIND the topper with sort()
+let topper = [...students].sort((a, b) =&gt; b.marks - a.marks)[0];
+console.log('Topper:', topper.name); // "Dev"</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-table me-1"></i>Student marks app (live)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>Add a Student</h4>
+                      <input id='nm' placeholder='Name' style='padding:6px'>
+                      <input id='mk' type='number' placeholder='Marks' style='padding:6px;width:90px'>
+                      <button id='add' style='padding:6px 12px;border:none;background:#f72585;color:#fff;border-radius:5px;cursor:pointer'>Add</button>
+                      <div id='tbl' style='margin-top:12px'></div>
+                      <p id='stat' style='font-weight:bold;color:#7209b7'></p>
+                      <script>
+                        var students=[{name:'Riya',marks:85},{name:'Amit',marks:40},{name:'Sana',marks:72}];
+                        function render(){
+                          var h='<table border=1 cellpadding=6 style=border-collapse:collapse><tr style=background:#f72585;color:#fff><th>Name</th><th>Marks</th><th>Result</th></tr>';
+                          students.forEach(function(s){
+                            h+='<tr><td>'+s.name+'</td><td>'+s.marks+'</td><td>'+(s.marks>=50?'Pass':'Fail')+'</td></tr>';
+                          });
+                          document.getElementById('tbl').innerHTML=h+'</table>';
+                          var total=students.reduce(function(a,s){return a+s.marks;},0);
+                          var avg=(total/students.length).toFixed(2);
+                          var pass=students.filter(function(s){return s.marks>=50;}).length;
+                          document.getElementById('stat').textContent='Average: '+avg+' | Passed: '+pass+' of '+students.length;
+                        }
+                        document.getElementById('add').onclick=function(){
+                          var n=document.getElementById('nm').value,m=Number(document.getElementById('mk').value);
+                          if(n){students.push({name:n,marks:m});render();document.getElementById('nm').value='';document.getElementById('mk').value='';}
+                        };
+                        render();
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Use an <strong>array of objects</strong> — that is exactly what "arrays and objects" means in this question.</li>
+                    <li>Show at least <strong>map / filter / reduce</strong>; explain what each returns.</li>
+                    <li>Mistake: array index starts at <strong>0</strong>, not 1; <code>arr.length</code> gives the count.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Big three: <strong>"map transforms, filter selects, reduce totals."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q7 ================= -->
+      <section class="question-section" id="u3-q7">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q7">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q7</span>
+                Generate a JavaScript to validate User registration for credit card payment.
+              </button>
+            </h2>
+            <div id="c-u3-q7" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Credit-card validation</strong> uses JavaScript to check that payment details are in the correct format <strong>before sending them to the server</strong>. This is <strong>client-side validation</strong> — it gives instant feedback, reduces server load and improves user experience (final checks still happen on the server).</p>
+                  <p><strong>Fields and their validation rules:</strong></p>
+                  <ul>
+                    <li><strong>Card number:</strong> must be <strong>16 digits</strong>; often verified with the <strong>Luhn algorithm</strong> (mod-10 checksum) to catch typos.</li>
+                    <li><strong>Cardholder name:</strong> only letters and spaces (regex).</li>
+                    <li><strong>Expiry date:</strong> format <strong>MM/YY</strong> and a <strong>future date</strong>.</li>
+                    <li><strong>CVV:</strong> <strong>3 digits</strong> (or 4 for Amex).</li>
+                  </ul>
+                  <p><strong>Techniques used:</strong> regular expressions (<code>/^\d{16}$/</code>), string methods, and the <strong>Luhn algorithm</strong> which doubles every second digit from the right, sums them, and checks the total is divisible by 10. Validation runs on the form's <code>submit</code> event with <code>preventDefault()</code> so an invalid form is not sent. This protects against accidental wrong entries and basic fraud at the entry point.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Validation Flow</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box client">User submits card form</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box process">Check: 16 digits? Name? MM/YY? CVV?</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box app">Luhn algorithm (mod-10 checksum)</div>
+                  <div class="flow-arrow">↓ valid?</div>
+                  <div class="flow-box green">✓ Accept → send to server</div>
+                  <div class="flow-arrow">↓ invalid</div>
+                  <div class="flow-box red">✗ Show error, block submit</div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>card-validate.js</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">function validateCard(num, name, expiry, cvv) {
+  // 1. Card number: exactly 16 digits
+  if (!/^\d{16}$/.test(num)) return 'Card must be 16 digits';
+
+  // 2. Luhn algorithm (mod-10 checksum)
+  let sum = 0, alt = false;
+  for (let i = num.length - 1; i &gt;= 0; i--) {
+    let d = parseInt(num[i]);
+    if (alt) { d *= 2; if (d &gt; 9) d -= 9; }
+    sum += d; alt = !alt;
+  }
+  if (sum % 10 !== 0) return 'Invalid card number (Luhn check failed)';
+
+  // 3. Name: letters and spaces only
+  if (!/^[A-Za-z ]+$/.test(name)) return 'Invalid cardholder name';
+
+  // 4. Expiry: MM/YY format
+  if (!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) return 'Expiry must be MM/YY';
+
+  // 5. CVV: 3 digits
+  if (!/^\d{3}$/.test(cvv)) return 'CVV must be 3 digits';
+
+  return 'OK';   // all checks passed
+}</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-credit-card me-1"></i>Card validation (live)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:360px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>Credit Card Payment</h4>
+                      <input id='num' placeholder='Card Number (try 4539578763621486)' style='padding:7px;width:90%;display:block;margin:4px 0'>
+                      <input id='nm' placeholder='Name on Card' style='padding:7px;width:90%;display:block;margin:4px 0'>
+                      <input id='exp' placeholder='Expiry MM/YY' style='padding:7px;width:120px;margin:4px 4px 4px 0'>
+                      <input id='cvv' placeholder='CVV' style='padding:7px;width:80px'>
+                      <br>
+                      <button id='pay' style='padding:8px 18px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer;margin-top:6px'>Pay Now</button>
+                      <p id='msg' style='font-weight:bold;margin-top:10px'></p>
+                      <script>
+                        function validateCard(num,name,expiry,cvv){
+                          if(!/^\d{16}$/.test(num)) return 'Card must be 16 digits';
+                          var sum=0,alt=false;
+                          for(var i=num.length-1;i>=0;i--){var d=parseInt(num[i]);if(alt){d*=2;if(d>9)d-=9;}sum+=d;alt=!alt;}
+                          if(sum%10!==0) return 'Invalid card number (Luhn failed)';
+                          if(!/^[A-Za-z ]+$/.test(name)) return 'Invalid cardholder name';
+                          if(!/^(0[1-9]|1[0-2])\/\d{2}$/.test(expiry)) return 'Expiry must be MM/YY';
+                          if(!/^\d{3}$/.test(cvv)) return 'CVV must be 3 digits';
+                          return 'OK';
+                        }
+                        document.getElementById('pay').onclick=function(){
+                          var r=validateCard(document.getElementById('num').value.trim(),document.getElementById('nm').value.trim(),document.getElementById('exp').value.trim(),document.getElementById('cvv').value.trim());
+                          var m=document.getElementById('msg');
+                          if(r==='OK'){m.style.color='#198754';m.textContent='Payment Successful! Card is valid.';}
+                          else{m.style.color='#dc3545';m.textContent='Error: '+r;}
+                        };
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Mention the <strong>Luhn algorithm</strong> for card numbers — it impresses examiners and earns extra marks.</li>
+                    <li>Use <strong>regex</strong> for each field (16 digits, 3-digit CVV, MM/YY) and <code>preventDefault()</code> on submit.</li>
+                    <li>Mistake: doing only client-side checks — always note the <strong>server must re-validate</strong> too.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Card checks: <strong>"16 - Name - MM/YY - CVV - Luhn."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q8 ================= -->
+      <section class="question-section" id="u3-q8">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q8">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q8</span>
+                Generate a JavaScript program that uses form handling and validations.
+              </button>
+            </h2>
+            <div id="c-u3-q8" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Form handling</strong> is the process of capturing user input from an HTML <code>&lt;form&gt;</code> and processing it with JavaScript. <strong>Form validation</strong> checks that the input is correct and complete <strong>before submission</strong>.</p>
+                  <p><strong>Two kinds of validation:</strong></p>
+                  <ul>
+                    <li><strong>Client-side (JavaScript):</strong> instant feedback, fast, reduces server load.</li>
+                    <li><strong>Server-side:</strong> the secure final check (a user can disable JS).</li>
+                  </ul>
+                  <p><strong>Key steps in form handling:</strong></p>
+                  <ul>
+                    <li>Listen for the <strong>submit</strong> event and call <code>event.preventDefault()</code> to stop the default reload.</li>
+                    <li>Read values with <code>form.elements</code> or <code>document.getElementById().value</code>.</li>
+                    <li>Validate each field: <strong>not empty</strong>, valid <strong>email</strong> (regex), <strong>password length</strong>, matching <strong>confirm password</strong>.</li>
+                    <li>Show <strong>error messages</strong> next to fields, or submit if all valid.</li>
+                  </ul>
+                  <p>Common checks use <strong>regular expressions</strong> (email: <code>/^[^@]+@[^@]+\.[^@]+$/</code>), the <code>.trim()</code> method for empty checks, and comparison for matching fields. Good validation makes forms <strong>reliable, user-friendly and secure</strong>.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Form Handling Flow</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box client">User fills &amp; clicks Submit</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box process">event.preventDefault() — stop reload</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box app">Validate: empty? email? password match?</div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">All valid → submit / success</div>
+                  <div class="flow-arrow">↓ else</div>
+                  <div class="flow-box red">Show error messages</div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>form-validate.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;form id="reg"&gt;
+  &lt;input id="email" placeholder="Email"&gt;
+  &lt;input id="pwd" type="password" placeholder="Password"&gt;
+  &lt;button type="submit"&gt;Register&lt;/button&gt;
+  &lt;p id="err"&gt;&lt;/p&gt;
+&lt;/form&gt;
+
+&lt;script&gt;
+  document.getElementById('reg').addEventListener('submit', function (e) {
+    e.preventDefault();                 // stop the page reload
+    const email = document.getElementById('email').value.trim();
+    const pwd   = document.getElementById('pwd').value;
+    const err   = document.getElementById('err');
+
+    // Validation rules
+    if (email === '') { err.textContent = 'Email is required'; return; }
+    if (!/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+      err.textContent = 'Invalid email format'; return;
+    }
+    if (pwd.length &lt; 6) {
+      err.textContent = 'Password must be 6+ characters'; return;
+    }
+
+    err.style.color = 'green';
+    err.textContent = 'Registration successful!';
+  });
+&lt;/script&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-ui-checks me-1"></i>Live registration form</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>Register</h4>
+                      <form id='reg'>
+                        <input id='email' placeholder='Email' style='padding:7px;width:90%;display:block;margin:4px 0'>
+                        <input id='pwd' type='password' placeholder='Password (6+ chars)' style='padding:7px;width:90%;display:block;margin:4px 0'>
+                        <input id='cpwd' type='password' placeholder='Confirm Password' style='padding:7px;width:90%;display:block;margin:4px 0'>
+                        <button type='submit' style='padding:8px 18px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer'>Register</button>
+                        <p id='err' style='font-weight:bold;margin-top:8px'></p>
+                      </form>
+                      <script>
+                        document.getElementById('reg').addEventListener('submit',function(e){
+                          e.preventDefault();
+                          var email=document.getElementById('email').value.trim();
+                          var pwd=document.getElementById('pwd').value;
+                          var cpwd=document.getElementById('cpwd').value;
+                          var err=document.getElementById('err');
+                          err.style.color='#dc3545';
+                          if(email===''){err.textContent='Email is required';return;}
+                          if(!/^[^@]+@[^@]+\.[^@]+$/.test(email)){err.textContent='Invalid email format';return;}
+                          if(pwd.length<6){err.textContent='Password must be 6+ characters';return;}
+                          if(pwd!==cpwd){err.textContent='Passwords do not match';return;}
+                          err.style.color='#198754';
+                          err.textContent='Registration successful!';
+                        });
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Always attach validation to the <strong>submit event</strong> and call <code>preventDefault()</code> first.</li>
+                    <li>Cover the standard checks: <strong>empty, email regex, password length, confirm-password match</strong>.</li>
+                    <li>Mistake: relying on client-side only — state that <strong>server-side validation</strong> is still required for security.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Validate order: <strong>"Empty → Format → Length → Match."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q9 ================= -->
+      <section class="question-section" id="u3-q9">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q9">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q9</span>
+                Build a jQuery webpage using animations and effects.
+              </button>
+            </h2>
+            <div id="c-u3-q9" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>jQuery effects and animations</strong> are built-in methods that add motion and visual transitions to web pages with very little code. They make UIs feel smooth and interactive.</p>
+                  <p><strong>Basic effect methods:</strong></p>
+                  <ul>
+                    <li><strong>hide() / show() / toggle():</strong> hide, reveal or switch visibility.</li>
+                    <li><strong>fadeIn() / fadeOut() / fadeToggle():</strong> change opacity gradually.</li>
+                    <li><strong>slideUp() / slideDown() / slideToggle():</strong> slide elements up/down.</li>
+                  </ul>
+                  <p><strong>Custom animation:</strong></p>
+                  <ul>
+                    <li><strong>animate({props}, speed):</strong> animate any numeric CSS property (width, height, opacity, margin).</li>
+                    <li>Speed can be <code>'slow'</code>, <code>'fast'</code> or milliseconds (e.g. <code>1000</code>).</li>
+                    <li>A <strong>callback</strong> runs when the animation finishes — enabling chaining/queues.</li>
+                  </ul>
+                  <p><strong>Chaining</strong> lets you run several effects in sequence on one element: <code>$('#box').slideUp().slideDown().fadeOut();</code>. All effects can take a duration and an optional callback. These methods internally handle timers and cross-browser issues, so a designer can build rich animations without writing complex JavaScript — the essence of jQuery's "write less, do more."</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> jQuery Effect Methods</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:130px">Visibility<br><small>hide() show() toggle()</small></div>
+                  <div class="flow-box process" style="min-width:130px">Fading<br><small>fadeIn/Out/Toggle()</small></div>
+                  <div class="flow-box green" style="min-width:130px">Sliding<br><small>slideUp/Down/Toggle()</small></div>
+                  <div class="flow-box app" style="min-width:130px">Custom<br><small>animate({...}, speed)</small></div>
+                </div>
+                <p class="flow-label">Chain them in sequence: $('#box').slideUp().fadeIn().animate({width:'200px'})</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>jquery-effects.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;script src="https://code.jquery.com/jquery-3.7.1.min.js"&gt;&lt;/script&gt;
+
+&lt;button id="fade"&gt;Fade&lt;/button&gt;
+&lt;button id="slide"&gt;Slide&lt;/button&gt;
+&lt;button id="anim"&gt;Animate&lt;/button&gt;
+&lt;div id="box"&gt;Watch me move!&lt;/div&gt;
+
+&lt;script&gt;
+  $(document).ready(function () {
+    // Fade effect
+    $('#fade').click(function () { $('#box').fadeToggle('slow'); });
+
+    // Slide effect
+    $('#slide').click(function () { $('#box').slideToggle(600); });
+
+    // Custom animation with a callback (chaining)
+    $('#anim').click(function () {
+      $('#box').animate({ width: '250px', opacity: 0.6 }, 800)
+               .animate({ width: '120px', opacity: 1 }, 800);
+    });
+  });
+&lt;/script&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-stars me-1"></i>jQuery animations running live</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:300px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <script src='https://code.jquery.com/jquery-3.7.1.min.js'><\/script>
+                      <button id='fade' style='padding:7px 12px;border:none;background:#f72585;color:#fff;border-radius:5px;cursor:pointer'>Fade</button>
+                      <button id='slide' style='padding:7px 12px;border:none;background:#7209b7;color:#fff;border-radius:5px;cursor:pointer'>Slide</button>
+                      <button id='anim' style='padding:7px 12px;border:none;background:#06d6a0;color:#fff;border-radius:5px;cursor:pointer'>Animate</button>
+                      <div id='box' style='margin-top:14px;width:120px;height:80px;background:linear-gradient(120deg,#f72585,#7209b7);color:#fff;border-radius:10px;display:flex;align-items:center;justify-content:center;font-weight:bold'>Box</div>
+                      <script>
+                        $(document).ready(function(){
+                          $('#fade').click(function(){$('#box').fadeToggle('slow');});
+                          $('#slide').click(function(){$('#box').slideToggle(600);});
+                          $('#anim').click(function(){
+                            $('#box').animate({width:'250px',opacity:0.6},700)
+                                     .animate({width:'120px',opacity:1},700);
+                          });
+                        });
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Group effects into <strong>visibility (hide/show), fade, slide, and custom animate()</strong>.</li>
+                    <li>Explain <strong>chaining</strong> and the optional <strong>speed + callback</strong> arguments.</li>
+                    <li>Mistake: <code>animate()</code> only works on <strong>numeric</strong> CSS properties (not colors without a plugin).</li>
+                  </ul>
+                  <div class="mnemonic">💡 Effects: <strong>"Fade, Slide, Toggle, Animate."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q10 ================= -->
+      <section class="question-section" id="u3-q10">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u3-q10">
+                <span class="badge text-white me-2" style="background:var(--unit3)">Q10</span>
+                Explain the AJAX client–server architecture and the role of XMLHttpRequest object.
+              </button>
+            </h2>
+            <div id="c-u3-q10" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>AJAX client–server architecture</strong> adds an extra layer — the <strong>AJAX engine (XMLHttpRequest)</strong> — between the user interface and the web server. In a classic model the browser sends a request and waits for a full new page. In AJAX, the browser talks to the server <strong>in the background</strong> and updates only part of the page.</p>
+                  <p><strong>The flow:</strong></p>
+                  <ul>
+                    <li><strong>Client (UI):</strong> a user action triggers JavaScript.</li>
+                    <li><strong>AJAX engine:</strong> the <strong>XMLHttpRequest</strong> object sends an asynchronous request — the user keeps working.</li>
+                    <li><strong>Server:</strong> processes the request (often with a database) and returns <strong>JSON/XML</strong>.</li>
+                    <li><strong>Callback:</strong> JavaScript receives the data and refreshes only the relevant DOM section.</li>
+                  </ul>
+                  <p><strong>Role of XMLHttpRequest (XHR):</strong> it is the core object that makes AJAX possible. Its key members:</p>
+                  <ul>
+                    <li><code>open(method, url, async)</code> — set up the request.</li>
+                    <li><code>send()</code> — send it to the server.</li>
+                    <li><code>onreadystatechange</code> — fires as state changes.</li>
+                    <li><code>readyState</code> (0–4; <strong>4 = done</strong>) and <code>status</code> (<strong>200 = OK</strong>).</li>
+                    <li><code>responseText</code> / <code>responseXML</code> — the returned data.</li>
+                  </ul>
+                  <p>This architecture gives <strong>faster, partial updates</strong> and a desktop-like experience. Modern code often uses <code>fetch()</code>, but XHR remains the classic foundation examiners ask about.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> AJAX Architecture (with AJAX engine)</div>
+                <div class="layer-stack" style="max-width:480px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">Client — Browser UI (HTML + CSS + JS event)</div>
+                  <div class="flow-arrow text-center">↓ JS call</div>
+                  <div class="arch-layer" style="background:rgba(247,37,133,0.12);border-color:#f72585;color:#f72585">AJAX Engine — XMLHttpRequest (async)</div>
+                  <div class="flow-arrow text-center">⇅ HTTP request / response</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:#06d6a0;color:#06d6a0">Web Server — processes &amp; queries data</div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.12);border-color:#fb8500;color:#fb8500">Database — returns JSON / XML</div>
+                </div>
+                <p class="flow-label">The AJAX engine sits between UI and server so only part of the page refreshes (no full reload)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>xhr-architecture.js</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">// The XMLHttpRequest object — heart of AJAX
+const xhr = new XMLHttpRequest();
+
+// open(method, url, async=true)
+xhr.open('GET', 'https://jsonplaceholder.typicode.com/posts/1', true);
+
+// Fires every time readyState changes (0 -&gt; 4)
+xhr.onreadystatechange = function () {
+  // readyState 4 = request finished/response ready
+  if (xhr.readyState === 4) {
+    if (xhr.status === 200) {              // 200 = OK
+      const data = JSON.parse(xhr.responseText);
+      console.log('Title:', data.title);  // update DOM here
+    } else {
+      console.log('Error: ' + xhr.status);
+    }
+  }
+};
+
+// send() dispatches the async request to the server
+xhr.send();</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-hdd-network me-1"></i>XMLHttpRequest with live readyState log</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:330px" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>XMLHttpRequest Demo</h4>
+                      <button id='go' style='padding:8px 16px;border:none;background:#f72585;color:#fff;border-radius:6px;cursor:pointer'>Send AJAX Request</button>
+                      <pre id='log' style='background:#0d1117;color:#06d6a0;padding:12px;border-radius:8px;margin-top:12px;font-size:13px;min-height:90px;white-space:pre-wrap'></pre>
+                      <div id='out' style='margin-top:8px;font-weight:bold;color:#7209b7'></div>
+                      <script>
+                        document.getElementById('go').onclick=function(){
+                          var log=document.getElementById('log'),out=document.getElementById('out');
+                          log.textContent='';out.textContent='';
+                          var xhr=new XMLHttpRequest();
+                          xhr.open('GET','https://jsonplaceholder.typicode.com/posts/1',true);
+                          xhr.onreadystatechange=function(){
+                            log.textContent+='readyState = '+xhr.readyState+' | status = '+xhr.status+'\n';
+                            if(xhr.readyState===4 && xhr.status===200){
+                              var d=JSON.parse(xhr.responseText);
+                              out.textContent='Response received -> title: '+d.title;
+                            }
+                          };
+                          xhr.send();
+                        };
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Draw the <strong>4-layer diagram</strong> with the <strong>AJAX engine</strong> between client and server — that is the key figure.</li>
+                    <li>Memorise XHR methods: <strong>open(), send(), onreadystatechange</strong> and values <strong>readyState 4 + status 200</strong>.</li>
+                    <li>Mistake: forgetting the <strong>async (third) argument</strong> of <code>open()</code> — true means non-blocking.</li>
+                  </ul>
+                  <div class="mnemonic">💡 XHR steps: <strong>"Open → Send → ReadyState 4 → Status 200."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center my-5">
+        <a href="../unit4/index.html" class="btn btn-study" style="background:var(--unit4);border:none;color:#fff;width:auto;padding:0.6rem 1.6rem">
+          Next: Unit 4 — Servlets, JDBC &amp; AJAX <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <p class="mb-1"><i class="bi bi-book-half me-2" style="color:var(--unit3)"></i><strong>Web Technology ETE Study Guide</strong></p>
+    <p class="mb-0" style="font-size:0.8rem;">Made for ETE 2026 · Unit 3 of 5 · 10 Questions Completed</p>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

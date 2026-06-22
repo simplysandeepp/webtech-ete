@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit 1: Web Fundamentals &amp; HTML5 — WebTech ETE</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body data-unit="1">
+
+<div id="progress-bar"></div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg sticky-top main-navbar">
+  <div class="container-fluid px-lg-4">
+    <a class="navbar-brand" href="../index.html"><i class="bi bi-book-half me-2"></i>WebTech ETE</a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mainNav">
+      <ul class="navbar-nav ms-auto align-items-center gap-1 mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link u1 active" href="../unit1/index.html">Unit 1</a></li>
+        <li class="nav-item"><a class="nav-link u2" href="../unit2/index.html">Unit 2</a></li>
+        <li class="nav-item"><a class="nav-link u3" href="../unit3/index.html">Unit 3</a></li>
+        <li class="nav-item"><a class="nav-link u4" href="../unit4/index.html">Unit 4</a></li>
+        <li class="nav-item"><a class="nav-link u5" href="../unit5/index.html">Unit 5</a></li>
+      </ul>
+    </div>
+    <button id="theme-toggle" class="ms-3" onclick="toggleTheme()"><i class="bi bi-moon-fill"></i></button>
+  </div>
+</nav>
+
+<!-- Unit Hero -->
+<section class="unit-hero">
+  <div class="container-fluid px-lg-4">
+    <span class="unit-badge text-white" style="background:var(--unit1)"><i class="bi bi-1-circle-fill me-1"></i> UNIT 1</span>
+    <h1 class="mt-2">Web Fundamentals &amp; HTML5</h1>
+    <p class="mb-0" style="color:var(--text-secondary)">Client–Server Architecture · Internet Protocols · HTML5 Multimedia · Canvas &amp; SVG · XML · DOM Events · Complete Web Projects</p>
+  </div>
+</section>
+
+<div class="container-fluid px-lg-4">
+  <div class="row">
+
+    <!-- Sidebar -->
+    <nav class="col-lg-3 col-xl-3 sidebar" id="sidebar">
+      <div class="sidebar-heading">Unit 1 — Questions</div>
+      <nav class="nav flex-column">
+        <a class="nav-link" href="#u1-q1">Q1. Client–Server Architecture</a>
+        <a class="nav-link" href="#u1-q2">Q2. Internet Protocols</a>
+        <a class="nav-link" href="#u1-q3">Q3. HTML5 Audio &amp; Video</a>
+        <a class="nav-link" href="#u1-q4">Q4. Canvas &amp; SVG</a>
+        <a class="nav-link" href="#u1-q5">Q5. XML Structure &amp; Namespaces</a>
+        <a class="nav-link" href="#u1-q6">Q6. DOM Event Handling</a>
+        <a class="nav-link" href="#u1-q7">Q7. Portfolio Website Project</a>
+        <a class="nav-link" href="#u1-q8">Q8. Travel Blog Project</a>
+        <a class="nav-link" href="#u1-q9">Q9. Responsive Web Page</a>
+        <a class="nav-link" href="#u1-q10">Q10. Multi-page Company Website</a>
+      </nav>
+    </nav>
+
+    <!-- Content -->
+    <main class="col-lg-9 col-xl-9 content-area">
+
+      <!-- ================= Q1 ================= -->
+      <section class="question-section" id="u1-q1">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q1">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q1</span>
+                Explain Client–Server Architecture with a diagram.
+              </button>
+            </h2>
+            <div id="c-u1-q1" class="accordion-collapse collapse show">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>Client–Server Architecture</strong> is a distributed computing model in which tasks are divided between two parties: the <strong>client</strong> (which requests services) and the <strong>server</strong> (which provides services). It is the backbone of almost every modern web application.</p>
+                  <ul>
+                    <li><strong>Client:</strong> Any device or program (web browser, mobile app) that initiates a request. It handles the <strong>presentation layer</strong> — the user interface.</li>
+                    <li><strong>Server:</strong> A powerful machine that listens for requests, performs <strong>processing/business logic</strong>, accesses databases, and returns a <strong>response</strong>.</li>
+                    <li><strong>Request–Response cycle:</strong> The client sends an <strong>HTTP request</strong>; the server processes it and returns an <strong>HTTP response</strong> (HTML, JSON, files).</li>
+                    <li><strong>Stateless communication:</strong> HTTP is stateless — each request is independent. State is maintained using cookies, sessions, or tokens.</li>
+                  </ul>
+                  <p>Architectures are classified by <strong>tiers</strong>: a <strong>2-tier</strong> model connects client directly to a database server, while a <strong>3-tier</strong> model adds a middle <strong>application server</strong> (presentation → logic → data). The 3-tier model improves <strong>scalability, security and maintainability</strong> because each layer can be developed and scaled independently. Key advantages include <strong>centralized data control</strong>, <strong>easy maintenance</strong>, and <strong>resource sharing</strong>; the main drawbacks are <strong>server overload</strong> under heavy traffic and a <strong>single point of failure</strong> if the server crashes.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Architecture Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client">Client<br><small>Browser / App (UI)</small></div>
+                  <div class="flow-arrow">⇄</div>
+                  <div class="flow-box neutral">Internet<br><small>HTTP / HTTPS</small></div>
+                  <div class="flow-arrow">⇄</div>
+                  <div class="flow-box server">Web / App Server<br><small>Business Logic</small></div>
+                  <div class="flow-arrow">⇄</div>
+                  <div class="flow-box db">Database<br><small>Data Storage</small></div>
+                </div>
+                <p class="flow-label">3-Tier Model: Presentation Layer → Application Layer → Data Layer (request flows right, response flows left)</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>client-server-demo.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;&lt;title&gt;Client-Server Demo&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;h3&gt;Weather Client&lt;/h3&gt;
+  &lt;button onclick="getData()"&gt;Request Data from Server&lt;/button&gt;
+  &lt;p id="result"&gt;Click the button to send a request...&lt;/p&gt;
+
+  &lt;script&gt;
+    // CLIENT sends a request to the SERVER (a public test API)
+    function getData() {
+      const out = document.getElementById('result');
+      out.textContent = '⏳ Sending HTTP request to server...';
+
+      // fetch() performs the request-response cycle over HTTP
+      fetch('https://jsonplaceholder.typicode.com/users/1')
+        .then(response =&gt; response.json())   // SERVER returns JSON response
+        .then(data =&gt; {
+          out.textContent = '✅ Server replied: ' + data.name +
+                            ' (' + data.email + ')';
+        })
+        .catch(err =&gt; out.textContent = '❌ Error: ' + err);
+    }
+  &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-broadcast me-1"></i>Live Output (simulated request-response)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h3>Weather Client</h3>
+                      <button id='b' style='padding:8px 14px;border:none;background:#4361ee;color:#fff;border-radius:6px;cursor:pointer'>Request Data from Server</button>
+                      <p id='r' style='margin-top:12px'>Click the button to send a request...</p>
+                      <script>
+                        document.getElementById('b').onclick=function(){
+                          var r=document.getElementById('r');
+                          r.textContent='⏳ Sending HTTP request to server...';
+                          setTimeout(function(){
+                            r.innerHTML='✅ <b>Server replied:</b> Leanne Graham (Sincere@april.biz)';
+                          },800);
+                        };
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Always <strong>draw the diagram</strong> — examiners award marks for the request/response arrows and the 3 tiers (Presentation, Logic, Data).</li>
+                    <li>Clearly state <strong>HTTP is stateless</strong> and mention how state is preserved (cookies/sessions).</li>
+                    <li>Common mistake: confusing <strong>2-tier vs 3-tier</strong>. 2-tier = client↔DB; 3-tier adds an app server in the middle.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Mnemonic: <strong>"C.R.S"</strong> — Client Requests, Server Serves.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q2 ================= -->
+      <section class="question-section" id="u1-q2">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q2">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q2</span>
+                Explain the basic Internet protocols used in web technology with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u1-q2" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>protocol</strong> is a set of rules that governs how data is formatted, transmitted and received between computers on a network. The Internet runs on a <strong>protocol stack (TCP/IP model)</strong> where each layer has dedicated protocols.</p>
+                  <ul>
+                    <li><strong>HTTP (HyperText Transfer Protocol):</strong> Transfers web pages between browser and server. Works on <strong>port 80</strong>. Stateless request-response. Example: <code>GET /index.html</code>.</li>
+                    <li><strong>HTTPS:</strong> Secure HTTP using <strong>SSL/TLS</strong> encryption on <strong>port 443</strong>. Protects data like passwords.</li>
+                    <li><strong>FTP (File Transfer Protocol):</strong> Uploads/downloads files between client and server on <strong>ports 20/21</strong>.</li>
+                    <li><strong>SMTP (Simple Mail Transfer Protocol):</strong> Sends emails (<strong>port 25</strong>). Receiving uses <strong>POP3 (110)</strong> or <strong>IMAP (143)</strong>.</li>
+                    <li><strong>TCP/IP:</strong> <strong>TCP</strong> guarantees reliable, ordered delivery; <strong>IP</strong> handles addressing &amp; routing of packets.</li>
+                    <li><strong>DNS (Domain Name System):</strong> Translates domain names (google.com) into IP addresses (port 53).</li>
+                  </ul>
+                  <p>When you type a URL: <strong>DNS</strong> resolves the name → <strong>TCP</strong> opens a connection → <strong>HTTP/HTTPS</strong> requests the page → <strong>IP</strong> routes the packets back. Together these protocols make the web reliable and interoperable.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Protocol Stack Diagram</div>
+                <div class="layer-stack" style="max-width:480px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">Application Layer <small>— HTTP, HTTPS, FTP, SMTP, DNS</small></div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(247,37,133,0.12);border-color:#f72585;color:#f72585">Transport Layer <small>— TCP, UDP (ports, reliability)</small></div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:#06d6a0;color:#06d6a0">Internet Layer <small>— IP (addressing &amp; routing)</small></div>
+                  <div class="flow-arrow text-center">↓</div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.12);border-color:#fb8500;color:#fb8500">Network Access Layer <small>— Ethernet, Wi-Fi</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>http-request.txt</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-http">// A raw HTTP request sent by the browser (Application Layer)
+GET /index.html HTTP/1.1
+Host: www.example.com
+User-Agent: Mozilla/5.0
+Accept: text/html
+
+// A typical HTTP response from the server
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 138
+
+&lt;html&gt;&lt;body&gt;&lt;h1&gt;Hello World&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-hdd-network me-1"></i>Protocol &amp; Port Lookup</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>Common Protocols &amp; Ports</h4>
+                      <select id='s' style='padding:8px;font-size:15px'>
+                        <option value='HTTP → Port 80 → Browsing web pages'>HTTP</option>
+                        <option value='HTTPS → Port 443 → Secure browsing (SSL/TLS)'>HTTPS</option>
+                        <option value='FTP → Port 21 → File transfer'>FTP</option>
+                        <option value='SMTP → Port 25 → Sending email'>SMTP</option>
+                        <option value='DNS → Port 53 → Name resolution'>DNS</option>
+                      </select>
+                      <p id='o' style='margin-top:14px;font-weight:bold;color:#4361ee'></p>
+                      <script>
+                        var s=document.getElementById('s'),o=document.getElementById('o');
+                        function up(){o.textContent=s.value;}
+                        s.onchange=up; up();
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Memorise <strong>protocol → port</strong> pairs. This is a guaranteed 1-mark fill-in-the-blank.</li>
+                    <li>State the difference: <strong>TCP = reliable/connection-oriented</strong>, <strong>UDP = fast/connectionless</strong>.</li>
+                    <li>Mistake to avoid: HTTP is <strong>Application layer</strong>, not Transport — don't mix the TCP/IP layers.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Ports: <strong>"80-443-21-25-53"</strong> = HTTP, HTTPS, FTP, SMTP, DNS.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q3 ================= -->
+      <section class="question-section" id="u1-q3">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q3">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q3</span>
+                Explain the HTML5 audio and video tags used for embedding multimedia content.
+              </button>
+            </h2>
+            <div id="c-u1-q3" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>Before HTML5, multimedia required plugins like <strong>Flash</strong>. HTML5 introduced native <strong>&lt;audio&gt;</strong> and <strong>&lt;video&gt;</strong> elements so browsers can play media directly — no plugins needed.</p>
+                  <ul>
+                    <li><strong>&lt;audio&gt;</strong> embeds sound files. Supported formats: <strong>MP3, OGG, WAV</strong>.</li>
+                    <li><strong>&lt;video&gt;</strong> embeds video. Supported formats: <strong>MP4, WebM, OGG</strong>.</li>
+                    <li><strong>&lt;source&gt;</strong> lets you provide multiple formats; the browser picks the first it supports — improving compatibility.</li>
+                  </ul>
+                  <p><strong>Important attributes:</strong></p>
+                  <ul>
+                    <li><strong>controls</strong> — shows play/pause/volume UI.</li>
+                    <li><strong>autoplay</strong> — starts automatically (often needs <code>muted</code>).</li>
+                    <li><strong>loop</strong> — repeats playback.</li>
+                    <li><strong>muted</strong> — starts without sound.</li>
+                    <li><strong>poster</strong> (video only) — placeholder image before playback.</li>
+                    <li><strong>preload</strong> — hints how much to buffer (<code>none/metadata/auto</code>).</li>
+                  </ul>
+                  <p>These tags make media <strong>accessible, responsive and SEO-friendly</strong>, and they work consistently across modern browsers and mobile devices.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Element Structure Diagram</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box app">&lt;video controls&gt;</div>
+                  <div class="flow-arrow">↓ contains</div>
+                  <div class="flow-box neutral">&lt;source src="movie.mp4" type="video/mp4"&gt;</div>
+                  <div class="flow-arrow">↓ fallback</div>
+                  <div class="flow-box neutral">&lt;source src="movie.webm" type="video/webm"&gt;</div>
+                  <div class="flow-arrow">↓ if none supported</div>
+                  <div class="flow-box red">"Your browser does not support video"</div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>media.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!-- AUDIO with multiple sources and controls --&gt;
+&lt;audio controls preload="metadata"&gt;
+  &lt;source src="song.mp3" type="audio/mpeg"&gt;
+  &lt;source src="song.ogg" type="audio/ogg"&gt;
+  Your browser does not support the audio element.
+&lt;/audio&gt;
+
+&lt;!-- VIDEO with poster, controls, dimensions --&gt;
+&lt;video width="320" height="180" controls poster="thumb.jpg"&gt;
+  &lt;source src="movie.mp4" type="video/mp4"&gt;
+  &lt;source src="movie.webm" type="video/webm"&gt;
+  Your browser does not support the video tag.
+&lt;/video&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-film me-1"></i>Working Audio &amp; Video Players</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px;text-align:center'>
+                      <h4>🎬 HTML5 Video</h4>
+                      <video width='300' controls poster='https://peach.blender.org/wp-content/uploads/title_anouncement.jpg?x11217' style='border-radius:8px'>
+                        <source src='https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4' type='video/mp4'>
+                        Your browser does not support video.
+                      </video>
+                      <h4 style='margin-top:18px'>🔊 HTML5 Audio</h4>
+                      <audio controls>
+                        <source src='https://commondatastorage.googleapis.com/codeskulptor-demos/DDR_assets/Kangaroo_MusiQue_-_The_Neverwritten_Role_Playing_Game.mp3' type='audio/mpeg'>
+                        Your browser does not support audio.
+                      </audio>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List at least <strong>3 attributes</strong> (controls, autoplay, loop) and <strong>2 formats</strong> per tag.</li>
+                    <li>Explain <strong>why &lt;source&gt; is used</strong> — cross-browser format fallback.</li>
+                    <li>Mistake: forgetting <code>controls</code> — without it the player is invisible to the user.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Video formats: <strong>"MWO"</strong> = MP4, WebM, OGG.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q4 ================= -->
+      <section class="question-section" id="u1-q4">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q4">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q4</span>
+                Explain the Canvas and SVG in HTML5.
+              </button>
+            </h2>
+            <div id="c-u1-q4" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>HTML5 provides two ways to draw graphics in the browser: <strong>Canvas</strong> and <strong>SVG</strong>.</p>
+                  <p><strong>Canvas (&lt;canvas&gt;)</strong> is a <strong>bitmap/raster</strong> drawing surface controlled by <strong>JavaScript</strong>. You get a 2D context and issue drawing commands (lines, arcs, images). It is <strong>resolution-dependent</strong> — once drawn, shapes become pixels and "forget" they exist (immediate mode). Ideal for <strong>games, charts, image editing</strong>.</p>
+                  <p><strong>SVG (Scalable Vector Graphics)</strong> is <strong>vector-based</strong> and written in <strong>XML</strong>. Each shape is a DOM element you can style with CSS and attach events to (retained mode). Being vectors, SVG is <strong>resolution-independent</strong> — it scales to any size without blur. Ideal for <strong>logos, icons, diagrams</strong>.</p>
+                  <p><strong>Key differences:</strong></p>
+                  <ul>
+                    <li><strong>Canvas:</strong> pixel-based, JS-driven, fast for many objects, not scalable, no DOM per shape.</li>
+                    <li><strong>SVG:</strong> shape-based, XML/DOM, fully scalable, CSS-stylable, slower with thousands of objects.</li>
+                  </ul>
+                  <p>Rule of thumb: choose <strong>Canvas for dynamic pixel-heavy rendering</strong> (games) and <strong>SVG for crisp, interactive, scalable graphics</strong> (UI icons, infographics).</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Comparison Diagram</div>
+                <div class="flow-diagram">
+                  <div class="flow-box app" style="min-width:160px">CANVAS<br><small>Raster · Pixel · JS draws</small></div>
+                  <div class="flow-box neutral">VS</div>
+                  <div class="flow-box green" style="min-width:160px">SVG<br><small>Vector · XML · DOM shapes</small></div>
+                </div>
+                <div class="flow-diagram">
+                  <div class="flow-box neutral" style="min-width:120px">Resolution<br><small>Canvas: dependent<br>SVG: independent</small></div>
+                  <div class="flow-box neutral" style="min-width:120px">Best for<br><small>Canvas: games<br>SVG: icons/logos</small></div>
+                  <div class="flow-box neutral" style="min-width:120px">Events<br><small>Canvas: whole element<br>SVG: per shape</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>canvas-svg.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!-- CANVAS: drawn with JavaScript --&gt;
+&lt;canvas id="c" width="200" height="120"&gt;&lt;/canvas&gt;
+&lt;script&gt;
+  const ctx = document.getElementById('c').getContext('2d');
+  ctx.fillStyle = '#4361ee';
+  ctx.fillRect(10, 10, 100, 60);        // blue rectangle
+  ctx.beginPath();
+  ctx.arc(150, 60, 35, 0, Math.PI * 2); // circle
+  ctx.fillStyle = '#f72585';
+  ctx.fill();
+&lt;/script&gt;
+
+&lt;!-- SVG: declared with XML markup --&gt;
+&lt;svg width="200" height="120"&gt;
+  &lt;rect x="10" y="10" width="100" height="60" fill="#06d6a0"/&gt;
+  &lt;circle cx="150" cy="60" r="35" fill="#fb8500"/&gt;
+&lt;/svg&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-palette me-1"></i>Canvas vs SVG rendered live</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px;display:flex;gap:30px;flex-wrap:wrap'>
+                      <div><b>Canvas (JS)</b><br>
+                        <canvas id='c' width='200' height='120' style='border:1px solid #ccc'></canvas></div>
+                      <div><b>SVG (XML)</b><br>
+                        <svg width='200' height='120' style='border:1px solid #ccc'>
+                          <rect x='10' y='10' width='100' height='60' fill='#06d6a0'/>
+                          <circle cx='150' cy='60' r='35' fill='#fb8500'/>
+                        </svg></div>
+                      <script>
+                        var ctx=document.getElementById('c').getContext('2d');
+                        ctx.fillStyle='#4361ee';ctx.fillRect(10,10,100,60);
+                        ctx.beginPath();ctx.arc(150,60,35,0,Math.PI*2);
+                        ctx.fillStyle='#f72585';ctx.fill();
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>The classic question is a <strong>Canvas vs SVG table</strong> — memorise raster/vector, JS/XML, scalable/not.</li>
+                    <li>State that <strong>SVG shapes are DOM elements</strong> (can attach click events); Canvas is a single element.</li>
+                    <li>Mistake: saying Canvas is scalable — it is <strong>resolution-dependent</strong> and blurs when zoomed.</li>
+                  </ul>
+                  <div class="mnemonic">💡 <strong>"Canvas = Camera (pixels), SVG = Sketch (shapes)."</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q5 ================= -->
+      <section class="question-section" id="u1-q5">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q5">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q5</span>
+                Explain XML structure and namespaces with suitable example.
+              </button>
+            </h2>
+            <div id="c-u1-q5" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p><strong>XML (eXtensible Markup Language)</strong> is a markup language designed to <strong>store and transport data</strong> in a self-descriptive, platform-independent way. Unlike HTML (which displays data), XML <strong>carries data</strong> with custom tags you define yourself.</p>
+                  <p><strong>XML structure rules (well-formedness):</strong></p>
+                  <ul>
+                    <li>Must have exactly <strong>one root element</strong>.</li>
+                    <li>Every tag must be <strong>properly closed</strong> and correctly <strong>nested</strong>.</li>
+                    <li>Tags are <strong>case-sensitive</strong>.</li>
+                    <li>Attribute values must be <strong>quoted</strong>.</li>
+                    <li>An optional <strong>prolog</strong>: <code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;</code>.</li>
+                  </ul>
+                  <p><strong>XML Namespaces</strong> prevent <strong>naming conflicts</strong> when XML from different vocabularies is combined (e.g. two <code>&lt;table&gt;</code> tags meaning different things). A namespace is declared with the <strong>xmlns</strong> attribute and a unique URI, usually with a <strong>prefix</strong>:</p>
+                  <ul>
+                    <li><code>xmlns:prefix="URI"</code> binds a prefix to a namespace.</li>
+                    <li>Elements then use <code>prefix:element</code> to stay unambiguous.</li>
+                    <li>A <strong>default namespace</strong> (<code>xmlns="URI"</code>) applies to all unprefixed child elements.</li>
+                  </ul>
+                  <p>XML is the foundation of <strong>SOAP, RSS, SVG, XHTML and configuration files</strong>, making it essential for data exchange between systems.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> XML Tree Structure</div>
+                <div class="tree">
+                  <ul style="list-style:none;display:inline-block">
+                    <li>
+                      <span class="node tag">&lt;bookstore&gt; (root)</span>
+                      <ul>
+                        <li><span class="node tag">&lt;book&gt;</span>
+                          <ul>
+                            <li><span class="node txt">&lt;title&gt;</span></li>
+                            <li><span class="node txt">&lt;author&gt;</span></li>
+                            <li><span class="node attr">&lt;price&gt;</span></li>
+                          </ul>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <p class="flow-label">Hierarchical (tree) model: one root → child elements → leaf text nodes</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>catalog.xml</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!-- Namespaces: 'lib' and 'store' avoid &lt;item&gt; conflicts --&gt;
+&lt;catalog xmlns:lib="http://example.com/library"
+         xmlns:store="http://example.com/shop"&gt;
+
+  &lt;lib:item&gt;
+    &lt;lib:title&gt;Web Technology&lt;/lib:title&gt;
+    &lt;lib:author&gt;A. Sharma&lt;/lib:author&gt;
+  &lt;/lib:item&gt;
+
+  &lt;store:item&gt;
+    &lt;store:title&gt;USB Cable&lt;/store:title&gt;
+    &lt;store:price currency="INR"&gt;199&lt;/store:price&gt;
+  &lt;/store:item&gt;
+
+&lt;/catalog&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-filetype-xml me-1"></i>Parsed XML with JavaScript DOMParser</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <h4>📄 Reading XML data</h4>
+                      <div id='out'></div>
+                      <script>
+                        var xml=`<bookstore><book><title>Web Technology</title><author>A. Sharma</author><price>450</price></book><book><title>Java Servlets</title><author>R. Verma</author><price>520</price></book></bookstore>`;
+                        var doc=new DOMParser().parseFromString(xml,'text/xml');
+                        var books=doc.getElementsByTagName('book'),h='<table border=1 cellpadding=6 style=border-collapse:collapse><tr style=background:#4361ee;color:#fff><th>Title</th><th>Author</th><th>Price</th></tr>';
+                        for(var i=0;i<books.length;i++){
+                          h+='<tr><td>'+books[i].getElementsByTagName('title')[0].textContent+'</td><td>'+books[i].getElementsByTagName('author')[0].textContent+'</td><td>₹'+books[i].getElementsByTagName('price')[0].textContent+'</td></tr>';
+                        }
+                        document.getElementById('out').innerHTML=h+'</table>';
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>List the <strong>well-formed rules</strong> (one root, closed tags, case-sensitive, quoted attributes).</li>
+                    <li>Explain namespaces solve <strong>naming collisions</strong> using <code>xmlns:prefix="URI"</code>.</li>
+                    <li>Mistake: thinking the namespace URI must be a real website — it is just a <strong>unique identifier</strong>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 <strong>HTML displays, XML describes.</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q6 ================= -->
+      <section class="question-section" id="u1-q6">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q6">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q6</span>
+                Explain DOM event handling with suitable examples.
+              </button>
+            </h2>
+            <div id="c-u1-q6" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>The <strong>DOM (Document Object Model)</strong> represents an HTML page as a tree of objects. An <strong>event</strong> is a signal that something happened (a click, key press, page load). <strong>Event handling</strong> is the process of <strong>detecting</strong> these events and <strong>running JavaScript</strong> in response.</p>
+                  <p><strong>Three ways to attach events:</strong></p>
+                  <ul>
+                    <li><strong>Inline HTML attribute:</strong> <code>&lt;button onclick="fn()"&gt;</code> — simple but mixes HTML &amp; JS.</li>
+                    <li><strong>DOM property:</strong> <code>element.onclick = fn;</code> — only one handler per event.</li>
+                    <li><strong>addEventListener():</strong> <code>el.addEventListener('click', fn)</code> — best practice, allows <strong>multiple handlers</strong>.</li>
+                  </ul>
+                  <p><strong>Common events:</strong> <code>click, mouseover, mouseout, keydown, keyup, submit, load, change</code>.</p>
+                  <p><strong>Event flow</strong> has three phases: <strong>Capturing</strong> (top→target), <strong>Target</strong>, and <strong>Bubbling</strong> (target→top). The <strong>event object</strong> (<code>event</code>) carries details like <code>event.target</code>, and methods <code>preventDefault()</code> (stop default action) and <code>stopPropagation()</code> (stop bubbling). <strong>Event delegation</strong> uses bubbling to handle many child elements with a single listener on the parent — efficient for dynamic lists.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Event Flow Diagram</div>
+                <div class="flow-diagram vertical">
+                  <div class="flow-box app">1. Capturing Phase <small>document → target (top-down)</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box process">2. Target Phase <small>event reaches the clicked element</small></div>
+                  <div class="flow-arrow">↓</div>
+                  <div class="flow-box green">3. Bubbling Phase <small>target → document (bottom-up)</small></div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>events.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-javascript">// 1. addEventListener (recommended)
+const btn = document.getElementById('myBtn');
+btn.addEventListener('click', function (event) {
+  console.log('Clicked element:', event.target.id);
+  alert('Button was clicked!');
+});
+
+// 2. Mouse events
+btn.addEventListener('mouseover', () =&gt; btn.style.background = 'gold');
+btn.addEventListener('mouseout',  () =&gt; btn.style.background = '');
+
+// 3. Form submit + preventDefault
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault();           // stop page reload
+  console.log('Form intercepted, not reloading');
+});</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-mouse me-1"></i>Interactive event demo</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" srcdoc="
+                    <body style='font-family:sans-serif;padding:16px'>
+                      <button id='b' style='padding:10px 16px;border:none;background:#4361ee;color:#fff;border-radius:6px;cursor:pointer'>Hover &amp; Click me</button>
+                      <p id='log' style='margin-top:14px;color:#333'>Event log will appear here…</p>
+                      <input id='t' placeholder='Type something' style='padding:8px;margin-top:6px'>
+                      <p id='kp' style='color:#f72585'></p>
+                      <script>
+                        var b=document.getElementById('b'),log=document.getElementById('log');
+                        b.addEventListener('mouseover',function(){b.style.background='#f72585';log.textContent='🟣 mouseover fired';});
+                        b.addEventListener('mouseout',function(){b.style.background='#4361ee';log.textContent='🔵 mouseout fired';});
+                        b.addEventListener('click',function(e){log.textContent='✅ click fired on #'+e.target.id;});
+                        document.getElementById('t').addEventListener('keyup',function(e){document.getElementById('kp').textContent='Key pressed: '+e.key;});
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Name all <strong>3 ways</strong> to register events; say <strong>addEventListener is preferred</strong> (multiple handlers).</li>
+                    <li>Explain <strong>bubbling vs capturing</strong> and what <code>preventDefault()</code> / <code>stopPropagation()</code> do.</li>
+                    <li>Mistake: using <code>onclick</code> twice on the same element — the second overwrites the first.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Phases: <strong>"Capture → Target → Bubble"</strong> (down, hit, up).</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q7 ================= -->
+      <section class="question-section" id="u1-q7">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q7">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q7</span>
+                Create a portfolio website using HTML5 semantic elements, multimedia and forms.
+              </button>
+            </h2>
+            <div id="c-u1-q7" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>portfolio website</strong> showcases a person's skills, projects and contact details. Using <strong>HTML5 semantic elements</strong> gives the page meaningful structure that improves <strong>accessibility</strong> and <strong>SEO</strong>.</p>
+                  <p><strong>Key semantic elements used:</strong></p>
+                  <ul>
+                    <li><strong>&lt;header&gt;</strong> — top section with name/logo &amp; navigation.</li>
+                    <li><strong>&lt;nav&gt;</strong> — navigation menu links.</li>
+                    <li><strong>&lt;section&gt;</strong> — thematic grouping (About, Projects).</li>
+                    <li><strong>&lt;article&gt;</strong> — self-contained content like a project card.</li>
+                    <li><strong>&lt;aside&gt;</strong> — side content (skills/links).</li>
+                    <li><strong>&lt;figure&gt; / &lt;figcaption&gt;</strong> — media with captions.</li>
+                    <li><strong>&lt;footer&gt;</strong> — copyright &amp; contact.</li>
+                  </ul>
+                  <p><strong>Multimedia</strong> (image/video) makes the page engaging, while a <strong>contact &lt;form&gt;</strong> with inputs (text, email, textarea) lets visitors reach out. Semantic tags replace generic <code>&lt;div&gt;</code>s so screen readers and search engines understand the page layout — this is the main reason examiners ask for semantic markup.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Page Layout (Semantic Structure)</div>
+                <div class="layer-stack" style="max-width:420px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">&lt;header&gt; + &lt;nav&gt;</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:#06d6a0;color:#06d6a0">&lt;section id="about"&gt; (photo + bio)</div>
+                  <div class="arch-layer" style="background:rgba(247,37,133,0.12);border-color:#f72585;color:#f72585">&lt;section id="projects"&gt; → &lt;article&gt; cards</div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.12);border-color:#fb8500;color:#fb8500">&lt;section id="contact"&gt; → &lt;form&gt;</div>
+                  <div class="arch-layer" style="background:rgba(114,9,183,0.12);border-color:#7209b7;color:#7209b7">&lt;footer&gt;</div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>portfolio.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;&lt;meta charset="UTF-8"&gt;&lt;title&gt;My Portfolio&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;h1&gt;Riya Sharma&lt;/h1&gt;
+    &lt;nav&gt;
+      &lt;a href="#about"&gt;About&lt;/a&gt; |
+      &lt;a href="#projects"&gt;Projects&lt;/a&gt; |
+      &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/header&gt;
+
+  &lt;section id="about"&gt;
+    &lt;h2&gt;About Me&lt;/h2&gt;
+    &lt;figure&gt;
+      &lt;img src="me.jpg" width="120" alt="Profile photo"&gt;
+      &lt;figcaption&gt;Web Developer&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;p&gt;I build responsive websites using HTML, CSS and JS.&lt;/p&gt;
+  &lt;/section&gt;
+
+  &lt;section id="projects"&gt;
+    &lt;h2&gt;Projects&lt;/h2&gt;
+    &lt;article&gt;&lt;h3&gt;Weather App&lt;/h3&gt;&lt;p&gt;Live API based app.&lt;/p&gt;&lt;/article&gt;
+  &lt;/section&gt;
+
+  &lt;section id="contact"&gt;
+    &lt;h2&gt;Contact&lt;/h2&gt;
+    &lt;form&gt;
+      &lt;input type="text" placeholder="Name" required&gt;
+      &lt;input type="email" placeholder="Email" required&gt;
+      &lt;textarea placeholder="Message"&gt;&lt;/textarea&gt;
+      &lt;button type="submit"&gt;Send&lt;/button&gt;
+    &lt;/form&gt;
+  &lt;/section&gt;
+
+  &lt;footer&gt;&lt;p&gt;© 2026 Riya Sharma&lt;/p&gt;&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-person-badge me-1"></i>Rendered portfolio page</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:360px" srcdoc="
+                    <body style='font-family:sans-serif;margin:0'>
+                      <header style='background:#4361ee;color:#fff;padding:14px 18px'>
+                        <h2 style='margin:0'>Riya Sharma</h2>
+                        <nav style='margin-top:6px;font-size:14px'><a href='#' style='color:#fff'>About</a> | <a href='#' style='color:#fff'>Projects</a> | <a href='#' style='color:#fff'>Contact</a></nav>
+                      </header>
+                      <section style='padding:16px'>
+                        <h3>About Me</h3>
+                        <figure style='margin:0'><div style='width:80px;height:80px;border-radius:50%;background:#f72585;display:flex;align-items:center;justify-content:center;color:#fff;font-size:30px'>R</div><figcaption style='font-size:13px;color:#666'>Web Developer</figcaption></figure>
+                        <p>I build responsive websites using HTML, CSS &amp; JS.</p>
+                      </section>
+                      <section style='padding:0 16px'>
+                        <h3>Projects</h3>
+                        <article style='border:1px solid #ddd;padding:10px;border-radius:8px;max-width:260px'><b>Weather App</b><br><small>Live API based app.</small></article>
+                      </section>
+                      <section style='padding:16px'>
+                        <h3>Contact</h3>
+                        <input placeholder='Name' style='padding:7px;margin:3px 0;display:block'>
+                        <input placeholder='Email' style='padding:7px;margin:3px 0;display:block'>
+                        <button style='padding:7px 14px;background:#06d6a0;border:none;color:#fff;border-radius:5px'>Send</button>
+                      </section>
+                      <footer style='background:#222;color:#aaa;padding:10px;text-align:center;font-size:13px'>© 2026 Riya Sharma</footer>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Name <strong>5+ semantic tags</strong> and say <em>why</em> (accessibility + SEO) — not just list them.</li>
+                    <li>Show a <strong>form with required validation</strong> and at least one multimedia element.</li>
+                    <li>Mistake: using <code>&lt;div&gt;</code> for everything — examiners specifically want <strong>semantic</strong> tags.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Layout order: <strong>Header → Nav → Section/Article → Aside → Footer.</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q8 ================= -->
+      <section class="question-section" id="u1-q8">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q8">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q8</span>
+                Create an HTML5 travel blog integrating multimedia, navigation menus and embedded maps.
+              </button>
+            </h2>
+            <div id="c-u1-q8" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>travel blog</strong> shares stories, photos, videos and locations of trips. It combines several HTML5 features into one page:</p>
+                  <ul>
+                    <li><strong>Navigation menu (&lt;nav&gt;):</strong> links to Home, Destinations, Gallery, Contact.</li>
+                    <li><strong>Semantic structure:</strong> each trip becomes an <strong>&lt;article&gt;</strong> inside a <strong>&lt;section&gt;</strong>, with <strong>&lt;header&gt;</strong> and <strong>&lt;footer&gt;</strong>.</li>
+                    <li><strong>Multimedia:</strong> <code>&lt;img&gt;</code> photos, <code>&lt;video&gt;</code> clips, and <code>&lt;figure&gt;/&lt;figcaption&gt;</code> captions.</li>
+                    <li><strong>Embedded maps:</strong> an <code>&lt;iframe&gt;</code> from Google Maps shows the trip location directly on the page.</li>
+                  </ul>
+                  <p>The <strong>&lt;iframe&gt;</strong> element embeds another HTML document (like a map or YouTube video) inside the current page using its <code>src</code> attribute. Google Maps provides an <em>embed link</em> that you paste into the iframe <code>src</code>. This makes content interactive without leaving the blog. Using semantic tags plus multimedia and maps creates a rich, accessible, mobile-friendly blog — exactly what the question asks you to demonstrate.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Blog Page Structure</div>
+                <div class="layer-stack" style="max-width:440px;margin:auto">
+                  <div class="arch-layer" style="background:rgba(67,97,238,0.12);border-color:#4361ee;color:#4361ee">&lt;header&gt; — Blog title + &lt;nav&gt; menu</div>
+                  <div class="arch-layer" style="background:rgba(6,214,160,0.12);border-color:#06d6a0;color:#06d6a0">&lt;article&gt; — Trip story + &lt;figure&gt; photo/video</div>
+                  <div class="arch-layer" style="background:rgba(251,133,0,0.12);border-color:#fb8500;color:#fb8500">&lt;iframe&gt; — Embedded Google Map</div>
+                  <div class="arch-layer" style="background:rgba(114,9,183,0.12);border-color:#7209b7;color:#7209b7">&lt;footer&gt; — Social links</div>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>travel-blog.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;header&gt;
+  &lt;h1&gt;🌍 Wanderlust Diaries&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href="#home"&gt;Home&lt;/a&gt;
+    &lt;a href="#trips"&gt;Destinations&lt;/a&gt;
+    &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;section id="trips"&gt;
+  &lt;article&gt;
+    &lt;h2&gt;Goa Beach Trip&lt;/h2&gt;
+    &lt;figure&gt;
+      &lt;img src="goa.jpg" width="300" alt="Goa beach"&gt;
+      &lt;figcaption&gt;Sunset at Baga Beach&lt;/figcaption&gt;
+    &lt;/figure&gt;
+    &lt;p&gt;An unforgettable weekend by the Arabian Sea.&lt;/p&gt;
+
+    &lt;!-- Embedded Google Map --&gt;
+    &lt;iframe width="100%" height="200"
+      src="https://maps.google.com/maps?q=Goa&amp;output=embed"&gt;
+    &lt;/iframe&gt;
+  &lt;/article&gt;
+&lt;/section&gt;
+
+&lt;footer&gt;© 2026 Wanderlust Diaries&lt;/footer&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-globe-asia-australia me-1"></i>Travel blog with embedded map</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:380px" srcdoc="
+                    <body style='font-family:sans-serif;margin:0'>
+                      <header style='background:#06d6a0;color:#fff;padding:12px 16px'>
+                        <h2 style='margin:0'>🌍 Wanderlust Diaries</h2>
+                        <nav style='font-size:14px;margin-top:5px'><a href='#' style='color:#fff'>Home</a> · <a href='#' style='color:#fff'>Destinations</a> · <a href='#' style='color:#fff'>Contact</a></nav>
+                      </header>
+                      <article style='padding:14px'>
+                        <h3 style='margin-top:0'>Goa Beach Trip 🏖️</h3>
+                        <figure style='margin:0'>
+                          <div style='height:90px;border-radius:8px;background:linear-gradient(120deg,#fbbf24,#f97316,#06b6d4)'></div>
+                          <figcaption style='font-size:12px;color:#666'>Sunset at Baga Beach</figcaption>
+                        </figure>
+                        <p style='font-size:14px'>An unforgettable weekend by the Arabian Sea.</p>
+                        <iframe width='100%' height='150' style='border:0;border-radius:8px' src='https://maps.google.com/maps?q=Goa&amp;output=embed'></iframe>
+                      </article>
+                      <footer style='background:#222;color:#aaa;text-align:center;padding:8px;font-size:12px'>© 2026 Wanderlust Diaries</footer>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Show the <strong>&lt;iframe&gt; map embed</strong> — that is the standout feature graders look for.</li>
+                    <li>Wrap each trip in an <strong>&lt;article&gt;</strong> and use <strong>&lt;figure&gt;/&lt;figcaption&gt;</strong> for media.</li>
+                    <li>Mistake: forgetting <code>output=embed</code> in the Maps URL — the map won't load in an iframe.</li>
+                  </ul>
+                  <div class="mnemonic">💡 iframe = "inline frame" → a webpage <strong>inside</strong> a webpage.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q9 ================= -->
+      <section class="question-section" id="u1-q9">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q9">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q9</span>
+                Design a responsive HTML5 web page using semantic elements, lists, tables, hyperlinks, images, and forms.
+              </button>
+            </h2>
+            <div id="c-u1-q9" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>responsive web page</strong> adapts its layout to any screen size (mobile, tablet, desktop). HTML5 + the <strong>viewport meta tag</strong> + flexible CSS achieve this. This question tests whether you can combine <em>all</em> core HTML elements correctly.</p>
+                  <ul>
+                    <li><strong>Viewport meta:</strong> <code>&lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;</code> — essential for responsiveness.</li>
+                    <li><strong>Semantic tags:</strong> <code>header, nav, main, section, footer</code>.</li>
+                    <li><strong>Lists:</strong> <code>&lt;ul&gt;/&lt;ol&gt;/&lt;li&gt;</code> for menus and points.</li>
+                    <li><strong>Tables:</strong> <code>&lt;table&gt;, &lt;tr&gt;, &lt;th&gt;, &lt;td&gt;</code> for tabular data.</li>
+                    <li><strong>Hyperlinks:</strong> <code>&lt;a href&gt;</code> for navigation.</li>
+                    <li><strong>Images:</strong> <code>&lt;img&gt;</code> with <code>max-width:100%</code> to scale.</li>
+                    <li><strong>Forms:</strong> <code>&lt;form&gt;</code> with inputs and a submit button.</li>
+                  </ul>
+                  <p>Responsiveness is reinforced with <strong>relative units (%, rem)</strong>, <strong>flexbox/grid</strong>, and <strong>media queries</strong>. The result is a single page that reads well on a phone and a monitor — the definition of a modern, accessible HTML5 document.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Responsive Behaviour</div>
+                <div class="flow-diagram">
+                  <div class="flow-box client" style="min-width:90px">📱 Mobile<br><small>1 column</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box app" style="min-width:90px">💻 Tablet<br><small>2 columns</small></div>
+                  <div class="flow-arrow">→</div>
+                  <div class="flow-box green" style="min-width:90px">🖥️ Desktop<br><small>3 columns</small></div>
+                </div>
+                <p class="flow-label">Media queries rearrange the same content as the viewport grows</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>responsive.html</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;style&gt;
+    img { max-width: 100%; height: auto; }      /* responsive image */
+    .grid { display: flex; flex-wrap: wrap; gap: 10px; }
+    table { width: 100%; border-collapse: collapse; }
+    td, th { border: 1px solid #ccc; padding: 6px; }
+    @media (max-width: 600px) { nav a { display: block; } }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;&lt;h1&gt;Tech Store&lt;/h1&gt;
+    &lt;nav&gt;&lt;a href="#"&gt;Home&lt;/a&gt; &lt;a href="#"&gt;Shop&lt;/a&gt;&lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;section&gt;
+      &lt;h2&gt;Products&lt;/h2&gt;
+      &lt;ul&gt;&lt;li&gt;Laptops&lt;/li&gt;&lt;li&gt;Phones&lt;/li&gt;&lt;/ul&gt;
+      &lt;table&gt;
+        &lt;tr&gt;&lt;th&gt;Item&lt;/th&gt;&lt;th&gt;Price&lt;/th&gt;&lt;/tr&gt;
+        &lt;tr&gt;&lt;td&gt;Laptop&lt;/td&gt;&lt;td&gt;₹55,000&lt;/td&gt;&lt;/tr&gt;
+      &lt;/table&gt;
+      &lt;form&gt;
+        &lt;input type="text" placeholder="Search"&gt;
+        &lt;button&gt;Go&lt;/button&gt;
+      &lt;/form&gt;
+    &lt;/section&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;&lt;p&gt;© 2026 Tech Store&lt;/p&gt;&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-phone me-1"></i>Resize the panel to see responsiveness</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:340px" srcdoc="
+                    <body style='font-family:sans-serif;margin:0'>
+                      <header style='background:#4361ee;color:#fff;padding:12px 16px'><b>Tech Store</b>
+                        <nav style='font-size:14px'><a href='#' style='color:#fff'>Home</a> <a href='#' style='color:#fff'>Shop</a></nav></header>
+                      <main style='padding:14px'>
+                        <h3>Products</h3>
+                        <ul><li>Laptops</li><li>Phones</li></ul>
+                        <table style='width:100%;border-collapse:collapse'>
+                          <tr style='background:#eee'><th style='border:1px solid #ccc;padding:6px'>Item</th><th style='border:1px solid #ccc;padding:6px'>Price</th></tr>
+                          <tr><td style='border:1px solid #ccc;padding:6px'>Laptop</td><td style='border:1px solid #ccc;padding:6px'>₹55,000</td></tr>
+                          <tr><td style='border:1px solid #ccc;padding:6px'>Phone</td><td style='border:1px solid #ccc;padding:6px'>₹20,000</td></tr>
+                        </table>
+                        <form style='margin-top:10px'><input placeholder='Search' style='padding:6px'><button style='padding:6px 12px;background:#06d6a0;border:none;color:#fff;border-radius:4px'>Go</button></form>
+                      </main>
+                      <footer style='background:#222;color:#aaa;text-align:center;padding:8px;font-size:12px'>© 2026 Tech Store</footer>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>The <strong>viewport meta tag</strong> is worth a mark — never omit it in a "responsive" answer.</li>
+                    <li>Ensure your answer literally <strong>contains every element asked</strong>: list, table, link, image, form.</li>
+                    <li>Mistake: fixed <code>px</code> widths — use <code>%, max-width, flex</code> for responsiveness.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Responsive trio: <strong>Viewport meta + Relative units + Media queries.</strong></div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= Q10 ================= -->
+      <section class="question-section" id="u1-q10">
+        <div class="accordion">
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#c-u1-q10">
+                <span class="badge text-white me-2" style="background:var(--unit1)">Q10</span>
+                Design a multi-page company website using HTML5 semantic tags, navigation menus, forms, and embedded multimedia.
+              </button>
+            </h2>
+            <div id="c-u1-q10" class="accordion-collapse collapse">
+              <div class="accordion-body">
+
+                <div class="section-label definition"><i class="bi bi-book"></i> Definition / Theory</div>
+                <div class="definition-content">
+                  <p>A <strong>multi-page company website</strong> consists of several linked HTML pages — typically <strong>Home, About, Services, Contact</strong> — sharing a common <strong>navigation menu</strong>. Each page is a separate <code>.html</code> file and links connect them with relative <code>href</code> values.</p>
+                  <p><strong>Core building blocks:</strong></p>
+                  <ul>
+                    <li><strong>Consistent &lt;header&gt; + &lt;nav&gt;</strong> on every page so users can move between pages.</li>
+                    <li><strong>Semantic content tags:</strong> <code>&lt;main&gt;, &lt;section&gt;, &lt;article&gt;, &lt;aside&gt;</code>.</li>
+                    <li><strong>Forms:</strong> a <code>&lt;form&gt;</code> on the Contact page (name, email, message).</li>
+                    <li><strong>Embedded multimedia:</strong> a banner <code>&lt;video&gt;</code> or product <code>&lt;img&gt;</code> on the Home page.</li>
+                    <li><strong>Footer:</strong> address, copyright, social links repeated across pages.</li>
+                  </ul>
+                  <p>Linking pages: <code>&lt;a href="about.html"&gt;About&lt;/a&gt;</code>. Keeping the header/nav/footer identical creates a professional, cohesive feel. This question checks navigation between <strong>multiple physical pages</strong> (not just sections) plus the same semantic + form + media skills — so demonstrate at least two pages and the links that join them.</p>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label diagram"><i class="bi bi-diagram-3"></i> Site Map (Page Navigation)</div>
+                <div class="tree">
+                  <ul style="list-style:none;display:inline-block">
+                    <li><span class="node tag">index.html (Home)</span>
+                      <ul>
+                        <li><span class="node txt">about.html</span></li>
+                        <li><span class="node txt">services.html</span></li>
+                        <li><span class="node attr">contact.html</span></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+                <p class="flow-label">Shared &lt;nav&gt; on every page links all four pages together</p>
+                <hr class="section-divider">
+
+                <div class="section-label code"><i class="bi bi-code-slash"></i> Code Example</div>
+                <div class="code-wrapper">
+                  <div class="code-header">
+                    <div class="code-dots"><span></span><span></span><span></span></div>
+                    <span>index.html (shared layout)</span>
+                    <button class="copy-btn" onclick="copyCode(this)"><i class="bi bi-clipboard"></i> Copy</button>
+                  </div>
+<pre><code class="language-html">&lt;!-- This nav block is repeated on every page --&gt;
+&lt;header&gt;
+  &lt;h1&gt;Acme Corp&lt;/h1&gt;
+  &lt;nav&gt;
+    &lt;a href="index.html"&gt;Home&lt;/a&gt;
+    &lt;a href="about.html"&gt;About&lt;/a&gt;
+    &lt;a href="services.html"&gt;Services&lt;/a&gt;
+    &lt;a href="contact.html"&gt;Contact&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;main&gt;
+  &lt;section&gt;
+    &lt;h2&gt;Welcome to Acme Corp&lt;/h2&gt;
+    &lt;video width="320" controls&gt;
+      &lt;source src="intro.mp4" type="video/mp4"&gt;
+    &lt;/video&gt;
+    &lt;p&gt;We deliver world-class software solutions.&lt;/p&gt;
+  &lt;/section&gt;
+&lt;/main&gt;
+
+&lt;footer&gt;&lt;p&gt;© 2026 Acme Corp · contact@acme.com&lt;/p&gt;&lt;/footer&gt;
+
+&lt;!-- contact.html would contain: --&gt;
+&lt;!-- &lt;form&gt;&lt;input type="text"&gt;&lt;input type="email"&gt;
+     &lt;textarea&gt;&lt;/textarea&gt;&lt;button&gt;Send&lt;/button&gt;&lt;/form&gt; --&gt;</code></pre>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label preview"><i class="bi bi-eye"></i> Live Preview</div>
+                <div class="preview-container">
+                  <div class="preview-header"><span><i class="bi bi-building me-1"></i>Multi-page site simulation (click the menu)</span>
+                    <button class="refresh-btn" onclick="refreshPreview(this)"><i class="bi bi-arrow-clockwise"></i> Refresh</button></div>
+                  <iframe class="preview-frame" style="height:360px" srcdoc="
+                    <body style='font-family:sans-serif;margin:0'>
+                      <header style='background:#7209b7;color:#fff;padding:12px 16px'>
+                        <b style='font-size:18px'>Acme Corp</b>
+                        <nav style='margin-top:6px;font-size:14px'>
+                          <a href='#' onclick=\"go('home')\" style='color:#fff;margin-right:8px'>Home</a>
+                          <a href='#' onclick=\"go('about')\" style='color:#fff;margin-right:8px'>About</a>
+                          <a href='#' onclick=\"go('services')\" style='color:#fff;margin-right:8px'>Services</a>
+                          <a href='#' onclick=\"go('contact')\" style='color:#fff'>Contact</a>
+                        </nav>
+                      </header>
+                      <main id='m' style='padding:16px;min-height:160px'></main>
+                      <footer style='background:#222;color:#aaa;text-align:center;padding:8px;font-size:12px'>© 2026 Acme Corp · contact@acme.com</footer>
+                      <script>
+                        var pages={
+                          home:'<h3>Welcome to Acme Corp</h3><div style=height:70px;border-radius:8px;background:linear-gradient(120deg,#7209b7,#4361ee)></div><p>We deliver world-class software solutions.</p>',
+                          about:'<h3>About Us</h3><p>Founded in 2010, Acme builds reliable software for 500+ clients.</p>',
+                          services:'<h3>Our Services</h3><ul><li>Web Development</li><li>Cloud Hosting</li><li>Consulting</li></ul>',
+                          contact:'<h3>Contact Us</h3><input placeholder=Name style=padding:6px;display:block;margin:4px><input placeholder=Email style=padding:6px;display:block;margin:4px><button style=padding:6px 12px;background:#06d6a0;border:none;color:#fff;border-radius:4px>Send</button>'
+                        };
+                        function go(p){document.getElementById('m').innerHTML=pages[p];}
+                        go('home');
+                      <\/script>
+                    </body>"></iframe>
+                </div>
+                <hr class="section-divider">
+
+                <div class="section-label tips"><i class="bi bi-lightbulb"></i> Exam Tips</div>
+                <div class="exam-tips">
+                  <ul>
+                    <li>Stress that <strong>nav/header/footer are repeated</strong> on every page for consistency.</li>
+                    <li>Show <strong>relative links</strong> (<code>about.html</code>) connecting <em>separate</em> pages — that's the key difference from Q9.</li>
+                    <li>Mistake: putting everything in one file — the question specifically says <strong>multi-page</strong>.</li>
+                  </ul>
+                  <div class="mnemonic">💡 Pages: <strong>"H.A.S.C"</strong> = Home, About, Services, Contact.</div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="text-center my-5">
+        <a href="../unit2/index.html" class="btn btn-study" style="background:var(--unit2);border:none;color:#fff;width:auto;padding:0.6rem 1.6rem">
+          Next: Unit 2 — CSS &amp; Bootstrap <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<footer class="main-footer">
+  <div class="container">
+    <p class="mb-1"><i class="bi bi-book-half me-2" style="color:var(--unit1)"></i><strong>Web Technology ETE Study Guide</strong></p>
+    <p class="mb-0" style="font-size:0.8rem;">Made for ETE 2026 · Unit 1 of 5 · 10 Questions Completed</p>
+  </div>
+</footer>
+
+<button id="back-to-top" title="Back to top"><i class="bi bi-arrow-up"></i></button>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

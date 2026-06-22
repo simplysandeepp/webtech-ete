@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir -p /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/assets/css /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/assets/js /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/unit1 /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/unit2 /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/unit3 /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/unit4 /Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/unit5 && echo \"Directories created\")",
+      "Skill(artifact-design)",
+      "Skill(artifact-design:*)",
+      "Bash(mkdir -p web-tech-guide/assets/css web-tech-guide/assets/js web-tech-guide/unit1 web-tech-guide/unit2 web-tech-guide/unit3 web-tech-guide/unit4 web-tech-guide/unit5 && find web-tech-guide -type d)"
+    ],
+    "additionalDirectories": [
+      "/Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/assets",
+      "/Users/sandeepprajapati1202/Downloads/Personal/ETE-PractiseSET-Website/web-tech-guide/assets/css"
+    ]
+  }
+}
